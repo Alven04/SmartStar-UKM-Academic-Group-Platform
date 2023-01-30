@@ -35,4 +35,12 @@ public class Controller {
 		currentUser=u;
 	}
 	
+	public String getCourseName() {
+		return c.getCourseName();
+	}
+	
+	public String printInformation(String course) {
+		return global.getCourseByCourseName(course).toString();
+	}
+	
 }
