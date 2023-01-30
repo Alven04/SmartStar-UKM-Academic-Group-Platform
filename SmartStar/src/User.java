@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public abstract class User {
 
@@ -5,6 +6,8 @@ public abstract class User {
 	private String password;
 	private String name;
 	private String institution;
+	
+	private ArrayList<Course> coursesJoined;
 	
 	public User(String username, String password) {
 		this.username = username;
@@ -43,6 +46,18 @@ public abstract class User {
 
 	public void setInstitution(String institution) {
 		this.institution = institution;
+	}
+	
+	public ArrayList<Course> getCoursesJoined() {
+		return coursesJoined;
+	}
+
+	public void setCoursesJoined(ArrayList<Course> coursesJoined) {
+		this.coursesJoined = coursesJoined;
+	}
+
+	public void joinCourse(Course course) {
+		coursesJoined.add(course);
 	}
 	
 }
