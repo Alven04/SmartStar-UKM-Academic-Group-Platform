@@ -1,9 +1,19 @@
+import java.util.ArrayList;
 
 public class Course {
 	private String courseName;
 	private String courseDescription;
-	private String coursePrivacy;
 	private String courseID;
+	private User courseOwner;
+	private User courseMembers;
+	
+	private ArrayList<Course> listOfCourse=new ArrayList<Course>();
+	public Course(String courseID,String courseName,String courseDescription) { //removed coursePrivacy
+		this.courseID=courseID;
+		this.courseName=courseName;
+		this.courseDescription=courseDescription;
+		
+	}
 	
 	public void setCourseID(String id) {
 		courseID=id;
@@ -17,9 +27,8 @@ public class Course {
 		courseDescription=description;
 	}
 	
-	public void setCoursePrivacy(String privacy) {
-		coursePrivacy=privacy;
-		
+	public void setCourseOwner(User u) {
+		courseOwner=u;
 	}
 	
 	
