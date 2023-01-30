@@ -1,8 +1,10 @@
 
 public class Controller {
-
+	private Course c=new Course(); //optimize this if possible (idk how)
+	
 	public Controller() {
-		new CourseMain(this);
+		Controller controller = new Controller(); //this as well
+		controller.displayScreen(1);
 	}
 	
 	public void displayScreen(int num) {
