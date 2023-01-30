@@ -1,6 +1,7 @@
 
 public class Controller {
 	private Course c;
+	protected User currentUser;
 	
 	public Controller() {
 		this.displayScreen(1);
