@@ -10,16 +10,11 @@ public abstract class User {
 	private ArrayList<Course> coursesJoined;
 	private ArrayList<Course> coursesCreated;
 	
-	// list of all users
-	private static ArrayList<User> userList;
-	
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 		this.name = "";
 		this.institution = "";
-		
-		userList.add(this);
 	}
 
 	public String getUsername() {
@@ -68,19 +63,6 @@ public abstract class User {
 	
 	public void setCoursesCreated(ArrayList<Course> coursesCreated) {
 		this.coursesCreated = coursesCreated;
-	}
-	
-	public static ArrayList<User> getUserList() {
-		return userList;
-	}
-
-	public static User getUserByUsername(String username) {
-		for (User user : userList) {
-			if (user.username == username) {
-				return user;
-			}
-		}
-		return null;
 	}
 
 	/**
