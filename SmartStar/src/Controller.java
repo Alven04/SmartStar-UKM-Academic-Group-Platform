@@ -14,10 +14,6 @@ public class Controller {
 			new AddCourse(this);
 		else if(num==3) 
 			new JoinCourse(this);
-		else if (num==11)
-			new SplashScreen(this);
-		else if (num==12)
-			new SignUpScreen(this);
 	}
 	public void addCourseId(String id) {
 		c.setCourseID(id);
