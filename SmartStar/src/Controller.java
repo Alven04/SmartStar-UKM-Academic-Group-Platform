@@ -17,7 +17,7 @@ public class Controller {
 			new SplashScreen(this);
 	}
 	public void addCourseId(String id) {
-		c.setCourseName(id);
+		c.setCourseID(id);
 	}
 	
 	public void addCourseName(String name) {
