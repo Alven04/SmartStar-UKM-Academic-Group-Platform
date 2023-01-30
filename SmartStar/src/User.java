@@ -56,8 +56,30 @@ public abstract class User {
 		this.coursesJoined = coursesJoined;
 	}
 
-	public void joinCourse(Course course) {
-		coursesJoined.add(course);
+	/**
+	 * If the coursesJoined ArrayList do not contains the course,
+	 * then add the course into coursesJoined ArrayList
+	 * @param course course to add
+	 * @return true if course is added to coursesJoined ArrayList, 
+	 * otherwise return false
+	 */
+	public boolean joinCourse(Course course) {
+		if (coursesJoined.contains(course)) {
+			return false;
+		}
+		coursesJoined.add(course);	
+		return true;
+	}
+	
+	/**
+	 * Removes the course from coursesJoined ArrayList.
+	 * Returns false if the coursesJoined ArrayList does not contain the course
+	 * @param course course to remove
+	 * @return true if the course is removed from coursesJoined ArrayList,
+	 * otherwise return false
+	 */
+	public boolean leaveCourse(Course course) {
+		return coursesJoined.remove(course);
 	}
 	
 }
