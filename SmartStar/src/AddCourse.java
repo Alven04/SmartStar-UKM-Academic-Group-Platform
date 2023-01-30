@@ -95,6 +95,7 @@ public class AddCourse extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);;
 				controller.addCourseName(courseName.getText());
 				controller.addCourseDescription(courseDescription.getText());
+				controller.addCoursePrivacy(bg.getSelection().getActionCommand());
 				this.setVisible(false);
 				controller.displayScreen(1);
 			}
