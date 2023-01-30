@@ -15,6 +15,10 @@ public class Course {
 		
 	}
 	
+	public String getCourseName() {
+		return courseName;
+	}
+
 	public void setCourseID(String id) {
 		courseID=id;
 	}
