@@ -90,9 +90,14 @@ public class AddCourse extends JFrame implements ActionListener {
 			controller.displayScreen(1);
 		}
 		if(obj.equals(confirmBtn)) {
-			controller.addCourseName(courseName.getText());
-			controller.addCourseDescription(courseDescription.getText());
-			controller.displayScreen(1);
+			int a=JOptionPane.showConfirmDialog(f, "Add Course?");
+			if(a==JOptionPane.YES_OPTION) {
+				JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);;
+				controller.addCourseName(courseName.getText());
+				controller.addCourseDescription(courseDescription.getText());
+				this.setVisible(false);
+				controller.displayScreen(1);
+			}
 		}
 		
 	}
