@@ -1,10 +1,9 @@
 
 public class Controller {
-	private Course c=new Course(); //optimize this if possible (idk how)
+	private Course c;
 	
 	public Controller() {
-		Controller controller = new Controller(); //this as well
-		controller.displayScreen(1);
+		this.displayScreen(1);
 	}
 	
 	public void displayScreen(int num) {
@@ -30,8 +29,7 @@ public class Controller {
 	public void addCourseDescription(String description) {
 		c.setCourseDescription(description);
 	}
-	
-	public void addCoursePrivacy(String privacy) {
-		c.setCoursePrivacy(privacy);
+	public void setCourseOwner(User u) {
+		c.setCourseOwner(u);
 	}
 }
