@@ -29,7 +29,13 @@ public class Controller {
 	public void addCourseDescription(String description) {
 		c.setCourseDescription(description);
 	}
-	public void setCourseOwner(User u) {
-		c.setCourseOwner(u);
+	
+	public void setCourseOwner() {
+		c.setCourseOwner(currentUser);
 	}
+	
+	public void setCurrentUser(User u) {
+		currentUser=u;
+	}
+	
 }
