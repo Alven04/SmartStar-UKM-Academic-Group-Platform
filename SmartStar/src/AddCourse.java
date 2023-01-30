@@ -126,13 +126,15 @@ public class AddCourse extends JFrame implements ActionListener {
 			int a=JOptionPane.showConfirmDialog(f, "Add Course?");
 			if(a==JOptionPane.YES_OPTION) {
 				JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);
-				controller.addCourseId(courseID.getText()); //Add course id
-				controller.addCourseName(courseName.getText()); //Add coursename
-				controller.addCourseDescription(courseDescription.getText()); //add coursedesc 
-				controller.setCourseOwner(); //set course owner
+//				controller.addCourseId(courseID.getText()); //Add course id
+//				controller.addCourseName(courseName.getText()); //Add coursename
+//				controller.addCourseDescription(courseDescription.getText()); //add coursedesc 
+				controller.addCourse(courseID.getText(), courseName.getText(), courseDescription.getText());
+//				controller.setCourseOwner(); //set course owner
 				this.setVisible(false);
 				controller.displayScreen(1);
-				System.out.println(controller.printInformation(controller.getCourseName()));
+//				System.out.println(controller.printInformation(controller.getCourseName()));
+				System.out.println(controller.printInformation(courseName.getText()));
 			}
 		}
 		
