@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Global {
 
-	private ArrayList<User> userList;
-	private ArrayList<Course> courseList;
+	private ArrayList<User> userList = new ArrayList<>();
+	private ArrayList<Course> courseList = new ArrayList<>();
 	
 	public ArrayList<User> getUserList() {
 		return userList;
