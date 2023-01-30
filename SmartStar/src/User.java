@@ -8,6 +8,7 @@ public abstract class User {
 	private String institution;
 	
 	private ArrayList<Course> coursesJoined;
+	private ArrayList<Course> coursesCreated;
 	
 	public User(String username, String password) {
 		this.username = username;
@@ -55,6 +56,14 @@ public abstract class User {
 	public void setCoursesJoined(ArrayList<Course> coursesJoined) {
 		this.coursesJoined = coursesJoined;
 	}
+	
+	public ArrayList<Course> getCoursesCreated() {
+		return coursesCreated;
+	}
+	
+	public void setCoursesCreated(ArrayList<Course> coursesCreated) {
+		this.coursesCreated = coursesCreated;
+	}
 
 	/**
 	 * Adds the course into coursesJoined ArrayList.
@@ -82,6 +91,22 @@ public abstract class User {
 	 */
 	public boolean leaveCourse(Course course) {
 		return coursesJoined.remove(course);
+	}
+	
+	/**
+	 * Adds the course into coursesCreated ArrayList.
+	 * Also adds the course into coursesJoined ArrayList if the User
+	 * is not yet a member of the course
+	 * @param course
+	 * @return
+	 */
+	public boolean createCourse(Course course) {
+		if (coursesCreated.contains(course)) {
+			return false;
+		}
+		coursesCreated.add(course);	
+		joinCourse(course);
+		return true;
 	}
 	
 }
