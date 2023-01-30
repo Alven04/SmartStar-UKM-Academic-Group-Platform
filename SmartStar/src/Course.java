@@ -27,8 +27,8 @@ public class Course {
 		courseDescription=description;
 	}
 	
-	public void setCourseOwner(User u) {
-		courseOwner=u;
+	public void setCourseOwner(User currentUser) {
+		courseOwner=currentUser;
 	}
 	
 	
