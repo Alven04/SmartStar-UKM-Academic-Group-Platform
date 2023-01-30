@@ -57,8 +57,9 @@ public abstract class User {
 	}
 
 	/**
-	 * If the coursesJoined ArrayList do not contains the course,
-	 * then add the course into coursesJoined ArrayList
+	 * Adds the course into coursesJoined ArrayList.
+	 * If the coursesJoined ArrayList already contains the course,
+	 * then do nothing, return false
 	 * @param course course to add
 	 * @return true if course is added to coursesJoined ArrayList, 
 	 * otherwise return false
@@ -72,8 +73,9 @@ public abstract class User {
 	}
 	
 	/**
-	 * Removes the course from coursesJoined ArrayList.
-	 * Returns false if the coursesJoined ArrayList does not contain the course
+	 * Removes the course from coursesJoined ArrayList. 
+	 * If the coursesJoined ArrayList does not contain the course, 
+	 * then do nothing, return false
 	 * @param course course to remove
 	 * @return true if the course is removed from coursesJoined ArrayList,
 	 * otherwise return false
