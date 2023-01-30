@@ -1,17 +1,28 @@
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class SplashScreen extends JFrame {
+public class SplashScreen extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	private Controller controller;
+
+	private JButton btn_signUp;
+	private JButton btn_signIn;
+	private JLabel lbl_title;
+	private JLabel lbl_subtitle;
 	
-	public SplashScreen() {
+	public SplashScreen(Controller controller) {
+		
+		this.controller = controller;
 		
 		// GUI IS NOT FINAL, THE COLOUR IS FOR DEBUGGING ONLY, I KNOW IT IS VERY UGLY EWW
 		
@@ -36,7 +47,7 @@ public class SplashScreen extends JFrame {
 		pnl_title.setBackground(Color.cyan);
 		this.add(pnl_title);
 
-		JLabel lbl_title = new JLabel("SmartStar");
+		lbl_title = new JLabel("SmartStar");
 		lbl_title.setFont(new Font("Segoe UI", Font.BOLD, titleFontSize));
 		lbl_title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_title.add(lbl_title);
@@ -46,7 +57,7 @@ public class SplashScreen extends JFrame {
 		pnl_subtitle.setBackground(Color.green);
 		this.add(pnl_subtitle);
 		
-		JLabel lbl_subtitle = new JLabel("by A Team");
+		lbl_subtitle = new JLabel("by A Team");
 		lbl_subtitle.setFont(new Font("Segoe UI", Font.BOLD, subtitleFontSize));
 		lbl_title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_subtitle.add(lbl_subtitle);
@@ -56,15 +67,27 @@ public class SplashScreen extends JFrame {
 		pnl_button.setBackground(Color.magenta);
 		this.add(pnl_button);
 		
-		JButton btn_signUp = new JButton("Sign Up");
+		btn_signUp = new JButton("Sign Up");
 		btn_signUp.setFont(new Font("Segoe UI", Font.PLAIN, buttonFontSize));
 		btn_signUp.setSize(buttonWidth, buttonHeight);
 		pnl_button.add(btn_signUp);
+		btn_signUp.addActionListener(this);
 		
-		JButton btn_signIn = new JButton("Sign In");
+		btn_signIn = new JButton("Sign In");
 		btn_signIn.setFont(new Font("Segoe UI", Font.PLAIN, buttonFontSize));
 		btn_signIn.setSize(buttonWidth, buttonHeight);
 		pnl_button.add(btn_signIn);
+		btn_signIn.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource().equals(btn_signUp)) {
+			JOptionPane.showMessageDialog(this, "Sign Up button clicked");
+		} else if (e.getSource().equals(btn_signIn)){
+			JOptionPane.showMessageDialog(this, "Sign In button clicked");
+		}
+		
 	}
 
 }
