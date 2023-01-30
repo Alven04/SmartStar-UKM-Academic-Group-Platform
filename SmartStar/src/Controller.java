@@ -16,6 +16,9 @@ public class Controller {
 		else if (num==11)
 			new SplashScreen(this);
 	}
+	public void addCourseId(String id) {
+		c.setCourseName(id);
+	}
 	
 	public void addCourseName(String name) {
 		c.setCourseName(name);
