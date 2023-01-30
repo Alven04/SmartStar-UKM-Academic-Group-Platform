@@ -1,6 +1,6 @@
 
 public class Controller {
-//	private Course c;
+	private Course c;
 	protected User currentUser;
 	private Global global = new Global();
 	
@@ -21,7 +21,7 @@ public class Controller {
 		// TEMPORARY LINE, DELETE THIS LINE AFTER LOGIN SCREEN IS DONE
 		currentUser = new Student("test", "test");
 		
-		Course c = new Course(id, name, description);
+		c = new Course(id, name, description);
 		c.setCourseOwner(currentUser);
 		global.addCourse(c);
 	}
