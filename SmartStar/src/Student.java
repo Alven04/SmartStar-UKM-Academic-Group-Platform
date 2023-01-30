@@ -1,20 +1,20 @@
 
 public class Student extends User {
 
-	private String year;
+	private int year;
 	private String major;
 	
 	public Student (String username, String password) {
 		super(username, password);
-		this.year = "";
+		this.year = 0;
 		this.major = "";
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 
@@ -26,7 +26,7 @@ public class Student extends User {
 		this.major = major;
 	}
 	
-	public void updateDetails(String name, String institution, String year, String major) {
+	public void updateDetails(String name, String institution, int year, String major) {
 		setName(name);
 		setInstitution(institution);
 		setYear(year);

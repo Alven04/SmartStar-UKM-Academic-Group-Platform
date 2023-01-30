@@ -90,8 +90,8 @@ public class AddCourse extends JFrame implements ActionListener {
 			controller.displayScreen(1);
 		}
 		if(obj.equals(confirmBtn)) {
-			controller.setCourseName(courseName.getText());
-			controller.setCourseDescription(courseDescription.getText());
+			controller.addCourseName(courseName.getText());
+			controller.addCourseDescription(courseDescription.getText());
 			controller.displayScreen(1);
 		}
 		
