@@ -17,9 +17,17 @@ public class Global {
 	public void addUser(User user) {
 		userList.add(user);
 	}
+	
+	public void deleteUser(User user) {
+		userList.remove(user);
+	}
 
 	public void addCourse(Course course) {
 		courseList.add(course);
+	}
+	
+	public void deleteCourse(Course course) {
+		courseList.remove(course);
 	}
 	
 	public User getUserByUsername(String username) {
