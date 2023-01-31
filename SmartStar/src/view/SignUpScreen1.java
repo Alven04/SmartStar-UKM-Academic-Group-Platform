@@ -30,6 +30,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 	private JLabel lbl_confirmPassword;
 	private JRadioButton rad_studentRole;
 	private JRadioButton rad_lecturerRole;
+	private ButtonGroup grp_role;
 	private JTextField txt_username;
 	private JTextField txt_password;
 	private JTextField txt_confirmPassword;
@@ -118,7 +119,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		add(pnl_role);
 
 		
-		ButtonGroup grp_role = new ButtonGroup();
+		grp_role = new ButtonGroup();
 		
 		rad_studentRole = new JRadioButton("Student");
 		rad_studentRole.setFont(bodyFont);
@@ -196,8 +197,12 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btn_signUp)) {
 			JOptionPane.showMessageDialog(this, "Debug - Sign Up button clicked");
+			controller.signUp(rad_studentRole.isSelected(), rad_lecturerRole.isSelected(), txt_username.getText(), txt_password.getText());
+			
 		} else if (e.getSource().equals(btn_cancel)){
 			JOptionPane.showMessageDialog(this, "Debug - Cancel button clicked");
+			controller.displaySplashScreen();
+			setVisible(false);
 		}
 
 		
