@@ -1,13 +1,14 @@
 package view;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -24,10 +25,14 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 	private JLabel lbl_roleTitle;
 	private JLabel lbl_username;
 	private JLabel lbl_password;
+	private JLabel lbl_confirmPassword;
 	private JRadioButton rad_studentRole;
 	private JRadioButton rad_lecturerRole;
 	private JTextField txt_username;
 	private JTextField txt_password;
+	private JTextField txt_confirmPassword;
+	private JButton btn_signUp;
+	private JButton btn_cancel;
 	
 	public SignUpScreen1(SignInController controller) {
 		
@@ -53,6 +58,11 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		int usernameColumn = 20;
 		int passwordPanelHeight = 30;
 		int passwordColumn = 20;
+		int confirmPasswordPanelHeight = 30;
+		int confirmPasswordColumn = 20;
+		int buttonPanelHeight = 50;
+		int buttonWidth = 100;
+		int buttonHeight = 50;
 		String font = "Segoe UI";
 		int bodyFontSize = 12;
 		
@@ -114,7 +124,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		pnl_username.setBackground(Color.LIGHT_GRAY);
 		this.add(pnl_username);
 
-		lbl_username = new JLabel("Username");
+		lbl_username = new JLabel(usernameTitle);
 		lbl_username.setFont(new Font(font, Font.BOLD, bodyFontSize));
 		pnl_username.add(lbl_username);
 		
@@ -127,20 +137,56 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		pnl_password.setBackground(Color.blue);
 		this.add(pnl_password);
 
-		lbl_password = new JLabel("Password");
+		lbl_password = new JLabel(passwordTitle);
 		lbl_password.setFont(new Font(font, Font.BOLD, bodyFontSize));
 		pnl_password.add(lbl_password);
 		
 		txt_password = new JTextField(passwordColumn);
 		txt_password.setFont(new Font(font, Font.PLAIN, bodyFontSize));
 		pnl_password.add(txt_password);
+		
+		JPanel pnl_confirmPassword = new JPanel();
+		pnl_confirmPassword.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight + usernamePanelHeight + passwordPanelHeight, screenWidth, confirmPasswordPanelHeight);
+		pnl_confirmPassword.setBackground(Color.blue);
+		this.add(pnl_confirmPassword);
+
+		lbl_confirmPassword = new JLabel(confirmPasswordTitle);
+		lbl_confirmPassword.setFont(new Font(font, Font.BOLD, bodyFontSize));
+		pnl_confirmPassword.add(lbl_confirmPassword);
+		
+		txt_confirmPassword = new JTextField(confirmPasswordColumn);
+		txt_confirmPassword.setFont(new Font(font, Font.PLAIN, bodyFontSize));
+		pnl_confirmPassword.add(txt_confirmPassword);
+
+		JPanel pnl_button = new JPanel();
+		pnl_button.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight + usernamePanelHeight + passwordPanelHeight + confirmPasswordPanelHeight, screenWidth, buttonPanelHeight);
+		pnl_button.setBackground(Color.GREEN);
+		this.add(pnl_button);
+		
+		btn_signUp = new JButton("Sign Up");
+		btn_signUp.setFont(new Font(font, Font.PLAIN, bodyFontSize));
+		btn_signUp.setSize(buttonWidth, buttonHeight);
+		pnl_button.add(btn_signUp);
+		btn_signUp.addActionListener(this);
+		
+		btn_cancel = new JButton("Cancel");
+		btn_cancel.setFont(new Font(font, Font.PLAIN, bodyFontSize));
+		btn_cancel.setSize(buttonWidth, buttonHeight);
+		pnl_button.add(btn_cancel);
+		btn_cancel.addActionListener(this);
+
 
 	}
 	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getSource().equals(btn_signUp)) {
+			JOptionPane.showMessageDialog(this, "Debug - Sign Up button clicked");
+		} else if (e.getSource().equals(btn_cancel)){
+			JOptionPane.showMessageDialog(this, "Debug - Cancel button clicked");
+		}
+
 		
 	}
 
