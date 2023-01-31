@@ -16,6 +16,7 @@ public class JoinCourse extends JFrame implements ActionListener {
 	private JButton searchCourseButton;
 	private JPanel panel1;
 	private JPanel panel2;
+	private JFrame f;
 	
 	public JoinCourse(Controller controller) {
 		this.controller=controller;
@@ -72,7 +73,14 @@ public class JoinCourse extends JFrame implements ActionListener {
 			controller.displayScreen(1);
 		}else if(obj.equals(searchCourseButton)){
 			if(controller.detetermineCourseExists(searchCourseText.getText())){
-
+				int a=JOptionPane.showConfirmDialog(f, "Do you wish to join the course?");
+				if(a==JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);
+					this.setVisible(false);
+					controller.displayScreen(1);
+				}
+			}else{
+				JOptionPane.showMessageDialog(null, "Course does not exists","Join Course",JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 		

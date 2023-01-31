@@ -15,7 +15,10 @@ public class Course {
 		this.courseDescription=courseDescription;
 		
 	}
-	
+	public String getCourseID() {
+		return courseID;
+	}
+
 	public String getCourseName() {
 		return courseName;
 	}
