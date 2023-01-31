@@ -85,11 +85,11 @@ public class CourseMain extends JFrame implements ActionListener {
 		if(obj.equals(btn1)) {
 			controller.displayScreen(2);
 		}else if(obj.equals(btn2)) {
-			
+			controller.displayScreen(3);
 		}else if(obj.equals(btn3)) {
-			
+			controller.displayScreen(4);
 		}else if(obj.equals(btn4)) {
-			
+			controller.displayScreen(5);
 		}
 		
 	}
