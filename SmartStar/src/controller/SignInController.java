@@ -1,5 +1,7 @@
 package controller;
 import model.Global;
+import model.Lecturer;
+import model.Student;
 import view.SignInScreen;
 import view.SignUpScreen1;
 import view.SplashScreen;
@@ -11,6 +13,14 @@ public class SignInController {
 	private SignInScreen signInScreen;
 	
 	private Global global = new Global();
+	
+	public void signUp(boolean isStudent, boolean isLecturer, String username, String password) {
+		if (isStudent) {
+			global.addUser(new Student(username, password));
+		} else if (isLecturer) {
+			global.addUser(new Lecturer(username, password));
+		}
+	}
 	
 	public void displaySplashScreen() {
 		if (splashScreen == null)
