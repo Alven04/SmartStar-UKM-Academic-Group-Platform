@@ -3,12 +3,10 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -64,11 +62,6 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		String title = "Sign Up";
 		String subtitle = "Please select your role, then enter your username and password.";
 		String roleTitle = "Are you a student or a lecturer?";
-		String usernameTitle = "Username:";
-		String passwordTitle = "Password:";
-		String confirmPasswordTitle = "Confirm password:";
-		String majorTitle = "Major";
-		String yearTitle = "Year";
 		
 		int screenWidth = 800;
 		int screenHeight = 600;
@@ -146,38 +139,9 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		pnl_login.setLayout(new BoxLayout(pnl_login, BoxLayout.Y_AXIS));
 		pnl_body.add(pnl_login);
 		
-		JPanel pnl_username = new JPanel();
-		pnl_login.add(pnl_username);
-
-		lbl_username = new JLabel(usernameTitle);
-		lbl_username.setFont(headingFont);
-		pnl_username.add(lbl_username);
-		
-		txt_username = new JTextField(textColumn);
-		txt_username.setFont(bodyFont);
-		pnl_username.add(txt_username);
-		
-		JPanel pnl_password = new JPanel();
-		pnl_login.add(pnl_password);
-
-		lbl_password = new JLabel(passwordTitle);
-		lbl_password.setFont(headingFont);
-		pnl_password.add(lbl_password);
-		
-		txt_password = new JTextField(textColumn);
-		txt_password.setFont(bodyFont);
-		pnl_password.add(txt_password);
-		
-		JPanel pnl_confirmPassword = new JPanel();
-		pnl_login.add(pnl_confirmPassword);
-
-		lbl_confirmPassword = new JLabel(confirmPasswordTitle);
-		lbl_confirmPassword.setFont(headingFont);
-		pnl_confirmPassword.add(lbl_confirmPassword);
-		
-		txt_confirmPassword = new JTextField(textColumn);
-		txt_confirmPassword.setFont(bodyFont);
-		pnl_confirmPassword.add(txt_confirmPassword);
+		pnl_login.add(createLabelTestFieldPair(lbl_username, "Username:", txt_username, textColumn, bodyFont, headingFont));
+		pnl_login.add(createLabelTestFieldPair(lbl_password, "Password:", txt_password, textColumn, bodyFont, headingFont));
+		pnl_login.add(createLabelTestFieldPair(lbl_confirmPassword, "Confirm password:", txt_confirmPassword, textColumn, bodyFont, headingFont));
 
 		
 		crd_detail = new CardLayout();
@@ -196,32 +160,14 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		pnl_student_detail.setBackground(Color.ORANGE);
 		pnl_detail.add(pnl_student_detail, com_student);
 		
-		JPanel pnl_year = new JPanel();
-		pnl_student_detail.add(pnl_year);
-		
-		lbl_year = new JLabel(yearTitle);
-		lbl_year.setFont(headingFont);
-		pnl_year.add(lbl_year);
-		
-		spn_year = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));
-		spn_year.setFont(bodyFont);
-		pnl_year.add(spn_year);
-		
-		JPanel pnl_major = new JPanel();
-		pnl_student_detail.add(pnl_major);
-
-		lbl_major = new JLabel(majorTitle);
-		lbl_major.setFont(headingFont);
-		pnl_major.add(lbl_major);
-		
-		txt_major = new JTextField(textColumn);
-		txt_major.setFont(bodyFont);
-		pnl_major.add(txt_major);
+		pnl_student_detail.add(createLabelSpinnerPair(lbl_year, "Year:", spn_year, 1, 1, 10, 1, bodyFont, headingFont));
+		pnl_student_detail.add(createLabelTestFieldPair(lbl_major, "Major:", txt_major, textColumn, bodyFont, headingFont));
 		
 		JPanel pnl_lecturer_detail = new JPanel();
 		pnl_lecturer_detail.setBackground(Color.cyan);
 		pnl_detail.add(pnl_lecturer_detail, com_lecturer);
 		
+		pnl_lecturer_detail.add(createLabelTestFieldPair(lbl_qualification, "Qualification:", txt_qualification, textColumn, bodyFont, headingFont));
 		
 		pnl_button = new JPanel();
 		pnl_button.setBackground(Color.GREEN);
@@ -241,6 +187,38 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 
 
 	}
+
+
+	private JPanel createLabelTestFieldPair(JLabel label, String labelText, JTextField textField, int textColumn,
+			Font bodyFont, Font headingFont) {
+		JPanel newPanel = new JPanel();
+
+		label = new JLabel(labelText);
+		label.setFont(headingFont);
+		newPanel.add(label);
+		
+		textField = new JTextField(textColumn);
+		textField.setFont(bodyFont);
+		newPanel.add(textField);
+		
+		return newPanel;
+	}
+	
+	private JPanel createLabelSpinnerPair(JLabel label, String labelText, JSpinner spinner, int value, int minimum, 
+			int maximum, int stepSize, Font bodyFont, Font headingFont) {
+		JPanel newPanel = new JPanel();
+
+		label = new JLabel(labelText);
+		label.setFont(headingFont);
+		newPanel.add(label);
+		
+		spinner = new JSpinner(new SpinnerNumberModel(value, minimum, maximum, stepSize));
+		spinner.setFont(bodyFont);
+		newPanel.add(spinner);
+		
+		return newPanel;
+	}
+
 	
 
 	@Override
