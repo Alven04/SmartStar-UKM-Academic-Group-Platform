@@ -11,8 +11,6 @@ import java.awt.Color;
 
 public class AddCourse extends JFrame implements ActionListener {
 	private JButton backBtn,confirmBtn;
-	private JRadioButton privacyPublic,privacyPrivate;
-	private ButtonGroup bg;
 	private Controller controller;
 	private JTextField courseName,courseID;
 	private JTextArea courseDescription;
