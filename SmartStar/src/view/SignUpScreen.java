@@ -39,6 +39,8 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	private JLabel lbl_year;
 	private JLabel lbl_major;
 	private JLabel lbl_qualification;
+	private JLabel lbl_name;
+	private JLabel lbl_institution;
 	private JRadioButton rad_studentRole;
 	private JRadioButton rad_lecturerRole;
 	private ButtonGroup grp_role;
@@ -47,12 +49,19 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	private JTextField txt_confirmPassword;
 	private JTextField txt_major;
 	private JTextField txt_qualification;
+	private JTextField txt_name;
+	private JTextField txt_institution;
 	private JSpinner spn_year;
 	private JButton btn_signUp;
 	private JButton btn_cancel;
 	private CardLayout crd_detail;
 	private String com_student = "STUDENT";
 	private String com_lecturer = "LECTURER";
+	
+	String font = "Segoe UI";
+	int bodyFontSize = 12;
+	private Font bodyFont = new Font(font, Font.PLAIN, bodyFontSize);
+	private Font headingFont = new Font(font, Font.BOLD, bodyFontSize);
 	
 	public SignUpScreen(SignInController controller) {
 		
@@ -69,15 +78,11 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		int buttonWidth = 100;
 		int buttonHeight = 50;
 		
-		String font = "Segoe UI";
 		int titleFontSize = 48;
 		int subtitleFontSize = 12;
-		int bodyFontSize = 12;
 
 		Font titleFont = new Font(font, Font.BOLD, titleFontSize);
 		Font subtitleFont = new Font(font, Font.BOLD, subtitleFontSize);
-		Font bodyFont = new Font(font, Font.PLAIN, bodyFontSize);
-		Font headingFont = new Font(font, Font.BOLD, bodyFontSize);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(screenWidth, screenHeight);
@@ -139,9 +144,11 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		pnl_login.setLayout(new BoxLayout(pnl_login, BoxLayout.Y_AXIS));
 		pnl_body.add(pnl_login);
 		
-		pnl_login.add(createLabelTestFieldPair(lbl_username, "Username:", txt_username, textColumn, bodyFont, headingFont));
-		pnl_login.add(createLabelTestFieldPair(lbl_password, "Password:", txt_password, textColumn, bodyFont, headingFont));
-		pnl_login.add(createLabelTestFieldPair(lbl_confirmPassword, "Confirm password:", txt_confirmPassword, textColumn, bodyFont, headingFont));
+		pnl_login.add(createLabelTestFieldPair(lbl_username, "Username:", txt_username, textColumn));
+		pnl_login.add(createLabelTestFieldPair(lbl_password, "Password:", txt_password, textColumn));
+		pnl_login.add(createLabelTestFieldPair(lbl_confirmPassword, "Confirm password:", txt_confirmPassword, textColumn));
+		pnl_login.add(createLabelTestFieldPair(lbl_name, "Name:", txt_name, textColumn));
+		pnl_login.add(createLabelTestFieldPair(lbl_institution, "Institution:", txt_institution, textColumn));
 
 		
 		crd_detail = new CardLayout();
@@ -160,14 +167,14 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		pnl_student_detail.setBackground(Color.ORANGE);
 		pnl_detail.add(pnl_student_detail, com_student);
 		
-		pnl_student_detail.add(createLabelSpinnerPair(lbl_year, "Year:", spn_year, 1, 1, 10, 1, bodyFont, headingFont));
-		pnl_student_detail.add(createLabelTestFieldPair(lbl_major, "Major:", txt_major, textColumn, bodyFont, headingFont));
+		pnl_student_detail.add(createLabelSpinnerPair(lbl_year, "Year:", spn_year, 1, 1, 10, 1));
+		pnl_student_detail.add(createLabelTestFieldPair(lbl_major, "Major:", txt_major, textColumn));
 		
 		JPanel pnl_lecturer_detail = new JPanel();
 		pnl_lecturer_detail.setBackground(Color.cyan);
 		pnl_detail.add(pnl_lecturer_detail, com_lecturer);
 		
-		pnl_lecturer_detail.add(createLabelTestFieldPair(lbl_qualification, "Qualification:", txt_qualification, textColumn, bodyFont, headingFont));
+		pnl_lecturer_detail.add(createLabelTestFieldPair(lbl_qualification, "Qualification:", txt_qualification, textColumn));
 		
 		pnl_button = new JPanel();
 		pnl_button.setBackground(Color.GREEN);
@@ -189,8 +196,7 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	}
 
 
-	private JPanel createLabelTestFieldPair(JLabel label, String labelText, JTextField textField, int textColumn,
-			Font bodyFont, Font headingFont) {
+	private JPanel createLabelTestFieldPair(JLabel label, String labelText, JTextField textField, int textColumn) {
 		JPanel newPanel = new JPanel();
 
 		label = new JLabel(labelText);
@@ -205,7 +211,7 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	}
 	
 	private JPanel createLabelSpinnerPair(JLabel label, String labelText, JSpinner spinner, int value, int minimum, 
-			int maximum, int stepSize, Font bodyFont, Font headingFont) {
+			int maximum, int stepSize) {
 		JPanel newPanel = new JPanel();
 
 		label = new JLabel(labelText);
