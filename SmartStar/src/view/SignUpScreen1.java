@@ -1,10 +1,14 @@
 package view;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,7 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 import controller.SignInController;
 
@@ -22,20 +28,33 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private SignInController controller;
 	
+	private JPanel pnl_title;
+	private JPanel pnl_body;
+	private JPanel pnl_detail;
+	private JPanel pnl_button;
 	private JLabel lbl_title;
 	private JLabel lbl_subtitle;
 	private JLabel lbl_roleTitle;
 	private JLabel lbl_username;
 	private JLabel lbl_password;
 	private JLabel lbl_confirmPassword;
+	private JLabel lbl_year;
+	private JLabel lbl_major;
+	private JLabel lbl_qualification;
 	private JRadioButton rad_studentRole;
 	private JRadioButton rad_lecturerRole;
 	private ButtonGroup grp_role;
 	private JTextField txt_username;
 	private JTextField txt_password;
 	private JTextField txt_confirmPassword;
+	private JTextField txt_major;
+	private JTextField txt_qualification;
+	private JSpinner spn_year;
 	private JButton btn_signUp;
 	private JButton btn_cancel;
+	private CardLayout crd_detail;
+	private String com_student = "STUDENT";
+	private String com_lecturer = "LECTURER";
 	
 	public SignUpScreen1(SignInController controller) {
 		
@@ -48,16 +67,12 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		String usernameTitle = "Username:";
 		String passwordTitle = "Password:";
 		String confirmPasswordTitle = "Confirm password:";
+		String majorTitle = "Major";
+		String yearTitle = "Year";
 		
 		int screenWidth = 800;
 		int screenHeight = 600;
-		int titleHeight = 80;
-		int subtitleHeight = 30;
-		int roleTitlePanelHeight = 30;
-		int rolePanelHeight = 60;
-		int textPanelHeight = 90;
 		int textColumn = 20;
-		int buttonPanelHeight = 50;
 		int buttonWidth = 100;
 		int buttonHeight = 50;
 		
@@ -74,70 +89,62 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(screenWidth, screenHeight);
 		setTitle(frameTitle);
-		setLayout(null);
+		setLocationRelativeTo(null);
+		setLayout(new BorderLayout());
 		setVisible(true);
 
-		JPanel pnl_title = new JPanel();
-		pnl_title.setBounds(0, 0, screenWidth, titleHeight);
+		pnl_title = new JPanel();
 		pnl_title.setBackground(Color.cyan);
-		add(pnl_title);
+		add(pnl_title, BorderLayout.NORTH);
 		
 		lbl_title = new JLabel(title);
 		lbl_title.setFont(titleFont);
-//		lbl_title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_title.add(lbl_title);
 
+		pnl_body = new JPanel();
+		pnl_body.setLayout(new BoxLayout(pnl_body, BoxLayout.Y_AXIS));
+		add(pnl_body);
+		
 		JPanel pnl_subtitle = new JPanel();
-		pnl_subtitle.setBounds(0, titleHeight, screenWidth, subtitleHeight);
 		pnl_subtitle.setBackground(Color.green);
-		add(pnl_subtitle);
+		pnl_body.add(pnl_subtitle);
 		
 		lbl_subtitle = new JLabel(subtitle);
 		lbl_subtitle.setFont(subtitleFont);
-//		lbl_title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_subtitle.add(lbl_subtitle);
 		
 		JPanel pnl_roleTitle = new JPanel();
-		pnl_roleTitle.setBounds(0, titleHeight + subtitleHeight, screenWidth, roleTitlePanelHeight);
 		pnl_roleTitle.setBackground(Color.GRAY);
-		add(pnl_roleTitle);
+		pnl_body.add(pnl_roleTitle);
 		
 		lbl_roleTitle = new JLabel(roleTitle);
 		lbl_roleTitle.setFont(headingFont);
 		pnl_roleTitle.add(lbl_roleTitle);
 		
-//		JPanel pnl_role = new JPanel();
-////		pnl_role.setLayout(new GridLayout(2, 1));
-//		pnl_role.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight, screenWidth, rolePanelHeight);
-//		pnl_role.setBackground(Color.yellow);
-//		add(pnl_role);
-		
 		JPanel pnl_role = new JPanel();
 		pnl_role.setLayout(new BoxLayout(pnl_role, BoxLayout.Y_AXIS));
-		pnl_role.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight, screenWidth, rolePanelHeight);
 		pnl_role.setBackground(Color.yellow);
-		add(pnl_role);
+		pnl_body.add(pnl_role);
 
-		
 		grp_role = new ButtonGroup();
 		
 		rad_studentRole = new JRadioButton("Student");
 		rad_studentRole.setFont(bodyFont);
 		rad_studentRole.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rad_studentRole.addActionListener(this);
 		grp_role.add(rad_studentRole);
 		pnl_role.add(rad_studentRole);
 		
 		rad_lecturerRole = new JRadioButton("Lecturer");
 		rad_lecturerRole.setFont(bodyFont);
 		rad_lecturerRole.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rad_lecturerRole.addActionListener(this);
 		grp_role.add(rad_lecturerRole);
 		pnl_role.add(rad_lecturerRole);
 		
 		JPanel pnl_login = new JPanel();
-		pnl_login.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight, screenWidth, textPanelHeight);
 		pnl_login.setLayout(new BoxLayout(pnl_login, BoxLayout.Y_AXIS));
-		pnl_login.setBackground(Color.LIGHT_GRAY);
-		add(pnl_login);
+		pnl_body.add(pnl_login);
 		
 		JPanel pnl_username = new JPanel();
 		pnl_login.add(pnl_username);
@@ -172,10 +179,53 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		txt_confirmPassword.setFont(bodyFont);
 		pnl_confirmPassword.add(txt_confirmPassword);
 
-		JPanel pnl_button = new JPanel();
-		pnl_button.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight + textPanelHeight, screenWidth, buttonPanelHeight);
+		
+		crd_detail = new CardLayout();
+		pnl_detail = new JPanel();
+		pnl_detail.setBackground(Color.magenta);
+		pnl_detail.setLayout(crd_detail);
+		pnl_body.add(pnl_detail);
+				
+		
+		JPanel pnl_empty_detail = new JPanel();
+		pnl_empty_detail.setBackground(Color.magenta);
+		pnl_detail.add(pnl_empty_detail, "EMPTY");
+		
+		JPanel pnl_student_detail = new JPanel();
+		pnl_student_detail.setLayout(new BoxLayout(pnl_student_detail, BoxLayout.Y_AXIS));
+		pnl_student_detail.setBackground(Color.ORANGE);
+		pnl_detail.add(pnl_student_detail, com_student);
+		
+		JPanel pnl_year = new JPanel();
+		pnl_student_detail.add(pnl_year);
+		
+		lbl_year = new JLabel(yearTitle);
+		lbl_year.setFont(headingFont);
+		pnl_year.add(lbl_year);
+		
+		spn_year = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));
+		spn_year.setFont(bodyFont);
+		pnl_year.add(spn_year);
+		
+		JPanel pnl_major = new JPanel();
+		pnl_student_detail.add(pnl_major);
+
+		lbl_major = new JLabel(majorTitle);
+		lbl_major.setFont(headingFont);
+		pnl_major.add(lbl_major);
+		
+		txt_major = new JTextField(textColumn);
+		txt_major.setFont(bodyFont);
+		pnl_major.add(txt_major);
+		
+		JPanel pnl_lecturer_detail = new JPanel();
+		pnl_lecturer_detail.setBackground(Color.cyan);
+		pnl_detail.add(pnl_lecturer_detail, com_lecturer);
+		
+		
+		pnl_button = new JPanel();
 		pnl_button.setBackground(Color.GREEN);
-		add(pnl_button);
+		pnl_body.add(pnl_button, BorderLayout.SOUTH);
 		
 		btn_signUp = new JButton("Sign Up");
 		btn_signUp.setFont(bodyFont);
@@ -203,6 +253,12 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this, "Debug - Cancel button clicked");
 			controller.displaySplashScreen();
 			setVisible(false);
+		} else if (e.getSource().equals(rad_studentRole)) {
+			JOptionPane.showMessageDialog(this, "Debug - Student selected");
+			crd_detail.show(pnl_detail, com_student);
+		} else if (e.getSource().equals(rad_lecturerRole)) {
+			JOptionPane.showMessageDialog(this, "Debug - Lecturer selected");
+			crd_detail.show(pnl_detail, com_lecturer);
 		}
 
 		
