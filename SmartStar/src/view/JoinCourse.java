@@ -75,8 +75,8 @@ public class JoinCourse extends JFrame implements ActionListener {
 			if(controller.detetermineCourseExists(searchCourseText.getText())){
 				int a=JOptionPane.showConfirmDialog(f, "Do you wish to join the course?");
 				if(a==JOptionPane.YES_OPTION) {
-					JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);
-					this.setVisible(false);
+					JOptionPane.showMessageDialog(null, "You have joined the course","Join Course",JOptionPane.PLAIN_MESSAGE);
+					
 					controller.displayScreen(1);
 				}
 			}else{
