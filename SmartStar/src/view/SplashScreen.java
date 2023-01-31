@@ -44,17 +44,17 @@ public class SplashScreen extends JFrame implements ActionListener {
 		int buttonFontSize = 18;
 		String font = "Segoe UI";
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(screenWidth, screenHeight);
-		this.setTitle(frameTitle);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(screenWidth, screenHeight);
+		setTitle(frameTitle);
 		setLocationRelativeTo(null);
-		this.setLayout(null);
-		this.setVisible(true);
+		setLayout(null);
+		setVisible(true);
 		
 		JPanel pnl_title = new JPanel();
 		pnl_title.setBounds(0, 0, screenWidth, titleHeight);
 		pnl_title.setBackground(Color.cyan);
-		this.add(pnl_title);
+		add(pnl_title);
 
 		lbl_title = new JLabel(title);
 		lbl_title.setFont(new Font(font, Font.BOLD, titleFontSize));
@@ -64,7 +64,7 @@ public class SplashScreen extends JFrame implements ActionListener {
 		JPanel pnl_subtitle = new JPanel();
 		pnl_subtitle.setBounds(0, titleHeight, screenWidth, subtitleHeight);
 		pnl_subtitle.setBackground(Color.green);
-		this.add(pnl_subtitle);
+		add(pnl_subtitle);
 		
 		lbl_subtitle = new JLabel(subtitle);
 		lbl_subtitle.setFont(new Font(font, Font.BOLD, subtitleFontSize));
@@ -74,7 +74,7 @@ public class SplashScreen extends JFrame implements ActionListener {
 		JPanel pnl_button = new JPanel();
 		pnl_button.setBounds(0, titleHeight + subtitleHeight, screenWidth, buttonHeight);
 		pnl_button.setBackground(Color.magenta);
-		this.add(pnl_button);
+		add(pnl_button);
 		
 		btn_signUp = new JButton("Sign Up");
 		btn_signUp.setFont(new Font(font, Font.PLAIN, buttonFontSize));
@@ -94,7 +94,7 @@ public class SplashScreen extends JFrame implements ActionListener {
 		if (e.getSource().equals(btn_signUp)) {
 			JOptionPane.showMessageDialog(this, "Debug - Sign Up button clicked");
 			controller.displaySignUpScreen();
-			this.setVisible(false);
+			setVisible(false);
 		} else if (e.getSource().equals(btn_signIn)){
 			JOptionPane.showMessageDialog(this, "Debug - Sign In button clicked");
 			controller.displaySignInScreen();

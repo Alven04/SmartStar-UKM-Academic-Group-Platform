@@ -66,16 +66,16 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		String font = "Segoe UI";
 		int bodyFontSize = 12;
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(screenWidth, screenHeight);
-		this.setTitle(frameTitle);
-		this.setLayout(null);
-		this.setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(screenWidth, screenHeight);
+		setTitle(frameTitle);
+		setLayout(null);
+		setVisible(true);
 
 		JPanel pnl_title = new JPanel();
 		pnl_title.setBounds(0, 0, screenWidth, titleHeight);
 		pnl_title.setBackground(Color.cyan);
-		this.add(pnl_title);
+		add(pnl_title);
 		
 		lbl_title = new JLabel(title);
 		lbl_title.setFont(new Font(font, Font.BOLD, titleFontSize));
@@ -85,7 +85,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		JPanel pnl_subtitle = new JPanel();
 		pnl_subtitle.setBounds(0, titleHeight, screenWidth, subtitleHeight);
 		pnl_subtitle.setBackground(Color.green);
-		this.add(pnl_subtitle);
+		add(pnl_subtitle);
 		
 		lbl_subtitle = new JLabel(subtitle);
 		lbl_subtitle.setFont(new Font(font, Font.BOLD, subtitleFontSize));
@@ -95,7 +95,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		JPanel pnl_roleTitle = new JPanel();
 		pnl_roleTitle.setBounds(0, titleHeight + subtitleHeight, screenWidth, roleTitlePanelHeight);
 		pnl_roleTitle.setBackground(Color.GRAY);
-		this.add(pnl_roleTitle);
+		add(pnl_roleTitle);
 		
 		lbl_roleTitle = new JLabel(roleTitle);
 		lbl_roleTitle.setFont(new Font(font, Font.BOLD, bodyFontSize));
@@ -105,7 +105,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 //		pnl_role.setLayout(new GridLayout(2, 1));
 		pnl_role.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight, screenWidth, rolePanelHeight);
 		pnl_role.setBackground(Color.yellow);
-		this.add(pnl_role);
+		add(pnl_role);
 		
 		ButtonGroup grp_role = new ButtonGroup();
 		
@@ -122,7 +122,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		JPanel pnl_username = new JPanel();
 		pnl_username.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight, screenWidth, usernamePanelHeight);
 		pnl_username.setBackground(Color.LIGHT_GRAY);
-		this.add(pnl_username);
+		add(pnl_username);
 
 		lbl_username = new JLabel(usernameTitle);
 		lbl_username.setFont(new Font(font, Font.BOLD, bodyFontSize));
@@ -135,7 +135,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		JPanel pnl_password = new JPanel();
 		pnl_password.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight + usernamePanelHeight, screenWidth, passwordPanelHeight);
 		pnl_password.setBackground(Color.blue);
-		this.add(pnl_password);
+		add(pnl_password);
 
 		lbl_password = new JLabel(passwordTitle);
 		lbl_password.setFont(new Font(font, Font.BOLD, bodyFontSize));
@@ -148,7 +148,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		JPanel pnl_confirmPassword = new JPanel();
 		pnl_confirmPassword.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight + usernamePanelHeight + passwordPanelHeight, screenWidth, confirmPasswordPanelHeight);
 		pnl_confirmPassword.setBackground(Color.blue);
-		this.add(pnl_confirmPassword);
+		add(pnl_confirmPassword);
 
 		lbl_confirmPassword = new JLabel(confirmPasswordTitle);
 		lbl_confirmPassword.setFont(new Font(font, Font.BOLD, bodyFontSize));
@@ -161,7 +161,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 		JPanel pnl_button = new JPanel();
 		pnl_button.setBounds(0, titleHeight + subtitleHeight + roleTitlePanelHeight + rolePanelHeight + usernamePanelHeight + passwordPanelHeight + confirmPasswordPanelHeight, screenWidth, buttonPanelHeight);
 		pnl_button.setBackground(Color.GREEN);
-		this.add(pnl_button);
+		add(pnl_button);
 		
 		btn_signUp = new JButton("Sign Up");
 		btn_signUp.setFont(new Font(font, Font.PLAIN, bodyFontSize));
