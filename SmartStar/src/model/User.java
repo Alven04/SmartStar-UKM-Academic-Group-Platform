@@ -61,6 +61,13 @@ public abstract class User {
 	public ArrayList<Course> getCoursesCreated() {
 		return coursesCreated;
 	}
+
+	public ArrayList<Course> getCoursesRegisteredUnderUser() {
+		ArrayList<Course> list=new ArrayList<Course>();
+		list.addAll(currentUser.getCoursesJoined());
+		list.addAll(currentUser.getCoursesCreated());
+		return list;
+	}
 	
 	public void setCoursesCreated(ArrayList<Course> coursesCreated) {
 		this.coursesCreated = coursesCreated;

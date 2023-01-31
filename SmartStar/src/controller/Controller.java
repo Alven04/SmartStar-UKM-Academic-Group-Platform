@@ -1,4 +1,6 @@
 package controller;
+import java.util.ArrayList;
+
 import model.Course;
 import model.Global;
 import model.Student;
@@ -44,5 +46,18 @@ public class Controller {
 	public String printInformation(String course) {
 		return "The course name is " + global.getCourseByCourseName(course).getCourseName();
 	}
-	
+
+	public String[] getCourseJoinedByUser(){
+		ArrayList<Course> list=new ArrayList<Course>();
+		list.addAll(currentUser.getCoursesJoined());
+		list.addAll(currentUser.getCoursesCreated());
+		String[] arrayList=new String[list.size()];
+		int i=0;
+		for(Course c: list){
+			String courseName=c.getCourseName();
+			arrayList[i]=courseName;
+			i++;
+		}
+		return arrayList;
+	}
 }

@@ -1,6 +1,8 @@
 package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+
 import javax.swing.*;
 
 import controller.Controller;
@@ -28,8 +30,8 @@ public class ViewCourse extends JFrame implements ActionListener {
 		
 		panel1=new JPanel(new BorderLayout());
 		panel1.setBackground(new Color(0,100,255));
+        
 
-		
 		title=new JLabel("View Course");
 		title.setForeground(Color.WHITE);
 		title.setFont(new Font("Times New Roman", Font.PLAIN,16));
@@ -40,8 +42,6 @@ public class ViewCourse extends JFrame implements ActionListener {
 		
 		panel1.add(backBtn,BorderLayout.LINE_START);
 		panel1.add(title,BorderLayout.CENTER);
-		
-		
 		
 		pane.add(panel1,BorderLayout.PAGE_START);
 		pane.add(panel2,BorderLayout.CENTER);
@@ -59,4 +59,26 @@ public class ViewCourse extends JFrame implements ActionListener {
 		}
 		
 	}
+
+    public void listOutAllCourse(){
+        
+        for(String courseName: controller.getCourseJoinedByUser() ){
+            courseName=courseName.trim();
+            JPanel panel=new JPanel();
+            panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
+            
+            JLabel courseTitle=new JLabel(courseName);
+            courseTitle.setForeground(Color.WHITE);
+            courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,16));
+            courseTitle.setHorizontalAlignment(JLabel.CENTER);
+            
+            JButton enter=new JButton("Enter Course");
+            enter.setForeground(new Color(0,0,0));
+            panel.add(courseTitle);
+            panel.add(enter);
+
+        }
+        
+    }
+
 }
