@@ -21,7 +21,7 @@ import javax.swing.SpinnerNumberModel;
 
 import controller.SignInController;
 
-public class SignUpScreen1 extends JFrame implements ActionListener {
+public class SignUpScreen extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private SignInController controller;
@@ -54,7 +54,7 @@ public class SignUpScreen1 extends JFrame implements ActionListener {
 	private String com_student = "STUDENT";
 	private String com_lecturer = "LECTURER";
 	
-	public SignUpScreen1(SignInController controller) {
+	public SignUpScreen(SignInController controller) {
 		
 		this.controller = controller;
 		
