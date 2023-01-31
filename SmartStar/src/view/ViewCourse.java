@@ -1,7 +1,7 @@
 package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
+
 
 import javax.swing.*;
 
@@ -13,8 +13,8 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private JButton backBtn;
 	private Controller controller;
 	private JLabel title;
-	private JPanel panel1;
-	private JPanel panel2;
+	private JPanel panel1,panel2,panel3;
+	private JButton enter;
 	private JFrame f;
 	
 	public ViewCourse(Controller controller) {
@@ -31,6 +31,11 @@ public class ViewCourse extends JFrame implements ActionListener {
 		panel1=new JPanel(new BorderLayout());
 		panel1.setBackground(new Color(0,100,255));
         
+		panel2=new JPanel(new BorderLayout());
+		panel2.setBackground(new Color(0,100,255));
+		
+		panel3=new JPanel(new BorderLayout());
+		panel3.setBackground(new Color(0,100,255));
 
 		title=new JLabel("View Course");
 		title.setForeground(Color.WHITE);
@@ -39,14 +44,20 @@ public class ViewCourse extends JFrame implements ActionListener {
 		
 		backBtn=new JButton("Back");
 		backBtn.setForeground(new Color(0,0,0));
+
+		enter=new JButton("Enter Course");
+		enter.setForeground(new Color(0,0,0));
 		
 		panel1.add(backBtn,BorderLayout.LINE_START);
 		panel1.add(title,BorderLayout.CENTER);
-		
-		pane.add(panel1,BorderLayout.PAGE_START);
+		panel2.add(panel1);
+
+		pane.add(panel2,BorderLayout.NORTH);
 		pane.add(panel2,BorderLayout.CENTER);
-		
+		pane.add(panel3,BorderLayout.SOUTH);
 		backBtn.addActionListener(this);
+		enter.addActionListener(this);
+		listOutAllCourse();
 		
 	}
 
@@ -71,14 +82,12 @@ public class ViewCourse extends JFrame implements ActionListener {
             courseTitle.setForeground(Color.WHITE);
             courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,16));
             courseTitle.setHorizontalAlignment(JLabel.CENTER);
-            
-            JButton enter=new JButton("Enter Course");
-            enter.setForeground(new Color(0,0,0));
-            panel.add(courseTitle);
-            panel.add(enter);
+    
+            panel3.add(courseTitle);
+            panel3.add(enter);
 
         }
-        
+		
     }
 
 }
