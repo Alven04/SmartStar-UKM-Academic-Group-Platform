@@ -8,6 +8,7 @@ import model.User;
 import view.AddCourse;
 import view.CourseMain;
 import view.JoinCourse;
+import view.ViewCourse;
 
 public class Controller {
 	private Course c;
@@ -25,6 +26,8 @@ public class Controller {
 			new AddCourse(this);
 		else if(num==3) 
 			new JoinCourse(this);
+		else if(num==4)
+			new ViewCourse(this);
 	}
 	
 	public void addCourse(String id, String name, String description) {

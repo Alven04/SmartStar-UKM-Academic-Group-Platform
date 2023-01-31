@@ -8,8 +8,8 @@ public abstract class User {
 	private String name;
 	private String institution;
 	
-	private ArrayList<Course> coursesJoined = new ArrayList<>();
-	private ArrayList<Course> coursesCreated = new ArrayList<>();
+	private ArrayList<Course> coursesJoined = new ArrayList<>();;
+	private ArrayList<Course> coursesCreated = new ArrayList<>();;
 	
 	public User(String username, String password) {
 		this.username = username;
@@ -62,12 +62,6 @@ public abstract class User {
 		return coursesCreated;
 	}
 
-	public ArrayList<Course> getCoursesRegisteredUnderUser() {
-		ArrayList<Course> list=new ArrayList<Course>();
-		list.addAll(currentUser.getCoursesJoined());
-		list.addAll(currentUser.getCoursesCreated());
-		return list;
-	}
 	
 	public void setCoursesCreated(ArrayList<Course> coursesCreated) {
 		this.coursesCreated = coursesCreated;
