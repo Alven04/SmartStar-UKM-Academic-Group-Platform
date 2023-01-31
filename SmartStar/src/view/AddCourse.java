@@ -61,15 +61,8 @@ public class AddCourse extends JFrame implements ActionListener {
 		backBtn.setForeground(new Color(0,0,0));
 		confirmBtn=new JButton("Confirm");
 		confirmBtn.setForeground(new Color(0,0,0));
-		
-		bg=new ButtonGroup();
-		privacyPublic=new JRadioButton("Public");
-		privacyPublic.setForeground(new Color(0,0,0));
-		privacyPrivate=new JRadioButton("Private");
-		privacyPrivate.setForeground(new Color(0,0,0));
-		bg.add(privacyPublic);
-		bg.add(privacyPrivate);
-		
+		confirmBtn.setAlignmentX(CENTER_ALIGNMENT);
+
 		JPanel panel1a=new JPanel();
 		panel1a.add(label1);
 		panel1a.setBackground(new Color(0,0,255));
@@ -91,12 +84,6 @@ public class AddCourse extends JFrame implements ActionListener {
 		panel2.setBackground(new Color(0,100,255));
 		panel2.setSize(10,10);
 		
-		JPanel panel3=new JPanel(); //Course Name
-		panel3.add(privacy);
-		panel3.add(privacyPublic);
-		panel3.add(privacyPrivate);
-		panel3.setBackground(new Color(0,100,255));
-		
 		JPanel panel4=new JPanel(); //Course Description
 		panel4.add(ldescription);
 		panel4.add(scrollPane); //make the box fixed
@@ -107,7 +94,6 @@ public class AddCourse extends JFrame implements ActionListener {
 		mainPanel.setBackground(new Color(0,100,255));
 		mainPanel.add(panel1b);
 		mainPanel.add(panel2);
-		mainPanel.add(panel3);
 		mainPanel.add(panel4);
 		mainPanel.add(confirmBtn);
 		
