@@ -3,13 +3,13 @@ import model.Global;
 import model.Lecturer;
 import model.Student;
 import view.SignInScreen;
-import view.SignUpScreen1;
+import view.SignUpScreen;
 import view.SplashScreen;
 
 public class SignInController {
 
 	private SplashScreen splashScreen;
-	private SignUpScreen1 signUpScreen1;
+	private SignUpScreen signUpScreen1;
 	private SignInScreen signInScreen;
 	
 	private Global global = new Global();
@@ -31,7 +31,7 @@ public class SignInController {
 	
 	public void displaySignUpScreen() {
 		if (signUpScreen1 == null)
-			signUpScreen1 = new SignUpScreen1(this);
+			signUpScreen1 = new SignUpScreen(this);
 		else
 			signUpScreen1.setVisible(true);	
 	}
