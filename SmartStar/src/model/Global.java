@@ -39,5 +39,14 @@ public class Global {
 		}
 		return null;
 	}
+	public boolean detetermineCourseExists(String courseID){
+		for(Course c: courseList){
+			if(c.getCourseID().equals(courseID)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 }

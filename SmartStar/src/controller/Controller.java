@@ -33,29 +33,13 @@ public class Controller {
 		c.setCourseOwner(currentUser);
 		global.addCourse(c);
 	}
-//	public void addCourseId(Course c, String id) {
-//		c.setCourseID(id);
-//	}
-//	
-//	public void addCourseName(Course c, String name) {
-//		c.setCourseName(name);
-//	}
-//	
-//	public void addCourseDescription(Course c, String description) {
-//		c.setCourseDescription(description);
-//	}
-	
-//	public void setCourseOwner() {
-//		c.setCourseOwner(currentUser);
-//	}
 	
 	public void setCurrentUser(User u) {
 		currentUser=u;
 	}
-	
-//	public String getCourseName() {
-//		return c.getCourseName();
-//	}
+	public boolean detetermineCourseExists(String courseID){
+		return global.detetermineCourseExists(courseID);
+	}
 	
 	public String printInformation(String course) {
 		return "The course name is " + global.getCourseByCourseName(course).getCourseName();

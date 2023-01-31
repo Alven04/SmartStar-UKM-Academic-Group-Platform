@@ -61,6 +61,7 @@ public class JoinCourse extends JFrame implements ActionListener {
 		pane.add(panel2,BorderLayout.CENTER);
 		
 		backBtn.addActionListener(this);
+		searchCourseButton.addActionListener(this);
 	}
 
 	@Override
@@ -69,6 +70,10 @@ public class JoinCourse extends JFrame implements ActionListener {
 		if(obj.equals(backBtn)) {
 			this.setVisible(false);
 			controller.displayScreen(1);
+		}else if(obj.equals(searchCourseButton)){
+			if(controller.detetermineCourseExists(searchCourseText.getText())){
+
+			}
 		}
 		
 	}
