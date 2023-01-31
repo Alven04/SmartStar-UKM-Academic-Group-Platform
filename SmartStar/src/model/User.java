@@ -8,8 +8,8 @@ public abstract class User {
 	private String name;
 	private String institution;
 	
-	private ArrayList<Course> coursesJoined;
-	private ArrayList<Course> coursesCreated;
+	private ArrayList<Course> coursesJoined = new ArrayList<>();
+	private ArrayList<Course> coursesCreated = new ArrayList<>();
 	
 	public User(String username, String password) {
 		this.username = username;
