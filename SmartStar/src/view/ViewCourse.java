@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import controller.Controller;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import java.awt.*;
 
@@ -14,6 +15,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private JPanel panel1,panel2,panel3;
 	private JButton enter;
 	private JFrame f;
+	private Border raisedbevel;
 	
 	public ViewCourse(Controller controller) {
 		this.controller=controller;
@@ -25,6 +27,8 @@ public class ViewCourse extends JFrame implements ActionListener {
 		Container pane = getContentPane();
 		pane.setBackground(new Color(204,204,204));
 		pane.setLayout(new BorderLayout());
+		
+		raisedbevel = BorderFactory.createRaisedBevelBorder();
 		
 		panel1=new JPanel();
 		panel1.setLayout(new BorderLayout());
@@ -77,16 +81,23 @@ public class ViewCourse extends JFrame implements ActionListener {
             courseName=courseName.trim();
             JPanel panel=new JPanel();
             panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-			panel.setBackground(new Color(0,100,255));
-            
+			panel.setBackground(new Color(100,1,255));
+			panel.setMaximumSize(new Dimension(150,280));
+			
             JLabel courseTitle=new JLabel(courseName);
             courseTitle.setForeground(Color.WHITE);
             courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,16));
-            courseTitle.setHorizontalAlignment(JLabel.CENTER);
-    
+            courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+            enter.setAlignmentX(Component.CENTER_ALIGNMENT);
+            
             panel.add(courseTitle);
+            panel.add(Box.createVerticalStrut(10));
             panel.add(enter);
+            
+         	panel.setBorder(raisedbevel);
+            panel3.add(Box.createHorizontalStrut(10));
 			panel3.add(panel);
+			
         }
 		
     }

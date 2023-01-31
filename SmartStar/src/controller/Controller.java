@@ -37,6 +37,7 @@ public class Controller {
 		c = new Course(id, name, description);
 		c.setCourseOwner(currentUser);
 		global.addCourse(c);
+		currentUser.createCourse(c);
 	}
 	
 	public void setCurrentUser(User u) {
