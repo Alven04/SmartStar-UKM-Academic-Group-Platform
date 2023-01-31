@@ -1,3 +1,4 @@
+package view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -9,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import controller.SignInController;
 
 public class SplashScreen extends JFrame implements ActionListener {
 

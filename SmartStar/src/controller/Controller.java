@@ -1,3 +1,11 @@
+package controller;
+import model.Course;
+import model.Global;
+import model.Student;
+import model.User;
+import view.AddCourse;
+import view.CourseMain;
+import view.JoinCourse;
 
 public class Controller {
 	private Course c;

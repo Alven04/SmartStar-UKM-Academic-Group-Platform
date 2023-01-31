@@ -1,3 +1,4 @@
+package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import controller.SignInController;
 
 public class SignUpScreen1 extends JFrame implements ActionListener {
 

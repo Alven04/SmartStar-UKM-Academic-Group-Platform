@@ -1,3 +1,9 @@
+package controller;
+import model.Global;
+import view.SignInScreen;
+import view.SignUpScreen1;
+import view.SplashScreen;
+
 public class SignInController {
 
 	private SplashScreen splashScreen;

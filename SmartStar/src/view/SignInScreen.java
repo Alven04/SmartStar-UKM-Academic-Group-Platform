@@ -1,4 +1,7 @@
+package view;
 import javax.swing.JFrame;
+
+import controller.SignInController;
 
 public class SignInScreen extends JFrame {
 
