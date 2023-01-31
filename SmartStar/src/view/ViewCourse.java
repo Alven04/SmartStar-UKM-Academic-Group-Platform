@@ -34,7 +34,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 		panel2.setLayout(new BorderLayout());
 		panel2.setBackground(new Color(0,100,255));
 		
-		panel3=new JPanel(new BoxLayout(panel3,BoxLayout.X_AXIS));
+		panel3=new JPanel();
 		panel3.setLayout(new BoxLayout(panel3,BoxLayout.X_AXIS));
 		panel3.setBackground(new Color(0,100,255));
 
