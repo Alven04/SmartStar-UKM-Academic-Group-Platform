@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import controller.SignInController;
+import model.User;
 
 public class SignUpScreen extends JFrame implements ActionListener {
 
@@ -35,7 +36,6 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	private JLabel lbl_roleTitle;
 	private JLabel lbl_username;
 	private JLabel lbl_password;
-	private JLabel lbl_confirmPassword;
 	private JLabel lbl_year;
 	private JLabel lbl_major;
 	private JLabel lbl_qualification;
@@ -46,7 +46,6 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	private ButtonGroup grp_role;
 	private JTextField txt_username;
 	private JTextField txt_password;
-	private JTextField txt_confirmPassword;
 	private JTextField txt_major;
 	private JTextField txt_qualification;
 	private JTextField txt_name;
@@ -146,7 +145,6 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		
 		pnl_login.add(createLabelTestFieldPair(lbl_username, "Username:", txt_username, textColumn));
 		pnl_login.add(createLabelTestFieldPair(lbl_password, "Password:", txt_password, textColumn));
-		pnl_login.add(createLabelTestFieldPair(lbl_confirmPassword, "Confirm password:", txt_confirmPassword, textColumn));
 		pnl_login.add(createLabelTestFieldPair(lbl_name, "Name:", txt_name, textColumn));
 		pnl_login.add(createLabelTestFieldPair(lbl_institution, "Institution:", txt_institution, textColumn));
 
@@ -225,23 +223,62 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		return newPanel;
 	}
 
-	
+	private void showUserCreatedMessage(String newUser) {
+		if (newUser != null) {
+			JOptionPane.showMessageDialog(this, "Your user account " + newUser  + " has been created. Welcome to SmartStar!");					
+		} else {
+			JOptionPane.showMessageDialog(this, "An error occured.");
+		}
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btn_signUp)) {
 			JOptionPane.showMessageDialog(this, "Debug - Sign Up button clicked");
-			controller.signUp(rad_studentRole.isSelected(), rad_lecturerRole.isSelected(), txt_username.getText(), txt_password.getText());
-			
+
+			if (controller.usernameTaken(txt_username.getText())) {
+				JOptionPane.showMessageDialog(this, "The username has been taken. Please choose another username.");
+			}
+			else if (!controller.passwordValid(txt_password.getText())) {
+				JOptionPane.showMessageDialog(this, "Invalid password. Your password should be at least 5 characters long.");
+			}
+			else if (rad_studentRole.isSelected()) {
+
+				// save the value in spn_year
+				try {
+					spn_year.commitEdit();
+				} catch (java.text.ParseException ex) {
+					JOptionPane.showMessageDialog(this, "Error: Make sure \"Year\" is a number.");
+				}
+
+				int year = (int) spn_year.getValue();
+
+				String newUser = controller.signUpStudent(txt_username.getText(), txt_password.getText(), txt_name.getText(),
+						txt_institution.getText(), year, txt_major.getText());
+
+				showUserCreatedMessage(newUser);
+			}
+			else if (rad_lecturerRole.isSelected()) {
+
+				String newUser = controller.signUpLecturer(txt_username.getText(), txt_password.getText(), txt_name.getText(),
+						txt_institution.getText(), txt_qualification.getText());
+				
+				showUserCreatedMessage(newUser);
+			}
+			else {		
+				JOptionPane.showMessageDialog(this, "Please select a role (Student or Lecturer).");
+			}
+
 		} else if (e.getSource().equals(btn_cancel)){
 			JOptionPane.showMessageDialog(this, "Debug - Cancel button clicked");
 			controller.displaySplashScreen();
 			setVisible(false);
+			
 		} else if (e.getSource().equals(rad_studentRole)) {
-			JOptionPane.showMessageDialog(this, "Debug - Student selected");
+//			JOptionPane.showMessageDialog(this, "Debug - Student selected");
 			crd_detail.show(pnl_detail, com_student);
 		} else if (e.getSource().equals(rad_lecturerRole)) {
-			JOptionPane.showMessageDialog(this, "Debug - Lecturer selected");
+//			JOptionPane.showMessageDialog(this, "Debug - Lecturer selected");
 			crd_detail.show(pnl_detail, com_lecturer);
 		}
 
