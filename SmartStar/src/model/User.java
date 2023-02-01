@@ -84,7 +84,8 @@ public abstract class User {
 	 */
 	public boolean joinCourse(Course course) {
 		if (coursesJoined.contains(course)) {
-			return false;
+			throw new RuntimeException("Duplicated course");
+//			return false;
 		}
 		return coursesJoined.add(course);	
 	}

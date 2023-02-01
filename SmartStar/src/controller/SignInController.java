@@ -78,6 +78,5 @@ public class SignInController {
 	public void displayMainMenu() {
 		controller = new Controller(global);
 		controller.setCurrentUser(currentUser);
-		controller.displayScreen(1);
 	}
 }
