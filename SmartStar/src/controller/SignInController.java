@@ -17,6 +17,9 @@ public class SignInController {
 	private SignInScreen signInScreen;
 	
 	private Global global = new Global();
+
+	private Controller controller;
+	
 	
 	public boolean usernameTaken(String username) {
 		return global.getUserByUsername(username) != null;
@@ -36,6 +39,15 @@ public class SignInController {
 		return global.getUserByUsername(username).getUsername();
 	}
 
+	public boolean signIn(String username, String password) {
+		User user = global.getUserByUsername(username);
+		if (user == null) {
+			return false;
+		} else {
+			return password.equals(user.getPassword());
+		}
+	}
+	
 	public void displaySplashScreen() {
 		if (splashScreen == null)
 			splashScreen = new SplashScreen(this);
@@ -55,5 +67,10 @@ public class SignInController {
 			signInScreen = new SignInScreen(this);
 		else
 			signInScreen.setVisible(true);
+	}
+	
+	public void displayMainMenu() {
+		controller = new Controller(global);
+		controller.displayScreen(1);
 	}
 }

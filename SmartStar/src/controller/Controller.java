@@ -13,10 +13,11 @@ import view.ViewCourse;
 public class Controller {
 	private Course c;
 	protected User currentUser;
-	private Global global = new Global();
+	private Global global;
 	
-	public Controller() {
+	public Controller(Global global) {
 		this.displayScreen(1);
+		this.global = global;
 	}
 	
 	public void displayScreen(int num) {
