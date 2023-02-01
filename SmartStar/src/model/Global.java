@@ -14,16 +14,22 @@ public class Global {
 		return courseList;
 	}
 	
-	public void addUser(User user) {
-		userList.add(user);
+	public boolean addUser(User user) {
+		if (userList.contains(user)) {
+			return false;
+		}
+		return userList.add(user);
 	}
 	
 	public void deleteUser(User user) {
 		userList.remove(user);
 	}
 
-	public void addCourse(Course course) {
-		courseList.add(course);
+	public boolean addCourse(Course course) {
+		if (courseList.contains(course)) {
+			return false;
+		}
+		return courseList.add(course);
 	}
 	
 	public void deleteCourse(Course course) {
