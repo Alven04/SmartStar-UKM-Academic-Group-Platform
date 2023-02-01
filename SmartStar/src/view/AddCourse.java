@@ -31,24 +31,24 @@ public class AddCourse extends JFrame implements ActionListener {
 		pane.setLayout(new BorderLayout());
 		
 		JLabel label1 =new JLabel("Add New Course");
-		label1.setForeground(Color.WHITE);
-		label1.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		label1.setForeground(Color.black);
+		label1.setFont(new Font("SegoeUI", Font.BOLD, 20));
 		
 		JLabel lname =new JLabel("Course Name :");
 		lname.setForeground(Color.BLACK);
-		lname.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		lname.setFont(new Font("SegoeUI", Font.BOLD,16));
 		
 		JLabel courseIDLabel =new JLabel("Course ID :");
 		courseIDLabel.setForeground(Color.BLACK);
-		courseIDLabel.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		courseIDLabel.setFont(new Font("SegoeUI", Font.BOLD,16));
 		
 		JLabel privacy =new JLabel("Privacy :");
 		privacy.setForeground(Color.BLACK);
-		privacy.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		privacy.setFont(new Font("SegoeUI", Font.BOLD,16));
 		
 		JLabel ldescription =new JLabel("Description :");
 		ldescription.setForeground(Color.BLACK);
-		ldescription.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		ldescription.setFont(new Font("SegoeUI", Font.BOLD,16));
 		
 		courseName=new JTextField(20); //courseName TextField
 		courseDescription=new JTextArea(5,30);
@@ -63,29 +63,28 @@ public class AddCourse extends JFrame implements ActionListener {
 
 		JPanel panel1a=new JPanel();
 		panel1a.add(label1);
-		panel1a.setBackground(new Color(0,0,255));
+		
 		
 		JPanel titlePanel=new JPanel(); //title
 		titlePanel.setLayout(new BorderLayout());
 		titlePanel.add(backBtn, BorderLayout.WEST);
 		titlePanel.add(panel1a, BorderLayout.CENTER);
-		titlePanel.setBackground(new Color(0,0,255));
+		
 		
 		JPanel panel1b=new JPanel(); //Course ID
 		panel1b.add(courseIDLabel);
 		panel1b.add(courseID);
-		panel1b.setBackground(new Color(0,100,255));
+		
 		
 		JPanel panel2=new JPanel(); //Course Name
 		panel2.add(lname);
 		panel2.add(courseName);
-		panel2.setBackground(new Color(0,100,255));
 		panel2.setSize(10,10);
 		
 		JPanel panel4=new JPanel(); //Course Description
 		panel4.add(ldescription);
 		panel4.add(scrollPane); //make the box fixed
-		panel4.setBackground(new Color(0,100,255));
+		
 		
 		JPanel mainPanel=new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.PAGE_AXIS));
