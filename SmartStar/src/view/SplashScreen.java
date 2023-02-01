@@ -1,5 +1,5 @@
 package view;
-import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.SignInController;
@@ -26,17 +25,13 @@ public class SplashScreen extends JFrame implements ActionListener {
 		
 		this.controller = controller;
 		
-		// GUI IS NOT FINAL, THE COLOUR IS FOR DEBUGGING ONLY, I KNOW IT IS VERY UGLY EWW
-		
 		String frameTitle = "Welcome to SmartStar";
 		String title = "SmartStar";
 		String subtitle = "by A Team";
 		
-		int screenWidth = 800;
-		int screenHeight = 600;
-		int titleHeight = 80;
+		int screenWidth = 400;
+		int screenHeight = 300;
 		int titleFontSize = 48;
-		int subtitleHeight = 50;
 		int subtitleFontSize = 24;
 		int buttonWidth = 100;
 		int buttonHeight = 50;
@@ -47,33 +42,32 @@ public class SplashScreen extends JFrame implements ActionListener {
 		setSize(screenWidth, screenHeight);
 		setTitle(frameTitle);
 		setLocationRelativeTo(null);
-		setLayout(null);
+		setLayout(new BorderLayout());
 		setVisible(true);
 		
 		JPanel pnl_title = new JPanel();
-		pnl_title.setBounds(0, 0, screenWidth, titleHeight);
-		pnl_title.setBackground(Color.cyan);
-		add(pnl_title);
+		add(pnl_title, BorderLayout.NORTH);
 
 		lbl_title = new JLabel(title);
 		lbl_title.setFont(new Font(font, Font.BOLD, titleFontSize));
-//		lbl_title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_title.add(lbl_title);
+		
+		JPanel pnl_body = new JPanel();
+		pnl_body.setLayout(new BorderLayout());
+		add(pnl_body);
 
 		JPanel pnl_subtitle = new JPanel();
-		pnl_subtitle.setBounds(0, titleHeight, screenWidth, subtitleHeight);
-		pnl_subtitle.setBackground(Color.green);
-		add(pnl_subtitle);
+		pnl_body.add(pnl_subtitle, BorderLayout.NORTH);
 		
 		lbl_subtitle = new JLabel(subtitle);
 		lbl_subtitle.setFont(new Font(font, Font.BOLD, subtitleFontSize));
-//		lbl_subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_subtitle.add(lbl_subtitle);
 		
+		JPanel pnl_buttonArea = new JPanel(new BorderLayout());
+		pnl_body.add(pnl_buttonArea);
+		
 		JPanel pnl_button = new JPanel();
-		pnl_button.setBounds(0, titleHeight + subtitleHeight, screenWidth, buttonHeight);
-		pnl_button.setBackground(Color.magenta);
-		add(pnl_button);
+		pnl_buttonArea.add(pnl_button, BorderLayout.NORTH);
 		
 		btn_signUp = new JButton("Sign Up");
 		btn_signUp.setFont(new Font(font, Font.PLAIN, buttonFontSize));
@@ -91,11 +85,9 @@ public class SplashScreen extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btn_signUp)) {
-			JOptionPane.showMessageDialog(this, "Debug - Sign Up button clicked");
 			controller.displaySignUpScreen();
 			setVisible(false);
 		} else if (e.getSource().equals(btn_signIn)){
-			JOptionPane.showMessageDialog(this, "Debug - Sign In button clicked");
 			controller.displaySignInScreen();
 			setVisible(false);
 		}

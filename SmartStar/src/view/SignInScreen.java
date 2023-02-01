@@ -19,8 +19,8 @@ public class SignInScreen extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private SignInController controller;
 
-	private int screenWidth = 800;
-	private int screenHeight = 600;
+	private int screenWidth = 400;
+	private int screenHeight = 300;
 	private String frameTitle = "Sign In - SmartStar";
 	private String title = "Sign In";
 	private String font = "SegoeUI";
