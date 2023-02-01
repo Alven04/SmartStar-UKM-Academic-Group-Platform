@@ -17,6 +17,14 @@ public abstract class User {
 		this.name = "";
 		this.institution = "";
 	}
+	
+	public User(String username, String password, String name, String institution) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.institution = institution;
+
+	}
 
 	public String getUsername() {
 		return username;
@@ -78,8 +86,7 @@ public abstract class User {
 		if (coursesJoined.contains(course)) {
 			return false;
 		}
-		coursesJoined.add(course);	
-		return true;
+		return coursesJoined.add(course);	
 	}
 	
 	/**
@@ -106,8 +113,7 @@ public abstract class User {
 			return false;
 		}
 		coursesCreated.add(course);	
-		joinCourse(course);
-		return true;
+		return joinCourse(course);
 	}
 	
 }
