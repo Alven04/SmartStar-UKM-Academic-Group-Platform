@@ -54,7 +54,6 @@ public class Controller {
 	public String[] getCourseJoinedByUser(){
 		ArrayList<Course> list=new ArrayList<Course>();
 		list.addAll(currentUser.getCoursesJoined());
-		list.addAll(currentUser.getCoursesCreated());
 		String[] arrayList=new String[list.size()];
 		int i=0;
 		for(Course c: list){
