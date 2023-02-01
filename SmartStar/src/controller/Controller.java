@@ -32,8 +32,6 @@ public class Controller {
 	}
 	
 	public void addCourse(String id, String name, String description) {
-		// TEMPORARY LINE, DELETE THIS LINE AFTER LOGIN SCREEN IS DONE
-		currentUser = new Student("test", "test");
 		
 		c = new Course(id, name, description);
 		c.setCourseOwner(currentUser);
