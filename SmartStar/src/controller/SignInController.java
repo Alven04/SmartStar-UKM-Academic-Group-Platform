@@ -17,6 +17,7 @@ public class SignInController {
 	private SignInScreen signInScreen;
 	
 	private Global global = new Global();
+	private User currentUser;
 
 	private Controller controller;
 	
@@ -44,7 +45,12 @@ public class SignInController {
 		if (user == null) {
 			return false;
 		} else {
-			return password.equals(user.getPassword());
+			if (password.equals(user.getPassword())) {
+				currentUser = user;
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 	
@@ -71,6 +77,7 @@ public class SignInController {
 	
 	public void displayMainMenu() {
 		controller = new Controller(global);
+		controller.setCurrentUser(currentUser);
 		controller.displayScreen(1);
 	}
 }
