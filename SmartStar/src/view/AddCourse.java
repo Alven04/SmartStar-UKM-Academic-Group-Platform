@@ -113,10 +113,16 @@ public class AddCourse extends JFrame implements ActionListener {
 		if(obj.equals(confirmBtn)) {
 			int a=JOptionPane.showConfirmDialog(f, "Add Course?");
 			if(a==JOptionPane.YES_OPTION) {
-				JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);
-				controller.addCourse(courseID.getText(), courseName.getText(), courseDescription.getText());
-				this.setVisible(false);
-				controller.displayScreen(1);
+				if(controller.detetermineCourseExists(courseID.getText())!=true){
+					JOptionPane.showMessageDialog(null, "Your course has been created","Course Created",JOptionPane.PLAIN_MESSAGE);
+					controller.addCourse(courseID.getText(), courseName.getText(), courseDescription.getText());
+					this.setVisible(false);
+					controller.displayScreen(1);
+				}else{
+					JOptionPane.showMessageDialog(null, "Course already exists","Course Created",JOptionPane.PLAIN_MESSAGE);
+					this.setVisible(false);
+					controller.displayScreen(1);
+				}
 				
 			}
 		}
