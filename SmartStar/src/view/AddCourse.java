@@ -120,8 +120,6 @@ public class AddCourse extends JFrame implements ActionListener {
 					controller.displayScreen(1);
 				}else{
 					JOptionPane.showMessageDialog(null, "Course already exists","Course Created",JOptionPane.PLAIN_MESSAGE);
-					this.setVisible(false);
-					controller.displayScreen(1);
 				}
 				
 			}

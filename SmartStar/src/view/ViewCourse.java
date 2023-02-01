@@ -13,7 +13,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private Controller controller;
 	private JLabel title;
 	private JPanel panel1,panel2,panel3;
-	private JButton enter;
+	private JButton enter,delete;
 	private JFrame f;
 	private Border raisedbevel;
 	
@@ -52,7 +52,12 @@ public class ViewCourse extends JFrame implements ActionListener {
 
 		enter=new JButton("Enter Course");
 		enter.setForeground(new Color(0,0,0));
-		
+		enter.setBackground(new Color(0,255,51));
+
+		delete=new JButton("Delete Course");
+		delete.setForeground(new Color(0,0,0));
+		delete.setBackground(new Color(0,255,51));
+
 		panel1.add(backBtn,BorderLayout.LINE_START);
 		panel1.add(title,BorderLayout.CENTER);
 		panel2.add(panel1);
@@ -61,6 +66,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 		pane.add(panel3,BorderLayout.CENTER);
 		backBtn.addActionListener(this);
 		enter.addActionListener(this);
+		delete.addActionListener(this);
 		listOutAllCourse();
 		
 	}
@@ -82,17 +88,20 @@ public class ViewCourse extends JFrame implements ActionListener {
             JPanel panel=new JPanel();
             panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
 			panel.setBackground(new Color(100,1,255));
-			panel.setMaximumSize(new Dimension(150,280));
+			panel.setMaximumSize(new Dimension(200,200));
 			
             JLabel courseTitle=new JLabel(courseName);
             courseTitle.setForeground(Color.WHITE);
             courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,16));
             courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
             enter.setAlignmentX(Component.CENTER_ALIGNMENT);
-            
+            delete.setAlignmentX(Component.CENTER_ALIGNMENT);
+
             panel.add(courseTitle);
             panel.add(Box.createVerticalStrut(10));
             panel.add(enter);
+			panel.add(Box.createVerticalStrut(10));
+			panel.add(delete);
             
          	panel.setBorder(raisedbevel);
             panel3.add(Box.createHorizontalStrut(10));
