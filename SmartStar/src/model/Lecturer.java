@@ -8,6 +8,11 @@ public class Lecturer extends User {
 		this.qualification = "";
 	}
 	
+	public Lecturer (String username, String password, String name, String institution, String qualification) {
+		super(username, password, name, institution);
+		this.qualification = qualification;
+	}
+
 	public String getQualification() {
 		return qualification;
 	}

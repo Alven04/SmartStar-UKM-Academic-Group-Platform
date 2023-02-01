@@ -9,6 +9,12 @@ public class Student extends User {
 		this.year = 0;
 		this.major = "";
 	}
+	
+	public Student (String username, String password, String name, String institution, int year, String major) {
+		super(username, password, name, institution);
+		this.year = year;
+		this.major = major;
+	}
 
 	public int getYear() {
 		return year;
