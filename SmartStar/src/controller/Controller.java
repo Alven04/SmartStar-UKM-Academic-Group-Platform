@@ -71,9 +71,4 @@ public class Controller {
 		
 	}
 
-	public void initializeInitialCourses(String id,String name,String description){
-		c = new Course(id, name, description);
-		global.addCourse(c);
-		
-	}
 }
