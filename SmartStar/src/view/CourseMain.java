@@ -17,7 +17,6 @@ public class CourseMain extends JFrame implements ActionListener {
 	private JButton btn1=new JButton("Add New Course");
 	private JButton btn2=new JButton("Join Course");
 	private JButton btn3=new JButton("View Course");
-	private JButton btn4=new JButton("Delete Course");
 	
 	private Controller controller;
 	
@@ -52,7 +51,6 @@ public class CourseMain extends JFrame implements ActionListener {
 		modifyButton(btn1, centerPanel);
 		modifyButton(btn2, centerPanel);
         modifyButton(btn3, centerPanel);
-        modifyButton(btn4, centerPanel);
 		
 		JPanel leftPanel=new JPanel(); //buttons
 		leftPanel.setBackground(new Color(0,0,255));
@@ -88,8 +86,6 @@ public class CourseMain extends JFrame implements ActionListener {
 			controller.displayScreen(3);
 		}else if(obj.equals(btn3)) {
 			controller.displayScreen(4);
-		}else if(obj.equals(btn4)) {
-			controller.displayScreen(5);
 		}
 		
 	}
