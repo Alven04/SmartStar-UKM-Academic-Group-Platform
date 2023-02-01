@@ -62,4 +62,8 @@ public class Controller {
 		}
 		return arrayList;
 	}
+
+	public void removeCourses(){
+		
+	}
 }

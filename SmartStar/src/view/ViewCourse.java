@@ -91,7 +91,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 
 			JButton delete=new JButton("Delete Course");
 			delete.setForeground(new Color(0,0,0));
-			delete.setBackground(new Color(0,255,51));
+			delete.setBackground(new Color(255,51,51));
             delete.setAlignmentX(Component.CENTER_ALIGNMENT);
 
             panel.add(courseTitle);
