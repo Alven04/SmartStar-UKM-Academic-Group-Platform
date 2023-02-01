@@ -67,8 +67,8 @@ public class Controller {
 		return arrayList;
 	}
 
-	public void removeCourses(){
-		
+	public void removeCourses(String courseName){
+		global.deleteCourse(global.getCourseByCourseName(courseName));
 	}
 
 }

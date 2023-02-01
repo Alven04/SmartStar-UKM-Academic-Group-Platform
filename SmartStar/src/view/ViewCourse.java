@@ -15,6 +15,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private JPanel panel1,panel2,panel3;
 	private JFrame f;
 	private Border raisedbevel;
+	private Container pane;
 	
 	public ViewCourse(Controller controller) {
 		this.controller=controller;
@@ -23,7 +24,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 		setSize(800,600);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		Container pane = getContentPane();
+		pane = getContentPane();
 		pane.setBackground(new Color(204,204,204));
 		pane.setLayout(new BorderLayout());
 		
@@ -114,13 +115,19 @@ public class ViewCourse extends JFrame implements ActionListener {
 
 			delete.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-
+					String text= courseTitle.getText();
+					controller.removeCourses(text);
+					panel3.remove(panel);
+					panel3.validate();
+					pane.repaint();
+					
 				}
 
 			});
 
 
         }
+		
 		
     }
 
