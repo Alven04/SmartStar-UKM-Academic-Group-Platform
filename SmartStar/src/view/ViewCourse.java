@@ -108,23 +108,34 @@ public class ViewCourse extends JFrame implements ActionListener {
 			
 			enter.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-
+					if(controller.detetermineCourseExists(courseTitle.getText())){
+						controller.displayScreen(5);
+					}else{
+						JOptionPane.showMessageDialog(null, "Course no longer exists","View Course",JOptionPane.PLAIN_MESSAGE);
+					}
 				}
 
 			});
 
 			delete.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					String text= courseTitle.getText();
-					controller.removeCourses(text);
-					panel3.remove(panel);
-					panel3.validate();
-					pane.repaint();
+					
+					int a=JOptionPane.showConfirmDialog(f, "Do you wish to delete the course?");
+					if(a==JOptionPane.YES_OPTION){
+						JOptionPane.showMessageDialog(null, "You have left the course","Leave Course",JOptionPane.PLAIN_MESSAGE);
+						String text= courseTitle.getText();
+						controller.removeCourses(text);
+						panel.removeAll();
+						panel3.remove(panel);
+						panel3.validate();
+						panel3.repaint();
+					}
+					
 					
 				}
-
+				
 			});
-
+			
 
         }
 		

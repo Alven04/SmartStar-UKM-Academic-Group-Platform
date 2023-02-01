@@ -9,6 +9,7 @@ import view.AddCourse;
 import view.CourseMain;
 import view.JoinCourse;
 import view.ViewCourse;
+import view.ViewQuestion;
 
 public class Controller {
 	private Course c;
@@ -29,6 +30,8 @@ public class Controller {
 			new JoinCourse(this);
 		else if(num==4)
 			new ViewCourse(this);
+		else if(num==5)
+			new ViewQuestion(this);
 	}
 	
 	public void addCourse(String id, String name, String description) {
@@ -48,6 +51,10 @@ public class Controller {
 	}
 	public boolean detetermineCourseExists(String courseID){
 		return global.detetermineCourseExists(courseID);
+	}
+
+	public boolean detetermineCourseExistsByName(String courseName){
+		return global.detetermineCourseExistsByName(courseName);
 	}
 	
 	public String printInformation(String course) {

@@ -72,5 +72,14 @@ public class Global {
 		return false;
 	}
 
+	public boolean detetermineCourseExistsByName(String courseName){
+		for(Course c: courseList){
+			if(c.getCourseName().equals(courseName)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 }
