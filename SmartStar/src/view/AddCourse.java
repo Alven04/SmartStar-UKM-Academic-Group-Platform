@@ -23,7 +23,7 @@ public class AddCourse extends JFrame implements ActionListener {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("SmartStar");
-		setSize(700,500);
+		setSize(800,600);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		Container pane = getContentPane();
@@ -53,7 +53,7 @@ public class AddCourse extends JFrame implements ActionListener {
 		courseName=new JTextField(20); //courseName TextField
 		courseDescription=new JTextArea(5,30);
 		scrollPane=new JScrollPane(courseDescription);
-		courseID=new JTextField(10); //courseID TextField
+		courseID=new JTextField(20); //courseID TextField
 		
 		backBtn=new JButton("Back");
 		backBtn.setForeground(new Color(0,0,0));

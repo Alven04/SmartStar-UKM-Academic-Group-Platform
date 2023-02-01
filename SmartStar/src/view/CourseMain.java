@@ -49,6 +49,7 @@ public class CourseMain extends JFrame implements ActionListener {
 		topPanel.setPreferredSize(new Dimension(150,100));
 		
 		modifyButton(btn1, centerPanel);
+		
 		modifyButton(btn2, centerPanel);
         modifyButton(btn3, centerPanel);
 		
@@ -93,7 +94,9 @@ public class CourseMain extends JFrame implements ActionListener {
 	private void modifyButton(JButton button, Container container) {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setForeground(new Color(0,0,153));
+		button.setMaximumSize(new Dimension(150,100));
         container.add(button);
+		container.add(Box.createVerticalStrut(15));
         //configure size
          
     }

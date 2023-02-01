@@ -22,7 +22,7 @@ public class JoinCourse extends JFrame implements ActionListener {
 		this.controller=controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("SmartStar");
-		setSize(700,500);
+		setSize(800,600);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		Container pane = getContentPane();

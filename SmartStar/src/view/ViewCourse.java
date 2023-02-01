@@ -20,7 +20,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 		this.controller=controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("SmartStar");
-		setSize(700,500);
+		setSize(800,600);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		Container pane = getContentPane();
@@ -43,7 +43,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 
 		title=new JLabel("View Course");
 		title.setForeground(Color.WHITE);
-		title.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		title.setFont(new Font("Times New Roman", Font.PLAIN,32));
 		title.setHorizontalAlignment(JLabel.CENTER);
 		
 		backBtn=new JButton("Back");
@@ -81,7 +81,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 			
             JLabel courseTitle=new JLabel(courseName);
             courseTitle.setForeground(Color.WHITE);
-            courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,16));
+            courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,25));
             courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 			JButton enter=new JButton("Enter Course");
