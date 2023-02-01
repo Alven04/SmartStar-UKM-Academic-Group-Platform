@@ -108,7 +108,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 			
 			enter.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					if(controller.detetermineCourseExists(courseTitle.getText())){
+					if(controller.detetermineCourseExistsByName(courseTitle.getText())){
 						controller.displayScreen(5);
 					}else{
 						JOptionPane.showMessageDialog(null, "Course no longer exists","View Course",JOptionPane.PLAIN_MESSAGE);
