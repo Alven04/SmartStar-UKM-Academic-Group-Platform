@@ -21,7 +21,14 @@ public class SignInController {
 
 	private Controller controller;
 	
-	
+	public Global getGlobal() {
+		return global;
+	}
+
+	public void setGlobal(Global global) {
+		this.global = global;
+	}
+
 	public boolean usernameTaken(String username) {
 		return global.getUserByUsername(username) != null;
 	}
