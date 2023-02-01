@@ -38,6 +38,10 @@ public class Controller {
 		global.addCourse(c);
 		currentUser.createCourse(c);
 	}
+
+	public void joinCourse(String cid){
+		currentUser.joinCourse(global.getCourseByCourseID(cid));
+	}
 	
 	public void setCurrentUser(User u) {
 		currentUser=u;
@@ -64,6 +68,12 @@ public class Controller {
 	}
 
 	public void removeCourses(){
+		
+	}
+
+	public void initializeInitialCourses(String id,String name,String description){
+		c = new Course(id, name, description);
+		global.addCourse(c);
 		
 	}
 }

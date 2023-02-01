@@ -6,10 +6,9 @@ public class Course {
 	private String courseDescription;
 	private String courseID;
 	private User courseOwner;
-	private User courseMembers;
+	private ArrayList<User> courseMembers=new ArrayList<User>();
 	
-	private ArrayList<Course> listOfCourse=new ArrayList<Course>();
-	public Course(String courseID,String courseName,String courseDescription) { //removed coursePrivacy
+	public Course(String courseID,String courseName,String courseDescription) { 
 		this.courseID=courseID;
 		this.courseName=courseName;
 		this.courseDescription=courseDescription;
@@ -37,6 +36,10 @@ public class Course {
 	
 	public void setCourseOwner(User currentUser) {
 		courseOwner=currentUser;
+	}
+
+	public void setCourseMembers(User currentUser) {
+		courseMembers.add(currentUser);
 	}
 	
 	
