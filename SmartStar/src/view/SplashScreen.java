@@ -97,6 +97,7 @@ public class SplashScreen extends JFrame implements ActionListener {
 		} else if (e.getSource().equals(btn_signIn)){
 			JOptionPane.showMessageDialog(this, "Debug - Sign In button clicked");
 			controller.displaySignInScreen();
+			setVisible(false);
 		}
 		
 	}

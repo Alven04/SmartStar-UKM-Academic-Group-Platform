@@ -1,19 +1,20 @@
 package view;
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
 
 import controller.SignInController;
 
-public class SignInScreen extends JFrame {
+public class SignInScreen extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private SignInController controller;
@@ -40,8 +41,6 @@ public class SignInScreen extends JFrame {
 	private JPanel pnl_button = new JPanel();
 	private JButton btn_signIn = new JButton();
 	private JButton btn_cancel = new JButton();
-//	JLabel lbl_subtitle = new JLabel("Please enter your username and password.");
-	
 	
 	public SignInScreen(SignInController controller) {
 		
@@ -90,6 +89,11 @@ public class SignInScreen extends JFrame {
 		return newPanel;
 	}
 	
+	private void clearField() {
+		txt_username.setText("");
+		txt_password.setText("");
+	}
+
 	private JPanel createLabel(JLabel label, String labelText) {
 		JPanel newPanel = new JPanel();
 
@@ -104,7 +108,26 @@ public class SignInScreen extends JFrame {
 
 		button.setText(buttonText);
 		button.setFont(bodyFont);
-
+		button.addActionListener(this);
 		return button;
+	}	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource().equals(btn_cancel)) {
+			controller.displaySplashScreen();
+			setVisible(false);
+		}
+		else if (e.getSource().equals(btn_signIn)) {
+			if (controller.signIn(txt_username.getText(), txt_password.getText())) {
+				JOptionPane.showMessageDialog(this, "Debug - Sign In successful");
+				clearField();
+				controller.displayMainMenu();
+				setVisible(false);
+			} else {
+				JOptionPane.showMessageDialog(this, "Incorrect username or password. Please try again.");
+			}
+		}
+		
 	}
 }

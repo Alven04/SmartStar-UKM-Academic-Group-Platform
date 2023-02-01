@@ -56,7 +56,7 @@ public class SignUpScreen extends JFrame implements ActionListener {
 	private String com_lecturer = "LECTURER";
 	
 	String font = "Segoe UI";
-	int bodyFontSize = 12;
+	int bodyFontSize = 16;
 	private Font bodyFont = new Font(font, Font.PLAIN, bodyFontSize);
 	private Font headingFont = new Font(font, Font.BOLD, bodyFontSize);
 	
@@ -76,7 +76,7 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		int buttonHeight = 50;
 		
 		int titleFontSize = 48;
-		int subtitleFontSize = 12;
+		int subtitleFontSize = 16;
 
 		Font titleFont = new Font(font, Font.BOLD, titleFontSize);
 		Font subtitleFont = new Font(font, Font.BOLD, subtitleFontSize);
