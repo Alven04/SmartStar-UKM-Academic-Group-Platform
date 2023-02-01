@@ -13,7 +13,6 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private Controller controller;
 	private JLabel title;
 	private JPanel panel1,panel2,panel3;
-	private JButton enter,delete;
 	private JFrame f;
 	private Border raisedbevel;
 	
@@ -50,14 +49,6 @@ public class ViewCourse extends JFrame implements ActionListener {
 		backBtn=new JButton("Back");
 		backBtn.setForeground(new Color(0,0,0));
 
-		enter=new JButton("Enter Course");
-		enter.setForeground(new Color(0,0,0));
-		enter.setBackground(new Color(0,255,51));
-
-		delete=new JButton("Delete Course");
-		delete.setForeground(new Color(0,0,0));
-		delete.setBackground(new Color(0,255,51));
-
 		panel1.add(backBtn,BorderLayout.LINE_START);
 		panel1.add(title,BorderLayout.CENTER);
 		panel2.add(panel1);
@@ -65,8 +56,6 @@ public class ViewCourse extends JFrame implements ActionListener {
 		pane.add(panel2,BorderLayout.NORTH);
 		pane.add(panel3,BorderLayout.CENTER);
 		backBtn.addActionListener(this);
-		enter.addActionListener(this);
-		delete.addActionListener(this);
 		listOutAllCourse();
 		
 	}
@@ -82,7 +71,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 	}
 
     public void listOutAllCourse(){
-        
+    	
         for(String courseName: controller.getCourseJoinedByUser() ){
             courseName=courseName.trim();
             JPanel panel=new JPanel();
@@ -94,7 +83,15 @@ public class ViewCourse extends JFrame implements ActionListener {
             courseTitle.setForeground(Color.WHITE);
             courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,16));
             courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-            enter.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+			JButton enter=new JButton("Enter Course");
+			enter.setForeground(new Color(0,0,0));
+			enter.setBackground(new Color(0,255,51));
+			enter.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+			JButton delete=new JButton("Delete Course");
+			delete.setForeground(new Color(0,0,0));
+			delete.setBackground(new Color(0,255,51));
             delete.setAlignmentX(Component.CENTER_ALIGNMENT);
 
             panel.add(courseTitle);
@@ -107,6 +104,22 @@ public class ViewCourse extends JFrame implements ActionListener {
             panel3.add(Box.createHorizontalStrut(10));
 			panel3.add(panel);
 			
+			
+			enter.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+
+				}
+
+			});
+
+			delete.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+
+				}
+
+			});
+
+
         }
 		
     }
