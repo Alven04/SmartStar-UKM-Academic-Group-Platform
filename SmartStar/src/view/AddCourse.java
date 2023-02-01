@@ -65,11 +65,11 @@ public class AddCourse extends JFrame implements ActionListener {
 		panel1a.add(label1);
 		panel1a.setBackground(new Color(0,0,255));
 		
-		JPanel panel1=new JPanel(); //title
-		panel1.setLayout(new BorderLayout());
-		panel1.add(backBtn, BorderLayout.WEST);
-		panel1.add(panel1a, BorderLayout.CENTER);
-		panel1.setBackground(new Color(0,0,255));
+		JPanel titlePanel=new JPanel(); //title
+		titlePanel.setLayout(new BorderLayout());
+		titlePanel.add(backBtn, BorderLayout.WEST);
+		titlePanel.add(panel1a, BorderLayout.CENTER);
+		titlePanel.setBackground(new Color(0,0,255));
 		
 		JPanel panel1b=new JPanel(); //Course ID
 		panel1b.add(courseIDLabel);
@@ -96,7 +96,7 @@ public class AddCourse extends JFrame implements ActionListener {
 		mainPanel.add(confirmBtn);
 		
 		
-		pane.add(panel1, BorderLayout.PAGE_START);
+		pane.add(titlePanel, BorderLayout.PAGE_START);
 		pane.add(mainPanel,BorderLayout.CENTER);
 		
 		backBtn.addActionListener(this);
