@@ -22,9 +22,12 @@ public class Main {
 	
 	private static void initialize() {
 		
-		initializeStudent("rebekah", "admin", "Rebekah", "UKM", 1, "Computer Science");
-		initializeStudent("daphne", "daphnee", "Daphne", "USM", 2, "Computer Science");
+		initializeStudent("rebekah", "admin", "Rebekah", "USM", 1, "Information Technology");
+		initializeStudent("stuart", "handsome", "Stuart", "UKM", 2, "Computer Science");
 		initializeStudent("alven", "alven", "Alvenlim", "UKM", 2, "Computer Science");
+		
+		//test only: allows sign in without entering username/password
+		initializeStudent("", "", "Speedrunner", "Speedrun school", 9, "Speedrun");
 		
 		initializeLecturer("hafiz", "password", "Dr Hafiz", "UKM", "Professor");
 		initializeLecturer("siti", "12345", "Dr Siti", "UKM", "Professor");
