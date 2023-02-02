@@ -48,4 +48,7 @@ public class Student extends User {
 		return stars.add(star);	
 	}
 
+	public String getRank() {
+		return "Unranked";
+	}
 }

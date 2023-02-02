@@ -111,7 +111,8 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		pnl_list.add(createLabel(lbl_list, "Questions:"), BorderLayout.NORTH);
 		pnl_list.add(createList(lst_list), BorderLayout.CENTER);
 		pnl_list.add(createButton(btn_post, "New Question..."), BorderLayout.SOUTH);
-
+		refreshList();
+		
 		// content panel
 		pnl_content.setLayout(new BorderLayout());
 		
@@ -157,62 +158,74 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	}
 	
 	private String starCount() {
-		// TODO Auto-generated method stub
-		return "x Stars";
+		return controller.starCount();
 	}
 
 	private String downvoteCount() {
-		// TODO Auto-generated method stub
-		return "x Downvotes";
+		return controller.downvoteCount();
 	}
 
 	private String upvoteCount() {
-		// TODO Auto-generated method stub
-		return "x Upvotes";
+		return controller.upvoteCount();
 	}
 
 	private String index() {
-		// TODO Auto-generated method stub
-		return "Answer x of x";
+		return controller.index();
 	}
 
 	private String answerContent() {
-		// TODO Auto-generated method stub
-		return "Answer content";
+		return controller.answerContent();
 	}
 
 	private String answererDetail() {
-		// TODO Auto-generated method stub
-		return "Answerer detail";
+		return controller.answererDetail();
 	}
 
 	private String answererName() {
-		// TODO Auto-generated method stub
-		return "Answerer name";
+		return controller.answererName();
 	}
 
 	private String questionContent() {
-		// TODO Auto-generated method stub
-		return "Question content";
+		return controller.questionContent();
 	}
 
 	private String questionTitle() {
-		// TODO Auto-generated method stub
-		return "Question title";
+		return controller.questionTitle();
 	}
 
 	private String askerDetail() {
-		// TODO Auto-generated method stub
-		return "Asker detail";
+		return controller.askerDetail();
 	}
 
 	private String askerName() {
-		// TODO Auto-generated method stub
-		return "Asker name";
+		return controller.askerName();
 	}
-
+	
 	public String titleText() {
 		return "Course: " + controller.getCourse().getCourseID() + " - " + controller.getCourse().getCourseName();
+	}
+
+	private void refreshList() {
+		lst_list.setListData(controller.getQuestionTitles());
+	}
+	
+	private void refreshStarList() {
+		lst_star.setListData(controller.getStarLecturerNames());
+	}
+	
+	private void refreshContent() {
+		lbl_asker.setText(askerName());
+		lbl_askerDetail.setText(askerDetail());
+		lbl_question.setText(getTitle());
+		txt_question.setText(questionContent());
+		lbl_answerer.setText(answererName());
+		lbl_answererDetail.setText(answererDetail());
+		txt_answer.setText(answerContent());
+		lbl_upvote.setText(upvoteCount());
+		lbl_downvote.setText(downvoteCount());
+		lbl_star.setText(starCount());
+		refreshStarList();
+		lbl_index.setText(index());
 	}
 	
 	private JButton createButton(JButton button, String buttonText) {
@@ -249,8 +262,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		
 		return list;
 	}
-	 
-
+		
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btn_back)) {
@@ -284,8 +296,8 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
-		
+		controller.setCurrentQuestion(controller.getCourse().getQuestionByTitle(lst_list.getSelectedValue()));
+		refreshContent();
 	}	
 
 }
