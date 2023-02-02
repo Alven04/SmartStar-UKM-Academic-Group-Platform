@@ -34,7 +34,6 @@ public class JoinCourse extends JFrame implements ActionListener {
 		panel1=new JPanel();
 		panel1.setLayout(new BorderLayout());
 		panel1.setAlignmentX(CENTER_ALIGNMENT);
-		//panel2.setBorder(blackline);
 		panel2=new JPanel();
 		panel2.setBorder(blackline);
 		panel2.setAlignmentX(CENTER_ALIGNMENT);
