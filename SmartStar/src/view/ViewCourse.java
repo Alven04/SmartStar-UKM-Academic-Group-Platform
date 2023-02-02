@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import controller.Controller;
 import javax.swing.*;
 import javax.swing.border.Border;
-
+import java.awt.Color;
 import java.awt.*;
 
 public class ViewCourse extends JFrame implements ActionListener {
@@ -34,19 +34,19 @@ public class ViewCourse extends JFrame implements ActionListener {
 		
 		panel1=new JPanel();
 		panel1.setLayout(new BorderLayout());
-		panel1.setBackground(new Color(0,100,255));
+
         
 		panel2=new JPanel();
 		panel2.setLayout(new BorderLayout());
-		panel2.setBackground(new Color(0,100,255));
+
 		
 		panel3=new JPanel();
 		panel3.setLayout(new BoxLayout(panel3,BoxLayout.X_AXIS));
-		panel3.setBackground(new Color(0,100,255));
+
 
 		title=new JLabel("View Course");
-		title.setForeground(Color.WHITE);
-		title.setFont(new Font("Times New Roman", Font.PLAIN,32));
+		title.setForeground(Color.BLACK);
+		title.setFont(new Font("SegoeUI", Font.BOLD, 32));
 		title.setHorizontalAlignment(JLabel.CENTER);
 		
 		backBtn=new JButton("Back");
@@ -61,6 +61,11 @@ public class ViewCourse extends JFrame implements ActionListener {
 		backBtn.addActionListener(this);
 		listOutAllCourse();
 		
+		//Color
+		panel1.setBackground(new Color(255, 253, 208));
+		panel2.setBackground(new Color(255, 253, 208));
+		panel3.setBackground(new Color(255, 253, 208));
+
 	}
 
 	@Override
@@ -79,12 +84,12 @@ public class ViewCourse extends JFrame implements ActionListener {
             courseName=courseName.trim();
             JPanel panel=new JPanel();
             panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-			panel.setBackground(new Color(100,1,255));
+			panel.setBackground(new Color(220, 174, 150));
 			panel.setMaximumSize(new Dimension(200,200));
 			
             JLabel courseTitle=new JLabel(courseName);
-            courseTitle.setForeground(Color.WHITE);
-            courseTitle.setFont(new Font("Times New Roman", Font.PLAIN,25));
+            courseTitle.setForeground(Color.BLACK);
+            courseTitle.setFont(new Font("SegoeUI", Font.BOLD, 25));
             courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 			JButton enter=new JButton("Enter Course");

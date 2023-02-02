@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
-
+import java.awt.Color;
 import controller.Controller;
 
 import java.awt.*;
@@ -73,6 +73,12 @@ public class JoinCourse extends JFrame implements ActionListener {
 		backBtn.addActionListener(this);
 		searchCourseButton.addActionListener(this);
 
+		//Color
+		panel4.setBackground(new Color(220, 174, 150));
+		//panel3.setBackground(new Color(220, 174, 150));
+		panel1.setBackground(Color.white);
+		panel2.setBackground(Color.white);
+		pane.setBackground(new Color(220, 174, 150));
 	}
 
 	@Override
