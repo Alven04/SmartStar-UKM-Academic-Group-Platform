@@ -16,12 +16,14 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private JFrame f;
 	private Border raisedbevel;
 	private Container pane;
+	private int width=800;
+	private int height=600;
 	
 	public ViewCourse(Controller controller) {
 		this.controller=controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("SmartStar");
-		setSize(800,600);
+		setSize(width,height);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		pane = getContentPane();
@@ -104,7 +106,6 @@ public class ViewCourse extends JFrame implements ActionListener {
          	panel.setBorder(raisedbevel);
             panel3.add(Box.createHorizontalStrut(10));
 			panel3.add(panel);
-			
 			
 			enter.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){

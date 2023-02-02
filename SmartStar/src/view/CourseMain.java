@@ -8,7 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.border.Border;
 import javax.swing.*;
 
 import controller.Controller;
@@ -18,22 +18,24 @@ public class CourseMain extends JFrame implements ActionListener {
 	private JButton btn2=new JButton("Join Course");
 	private JButton btn3=new JButton("View Course");
 	private JButton editProfile=new JButton("Edit Profile");
-	
+	private int width=800;
+	private int height=600;
+	private Border blackline;
 	private Controller controller;
 	
 	public CourseMain(Controller controller) {
+		blackline = BorderFactory.createLineBorder(Color.black);
 		this.controller= controller;
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("SmartStar");
-		setSize(800,600);
+		setSize(width,height);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
 		Container pane = getContentPane();
 		pane.setBackground(new Color(255,255,255));
 		pane.setLayout(new BorderLayout());
-		
+
 		JLabel titlePanel =new JLabel("SmartStar Course");
 		titlePanel.setForeground(Color.black);
 		titlePanel.setFont(new Font("SegoeUI", Font.BOLD, 36));
@@ -41,14 +43,16 @@ public class CourseMain extends JFrame implements ActionListener {
 		JPanel centerPanel=new JPanel(); //buttons
 		centerPanel.setLayout(new BoxLayout(centerPanel ,BoxLayout.Y_AXIS));
 		centerPanel.setPreferredSize(new Dimension(150,100));
+		centerPanel.setBorder(blackline);
+		centerPanel.setBackground(Color.WHITE);
 		
-		JPanel emptyPanel=new JPanel(); //buttons
+		JPanel emptyPanel=new JPanel(); 
 		emptyPanel.setPreferredSize(new Dimension(150,100));
 
-		JPanel emptyPanel2=new JPanel(); //buttons
+		JPanel emptyPanel2=new JPanel(); 
 		emptyPanel.setPreferredSize(new Dimension(150,100));
 
-
+		
 		JPanel topPanel=new JPanel(); //title
 		topPanel.setLayout(new BorderLayout());
 		topPanel.add(emptyPanel2,BorderLayout.WEST);
@@ -57,7 +61,7 @@ public class CourseMain extends JFrame implements ActionListener {
 		emptyPanel.add(editProfile);
 		topPanel.setPreferredSize(new Dimension(150,100));
 		
-
+		
 		modifyButton(btn1, centerPanel);
 		modifyButton(btn2, centerPanel);
         modifyButton(btn3, centerPanel);
@@ -73,6 +77,7 @@ public class CourseMain extends JFrame implements ActionListener {
 		
 		pane.add(topPanel, BorderLayout.NORTH);
 		pane.add(centerPanel, BorderLayout.CENTER);
+		
 		pane.add(rightPanel, BorderLayout.EAST);
 		pane.add(leftPanel, BorderLayout.WEST);
 		pane.add(bottomPanel, BorderLayout.SOUTH);
@@ -99,14 +104,16 @@ public class CourseMain extends JFrame implements ActionListener {
 		
 	}
 	
-	private void modifyButton(JButton button, Container container) {
+	private void modifyButton(JButton button, Container centerPanel) {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setForeground(new Color(255,255,255));
 		button.setMaximumSize(new Dimension(250,130));
 		button.setBackground(new Color(0,0,153));
-        container.add(button);
-		container.add(Box.createVerticalStrut(15));
+		centerPanel.add(Box.createVerticalStrut(15));
+        centerPanel.add(button);
+		centerPanel.add(Box.createVerticalStrut(15));
         //configure size
          
     }
+
 }
