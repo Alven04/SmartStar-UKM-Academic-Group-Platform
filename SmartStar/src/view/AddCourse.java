@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
-
+import java.awt.Color;
 import controller.Controller;
 
 import java.awt.Color;
@@ -29,7 +29,7 @@ public class AddCourse extends JFrame implements ActionListener {
 	int bodyFontSize = 16;
 	private Font bodyFont = new Font(font, Font.PLAIN, bodyFontSize);
 	private Font headingFont = new Font(font, Font.BOLD, bodyFontSize);
-	
+
 	public AddCourse(Controller controller) {
 		blackline = BorderFactory.createLineBorder(Color.black);
 		this.controller= controller;
@@ -86,18 +86,21 @@ public class AddCourse extends JFrame implements ActionListener {
 		desc_panel.add(courseDescriptionLabel);
 		desc_panel.add(scrollPane); //make the box fixed
 		subPanel.add(desc_panel);
-
-
 		titlePanel.add(titleSubPanel);
 		bodyPanel.add(subPanel,BorderLayout.CENTER);
 		pane.add(titlePanel);
 		pane.add(bodyPanel);
 		pane.add(buttonPanel);
-
-		
 		btn_back.addActionListener(this);
 		btn_confirm.addActionListener(this);
-		
+		//Color
+		titlePanel.setBackground(new Color(220, 174, 150));
+		titleSubPanel.setBackground(new Color(220, 174, 150));
+		buttonPanel.setBackground(new Color(220, 174, 150));
+		bodyPanel.setBackground(Color.white);
+		subPanel.setBackground(Color.white);
+		desc_panel.setBackground(Color.white);
+
 	}
 
 	private JPanel createLabelTestFieldPair(JLabel label, String labelText, JTextField textField, int textColumn) {
@@ -110,7 +113,7 @@ public class AddCourse extends JFrame implements ActionListener {
 		textField.setColumns(textColumn);
 		textField.setFont(bodyFont);
 		newPanel.add(textField);
-		
+		newPanel.setBackground(Color.white);
 		return newPanel;
 	}
 
