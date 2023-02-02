@@ -18,6 +18,8 @@ public class CourseMain extends JFrame implements ActionListener {
 	private JButton btn2=new JButton("Join Course");
 	private JButton btn3=new JButton("View Course");
 	private JButton editProfile=new JButton("Edit Profile");
+	private JButton logout=new JButton("Logout");
+	private JPanel panel=new JPanel();
 	private int width=800;
 	private int height=600;
 	private Controller controller;
@@ -47,6 +49,7 @@ public class CourseMain extends JFrame implements ActionListener {
 		centerPanel.setBorder(title);
 		centerPanel.setBackground(Color.WHITE);
 		
+
 		JPanel emptyPanel=new JPanel(); 
 		emptyPanel.setPreferredSize(new Dimension(150,100));
 
@@ -58,10 +61,12 @@ public class CourseMain extends JFrame implements ActionListener {
 		emptyPanel.add(editProfile);
 		topPanel.setPreferredSize(new Dimension(150,100));
 		
-		modifyButton(editProfile, centerPanel);
-		modifyButton(btn1, centerPanel);
-		modifyButton(btn2, centerPanel);
-        modifyButton(btn3, centerPanel);
+		
+		modifyButton(logout, centerPanel,panel);
+		modifyButton(editProfile, centerPanel,panel);
+		modifyButton(btn1, centerPanel,panel);
+		modifyButton(btn2, centerPanel,panel);
+        modifyButton(btn3, centerPanel,panel);
 		
 		JPanel leftPanel=new JPanel(); //buttons
 		leftPanel.setPreferredSize(new Dimension(100,100));
@@ -109,16 +114,27 @@ public class CourseMain extends JFrame implements ActionListener {
 		
 	}
 	
-	private void modifyButton(JButton button, Container centerPanel) {
-		if(!(button.equals(editProfile))){
+	private void modifyButton(JButton button, Container centerPanel, Container panel) {
+		if(!(button.equals(editProfile) || button.equals(logout))){
 			button.setForeground(new Color(255,255,255));
-			button.setMaximumSize(new Dimension(250,130));
+			button.setMaximumSize(new Dimension(200,130));
 			button.setBackground(new Color(0,0,153));
-		}
 			button.setAlignmentX(Component.CENTER_ALIGNMENT);
 			centerPanel.add(Box.createVerticalStrut(15));
 			centerPanel.add(button);
 			centerPanel.add(Box.createVerticalStrut(15));
+		}else {
+			panel.setMaximumSize(centerPanel.getMaximumSize());
+			panel.setBackground(new Color(255, 253, 208));
+			button.setPreferredSize(new Dimension(100,25));
+			panel.add(button);
+			panel.add(Box.createHorizontalStrut(15));
+			centerPanel.add(Box.createVerticalStrut(15));
+			centerPanel.add(panel);
+			centerPanel.add(Box.createVerticalStrut(15));
+		}
+		
+			
         //configure size
 		
     }
