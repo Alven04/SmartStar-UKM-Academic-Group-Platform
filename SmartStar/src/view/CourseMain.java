@@ -17,6 +17,7 @@ public class CourseMain extends JFrame implements ActionListener {
 	private JButton btn1=new JButton("Add New Course");
 	private JButton btn2=new JButton("Join Course");
 	private JButton btn3=new JButton("View Course");
+	private JButton editProfile=new JButton("Edit Profile");
 	
 	private Controller controller;
 	
@@ -33,23 +34,31 @@ public class CourseMain extends JFrame implements ActionListener {
 		pane.setBackground(new Color(255,255,255));
 		pane.setLayout(new BorderLayout());
 		
-		JLabel label1 =new JLabel("SmartStar Course");
-		label1.setForeground(Color.black);
-		label1.setFont(new Font("SegoeUI", Font.BOLD, 36));
+		JLabel titlePanel =new JLabel("SmartStar Course");
+		titlePanel.setForeground(Color.black);
+		titlePanel.setFont(new Font("SegoeUI", Font.BOLD, 36));
 		
 		JPanel centerPanel=new JPanel(); //buttons
 		centerPanel.setLayout(new BoxLayout(centerPanel ,BoxLayout.Y_AXIS));
 		centerPanel.setPreferredSize(new Dimension(150,100));
 		
-		
+		JPanel emptyPanel=new JPanel(); //buttons
+		emptyPanel.setPreferredSize(new Dimension(150,100));
+
+		JPanel emptyPanel2=new JPanel(); //buttons
+		emptyPanel.setPreferredSize(new Dimension(150,100));
+
+
 		JPanel topPanel=new JPanel(); //title
-		topPanel.setLayout(new FlowLayout());
-		topPanel.add(label1);
-		
+		topPanel.setLayout(new BorderLayout());
+		topPanel.add(emptyPanel2,BorderLayout.WEST);
+		topPanel.add(titlePanel,BorderLayout.CENTER);
+		topPanel.add(emptyPanel,BorderLayout.EAST);
+		emptyPanel.add(editProfile);
 		topPanel.setPreferredSize(new Dimension(150,100));
 		
+
 		modifyButton(btn1, centerPanel);
-		
 		modifyButton(btn2, centerPanel);
         modifyButton(btn3, centerPanel);
 		
@@ -71,7 +80,7 @@ public class CourseMain extends JFrame implements ActionListener {
 		btn1.addActionListener(this);
 		btn2.addActionListener(this);
 		btn3.addActionListener(this);
-		
+		editProfile.addActionListener(this);
 	}
 
 	@Override
@@ -84,6 +93,8 @@ public class CourseMain extends JFrame implements ActionListener {
 			controller.displayScreen(3);
 		}else if(obj.equals(btn3)) {
 			controller.displayScreen(4);
+		}else if(obj.equals(editProfile)){
+			controller.displayScreen(6);
 		}
 		
 	}

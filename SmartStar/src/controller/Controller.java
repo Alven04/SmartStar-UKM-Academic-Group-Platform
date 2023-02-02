@@ -3,9 +3,12 @@ import java.util.ArrayList;
 
 import model.Course;
 import model.Global;
+import model.Lecturer;
+import model.Student;
 import model.User;
 import view.AddCourse;
 import view.CourseMain;
+import view.EditProfile;
 import view.JoinCourse;
 import view.ViewCourse;
 import view.ViewQuestion;
@@ -30,6 +33,8 @@ public class Controller {
 			new ViewCourse(this);
 		else if(num==5)
 			new ViewQuestion(this);
+		else if(num==6)
+			new EditProfile(this);
 	}
 	
 	public void addCourse(String id, String name, String description) {
@@ -86,5 +91,31 @@ public class Controller {
 	public void removeCourses(String courseName){
 		global.deleteCourse(global.getCourseByCourseName(courseName));
 	}
+
+	public String[] getUserInformation(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			String[] userInformation={student.getUsername(),student.getName(),student.getInstitution(),String.valueOf(student.getYear()),student.getMajor()};
+			return userInformation;
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			String[] userInformation={lecturer.getUsername(),lecturer.getName(),lecturer.getInstitution(),lecturer.getQualification()};
+			return userInformation;
+		}
+		return null;
+	}
+
+	public String determineRole(){
+		if(currentUser instanceof Student){
+			return "Student";
+		}else if(currentUser  instanceof Lecturer){
+			return "Lecturer";
+		}
+		return null;
+	}
+
+
+
+	
 
 }
