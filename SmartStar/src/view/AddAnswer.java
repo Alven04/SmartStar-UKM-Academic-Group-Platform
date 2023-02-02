@@ -16,11 +16,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import controller.QnaController;
+import model.Course;
 
 public class AddAnswer extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private QnaController controller;
+	private Course course;
 
 	private int screenWidth = 600;
 	private int screenHeight = 400;
@@ -158,6 +160,10 @@ public class AddAnswer extends JFrame implements ActionListener {
 		return "Add Answer - Course: ";
 	}
 	
+	private void clearField() {
+		txt_answer.setText("");
+	}
+	
 	private JButton createButton(JButton button, String buttonText) {
 
 		button.setText(buttonText);
@@ -196,8 +202,18 @@ public class AddAnswer extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getSource().equals(btn_back)) {
+			controller.displayViewQuestion(course);
+			setVisible(false);
+		}
+		else if (e.getSource().equals(btn_post)) {
+			
+		}
+		else if (e.getSource().equals(btn_cancel)) {
+			clearField();
+			controller.displayViewQuestion(course);
+			setVisible(false);
+		}
 	}
 
 }

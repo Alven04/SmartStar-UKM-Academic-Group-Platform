@@ -16,11 +16,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.QnaController;
+import model.Course;
 
 public class AddQuestion extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private QnaController controller;
+	private Course course;
 
 	private int screenWidth = 500;
 	private int screenHeight = 375;
@@ -119,6 +121,11 @@ public class AddQuestion extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		return "New Question - Course: ";
 	}
+	
+	private void clearField() {
+		txt_questionTitle.setText("");
+		txt_questionContent.setText("");
+	}
 
 	private JButton createButton(JButton button, String buttonText) {
 
@@ -163,8 +170,18 @@ public class AddQuestion extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getSource().equals(btn_back)) {
+			controller.displayViewQuestion(course);
+			setVisible(false);
+		}
+		else if (e.getSource().equals(btn_post)) {
+			
+		}
+		else if (e.getSource().equals(btn_cancel)) {
+			clearField();
+			controller.displayViewQuestion(course);
+			setVisible(false);
+		}
 	}
 
 }

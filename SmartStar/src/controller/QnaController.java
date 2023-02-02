@@ -13,6 +13,8 @@ public class QnaController {
 	
 	private Controller controller;
 	
+	private Course course;
+	
 	public QnaController(Controller controller) {
 		this.controller = controller;
 	}
@@ -21,23 +23,34 @@ public class QnaController {
 		return controller;
 	}
 	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
 	public void displayViewQuestion(Course course) {
+		this.course = course;
 		if (viewQuestion == null)
-			viewQuestion = new ViewQuestion(this, course);
+			viewQuestion = new ViewQuestion(this);
 		else
 			viewQuestion.setVisible(true);
 	}
 	
 	public void displayAddQuestion(Course course) {
+		this.course = course;
 		if (addQuestion == null)
-			addQuestion = new AddQuestion(this, course);
+			addQuestion = new AddQuestion(this);
 		else
 			addQuestion.setVisible(true);	
 	}
 
 	public void displayAddAnswer(Course course) {
+		this.course = course;
 		if (addAnswer == null)
-			addAnswer = new AddAnswer(this, course);
+			addAnswer = new AddAnswer(this);
 		else
 			addAnswer.setVisible(true);
 	}

@@ -19,11 +19,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controller.QnaController;
+import model.Course;
 
 public class ViewQuestion extends JFrame implements ActionListener, ListSelectionListener {
 
 	private static final long serialVersionUID = 1L;
 	private QnaController controller;
+	private Course course;
 	
 	private int screenWidth = 800;
 	private int screenHeight = 600;
@@ -210,7 +212,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	}
 
 	public String titleText() {
-		return "Course: ";
+		return "Course: " + controller.getCourse().getCourseID() + " - " + controller.getCourse().getCourseName();
 	}
 	
 	private JButton createButton(JButton button, String buttonText) {
@@ -251,8 +253,33 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getSource().equals(btn_back)) {
+			controller.getController().displayScreen(4);
+			setVisible(false);
+		}
+		else if (e.getSource().equals(btn_post)) {
+			controller.displayAddQuestion(course);
+			setVisible(false);
+		}
+		else if (e.getSource().equals(btn_postAnswer)) {
+			controller.displayAddAnswer(course);
+			setVisible(false);
+		}
+		else if (e.getSource().equals(btn_next)) {
+			
+		}
+		else if (e.getSource().equals(btn_previous)) {
+			
+		}
+		else if (e.getSource().equals(btn_upvote)) {
+			
+		}
+		else if (e.getSource().equals(btn_downvote)) {
+			
+		}
+		else if (e.getSource().equals(btn_star)) {
+			
+		}
 	}
 
 	@Override
