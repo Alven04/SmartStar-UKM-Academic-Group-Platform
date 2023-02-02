@@ -92,15 +92,131 @@ public class Controller {
 		global.deleteCourse(global.getCourseByCourseName(courseName));
 	}
 
-	public String[] getUserInformation(){
+	public void setUserUsername(String username){
 		if(currentUser instanceof Student){
 			Student student= (Student) currentUser;
-			String[] userInformation={student.getUsername(),student.getName(),student.getInstitution(),String.valueOf(student.getYear()),student.getMajor()};
-			return userInformation;
+			student.setUsername(username);
 		}else if(currentUser instanceof Lecturer){
 			Lecturer lecturer= (Lecturer) currentUser;
-			String[] userInformation={lecturer.getUsername(),lecturer.getName(),lecturer.getInstitution(),lecturer.getQualification()};
-			return userInformation;
+			 lecturer.setUsername(username);
+		}
+	}
+
+	public void setUserPassword(String password){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			 student.setPassword(password);
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			 lecturer.setPassword(password);
+		}
+	}
+
+	public void setUserName(String name){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			student.setName(name);
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			lecturer.setName(name);
+		}
+	}
+
+	public void setUserInstitution(String institution){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			student.setInstitution(institution);
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			lecturer.setInstitution(institution);
+		}
+	}
+
+	public void setLecturerQualification(String qualification){
+		if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			lecturer.setQualification(qualification);
+		}
+	}
+
+	public void setStudentYear(int year){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			student.setYear(year);
+		}
+	}
+
+	public void setStudentMajor(String major){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			student.setMajor(major);
+		}
+	}
+
+	public String getUserUsername(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			return student.getUsername();
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			return lecturer.getUsername();
+		}
+		return null;
+	}
+
+	public String getUserPassword(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			return student.getPassword();
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			return lecturer.getPassword();
+		}
+		return null;
+	}
+
+	public String getUserName(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			return student.getName();
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			return lecturer.getName();
+		}
+		return null;
+	}
+
+	public String getUserInstitution(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			return student.getInstitution();
+		}else if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			return lecturer.getInstitution();
+		}
+		return null;
+	}
+
+	public String getLecturerQualification(){
+		if(currentUser instanceof Lecturer){
+			Lecturer lecturer= (Lecturer) currentUser;
+			return lecturer.getQualification();
+		}
+		return null;
+	}
+
+	public int getStudentYear(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			return student.getYear();
+		}
+		return 0;
+	}
+
+	public String getStudentMajor(){
+		if(currentUser instanceof Student){
+			Student student= (Student) currentUser;
+			return student.getMajor();
 		}
 		return null;
 	}

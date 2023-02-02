@@ -36,7 +36,6 @@ public class EditProfile extends JFrame implements ActionListener {
 	private JLabel lbl_qualification;
 	private JLabel lbl_name;
 	private JLabel lbl_institution;
-	private ButtonGroup grp_role;
 	private JTextField txt_username = new JTextField();
 	private JTextField txt_password = new JTextField();
 	private JTextField txt_major = new JTextField();
@@ -44,8 +43,8 @@ public class EditProfile extends JFrame implements ActionListener {
 	private JTextField txt_name = new JTextField();
 	private JTextField txt_institution = new JTextField();
 	private JSpinner spn_year = new JSpinner();
-	private JButton btn_signUp;
-	private JButton btn_cancel;
+	private JButton btn_makechanges;
+	private JButton btn_back;
 	private CardLayout crd_detail;
 	private String com_student = "STUDENT";
 	private String com_lecturer = "LECTURER";
@@ -134,19 +133,19 @@ public class EditProfile extends JFrame implements ActionListener {
 		pnl_button = new JPanel();
 		pnl_body.add(pnl_button, BorderLayout.SOUTH);
 		
-		btn_signUp = new JButton("Make Changes");
-		btn_signUp.setFont(bodyFont);
-		btn_signUp.setSize(buttonWidth, buttonHeight);
-		pnl_button.add(btn_signUp);
-		btn_signUp.addActionListener(this);
+		btn_makechanges = new JButton("Make Changes");
+		btn_makechanges.setFont(bodyFont);
+		btn_makechanges.setSize(buttonWidth, buttonHeight);
+		pnl_button.add(btn_makechanges);
+		btn_makechanges.addActionListener(this);
 		
-		btn_cancel = new JButton("Cancel");
-		btn_cancel.setFont(bodyFont);
-		btn_cancel.setSize(buttonWidth, buttonHeight);
-		pnl_button.add(btn_cancel);
-		btn_cancel.addActionListener(this);
+		btn_back = new JButton("Back");
+		btn_back.setFont(bodyFont);
+		btn_back.setSize(buttonWidth, buttonHeight);
+		pnl_button.add(btn_back);
+		btn_back.addActionListener(this);
         getUserInformation();
-
+        
 	}
 
 
@@ -199,19 +198,59 @@ public class EditProfile extends JFrame implements ActionListener {
 
     public void getUserInformation(){
         if (controller.determineRole().equals("Student")) {
-            userInformation=controller.getUserInformation(); //get user's information
+            txt_username.setText(controller.getUserUsername());
+            txt_password.setText(controller.getUserPassword());
+            txt_name.setText(controller.getUserName());
+            txt_institution.setText(controller.getUserInstitution());
+            spn_year.setValue(controller.getStudentYear());
+            txt_major.setText(controller.getStudentMajor());
+
 			crd_detail.show(pnl_detail, com_student);
-            
+
             
 		} else if (controller.determineRole().equals("Lecturer")) {
-            userInformation=controller.getUserInformation();
+            txt_username.setText(controller.getUserUsername());
+            txt_password.setText(controller.getUserPassword());
+            txt_name.setText(controller.getUserName());
+            txt_institution.setText(controller.getUserInstitution());
+            txt_qualification.setText(controller.getLecturerQualification());
+            
 			crd_detail.show(pnl_detail, com_lecturer);
 		}
         
     }
 
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
+        Object obj=e.getSource();
+		if(obj.equals(btn_back)) {
+			this.setVisible(false);
+			controller.displayScreen(1);
+		}else if(obj.equals(btn_makechanges)){
+            if(controller.determineRole().equals("Student")){
+                controller.setUserUsername(txt_username.getText());
+                controller.setUserPassword(txt_password.getText());
+                controller.setUserName(txt_name.getText());
+                controller.setUserInstitution(txt_institution.getText());
+                int year=(int)spn_year.getValue();
+                controller.setStudentYear(year);
+                controller.setStudentMajor(txt_major.getText());
+                
+                this.setVisible(false);
+                controller.displayScreen(1);
+
+            }else if(controller.determineRole().equals("Lecturer")){
+                controller.setUserUsername(txt_username.getText());
+                controller.setUserPassword(txt_password.getText());
+                controller.setUserName(txt_name.getText());
+                controller.setUserInstitution(txt_institution.getText());
+                controller.setLecturerQualification(txt_qualification.getText());
+
+                this.setVisible(false);
+                controller.displayScreen(1);
+            }
+        }
     }
 
 }
