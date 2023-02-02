@@ -11,12 +11,14 @@ import view.CourseMain;
 import view.EditProfile;
 import view.JoinCourse;
 import view.ViewCourse;
-import view.ViewQuestion;
 
 public class Controller {
 	private Course c;
 	private User currentUser;
 	private Global global = new Global();
+	
+	private SignInController signInController;
+	private QnaController qnaController;
 	
 	public Controller() {
 //		this.displayScreen(1);
@@ -31,8 +33,6 @@ public class Controller {
 			new JoinCourse(this);
 		else if(num==4)
 			new ViewCourse(this);
-		else if(num==5)
-			new ViewQuestion(this);
 		else if(num==6)
 			new EditProfile(this);
 	}
@@ -230,8 +230,20 @@ public class Controller {
 		return null;
 	}
 
+	public SignInController getSignInController() {
+		return signInController;
+	}
 
+	public void setSignInController(SignInController signInController) {
+		this.signInController = signInController;
+	}
 
-	
+	public QnaController getQnaController() {
+		return qnaController;
+	}
+
+	public void setQnaController(QnaController qnaController) {
+		this.qnaController = qnaController;
+	}
 
 }
