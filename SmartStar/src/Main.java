@@ -23,8 +23,8 @@ public class Main {
 		initializeStudent("alven", "alven", "Alvenlim", "UKM", 2, "Computer Science");
 		
 		initializeLecturer("hafiz", "password", "Dr Hafiz", "UKM", "Professor");
-		initializeLecturer("siti", "password", "Dr Siti", "UKM", "Professor");
-		initializeLecturer("rohizah", "password", "Dr Rohizah", "UKM", "Assosciate Professor");
+		initializeLecturer("siti", "12345", "Dr Siti", "UKM", "Professor");
+		initializeLecturer("rohizah", "12345", "Dr Rohizah", "UKM", "Assosciate Professor");
 
 		initializeCourse("TK2023", "OOSE", "Learn Software Development Life Cycle", "hafiz", new ArrayList<String>(Arrays.asList("daphne", "rebekah","alven")));
 		initializeCourse("TK1143", "Programming", "Learn Java Programming", "rohizah", new ArrayList<String>(Arrays.asList("daphne", "rebekah","alven")));
