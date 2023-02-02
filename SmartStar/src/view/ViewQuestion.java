@@ -2,7 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -17,8 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -32,7 +29,6 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	private int screenWidth = 800;
 	private int screenHeight = 600;
 	private String frameTitle = "View Question - SmartStar";
-	private String title;
 	private String font = "SegoeUI";
 	private Font titleFont = new Font(font, Font.BOLD, 32);
 	private Font headingFont = new Font(font, Font.BOLD, 12);
@@ -247,7 +243,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		return textArea;
 	}
 	
-	private JList<?> createList(JList list) {
+	private JList<?> createList(JList<?> list) {
 		
 		list.setFont(bodyFont);
 		list.addListSelectionListener(this);
