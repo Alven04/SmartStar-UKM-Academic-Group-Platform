@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 import model.Course;
 import model.Global;
-import model.Student;
 import model.User;
 import view.AddCourse;
 import view.CourseMain;
@@ -13,12 +12,11 @@ import view.ViewQuestion;
 
 public class Controller {
 	private Course c;
-	protected User currentUser;
-	private Global global;
+	private User currentUser;
+	private Global global = new Global();
 	
-	public Controller(Global global) {
-		this.displayScreen(1);
-		this.global = global;
+	public Controller() {
+//		this.displayScreen(1);
 	}
 	
 	public void displayScreen(int num) {
@@ -46,9 +44,22 @@ public class Controller {
 		currentUser.joinCourse(global.getCourseByCourseID(cid));
 	}
 	
-	public void setCurrentUser(User u) {
-		currentUser=u;
+	public User getCurrentUser() {
+		return currentUser;
 	}
+
+	public void setCurrentUser(User user) {
+		currentUser=user;
+	}
+	
+	public Global getGlobal() {
+		return global;
+	}
+
+	public void setGlobal(Global global) {
+		this.global = global;
+	}
+
 	public boolean detetermineCourseExists(String courseID){
 		return global.detetermineCourseExists(courseID);
 	}

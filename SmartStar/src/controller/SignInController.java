@@ -1,5 +1,4 @@
 package controller;
-import model.Global;
 import model.Lecturer;
 import model.Student;
 import model.User;
@@ -9,51 +8,41 @@ import view.SplashScreen;
 
 public class SignInController {
 
-	private int minPasswordLength = 5;
-	
-	
 	private SplashScreen splashScreen;
 	private SignUpScreen signUpScreen1;
 	private SignInScreen signInScreen;
 	
-	private Global global = new Global();
-	private User currentUser;
-
 	private Controller controller;
 	
-	public Global getGlobal() {
-		return global;
+	public SignInController(Controller controller) {
+		this.controller = controller;
 	}
-
-	public void setGlobal(Global global) {
-		this.global = global;
-	}
-
+	
 	public boolean usernameTaken(String username) {
-		return global.getUserByUsername(username) != null;
+		return controller.getGlobal().getUserByUsername(username) != null;
 	}
 	
 	public boolean passwordValid(String password) {
-		return password.length() >= minPasswordLength;
+		return password.length() >= User.MIN_PASSWORD_LENGTH;
 	}
 	
 	public String signUpStudent(String username, String password, String name, String institution, int year, String major) {
-		global.addUser(new Student(username, password, name, institution, year, major));
-		return global.getUserByUsername(username).getUsername();
+		controller.getGlobal().addUser(new Student(username, password, name, institution, year, major));
+		return controller.getGlobal().getUserByUsername(username).getUsername();
 	}
 	
 	public String signUpLecturer(String username, String password, String name, String institution, String qualification) {
-		global.addUser(new Lecturer(username, password, name, institution, qualification));
-		return global.getUserByUsername(username).getUsername();
+		controller.getGlobal().addUser(new Lecturer(username, password, name, institution, qualification));
+		return controller.getGlobal().getUserByUsername(username).getUsername();
 	}
 
 	public boolean signIn(String username, String password) {
-		User user = global.getUserByUsername(username);
+		User user = controller.getGlobal().getUserByUsername(username);
 		if (user == null) {
 			return false;
 		} else {
 			if (password.equals(user.getPassword())) {
-				currentUser = user;
+				controller.setCurrentUser(user);
 				return true;
 			} else {
 				return false;
@@ -83,7 +72,6 @@ public class SignInController {
 	}
 	
 	public void displayMainMenu() {
-		controller = new Controller(global);
-		controller.setCurrentUser(currentUser);
+		controller.displayScreen(1);
 	}
 }
