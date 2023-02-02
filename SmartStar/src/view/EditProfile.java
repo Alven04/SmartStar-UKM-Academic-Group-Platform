@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import controller.Controller;
+import java.awt.Color;
 
 public class EditProfile extends JFrame implements ActionListener {
 	private Controller controller;
@@ -145,7 +146,17 @@ public class EditProfile extends JFrame implements ActionListener {
 		pnl_button.add(btn_back);
 		btn_back.addActionListener(this);
         getUserInformation();
-        
+
+        //Color
+		pnl_body.setBackground(new Color(220, 174, 150));
+		pnl_empty_detail.setBackground(new Color(220, 174, 150));
+		pnl_login.setBackground(new Color(220, 174, 150));
+		pnl_role.setBackground(new Color(220, 174, 150));
+		pnl_button.setBackground(new Color(220, 174, 150));
+		pnl_title.setBackground(new Color(220, 174, 150));
+		pnl_lecturer_detail.setBackground(Color.white);
+		pnl_detail.setBackground(Color.white);
+		
 	}
 
 
@@ -159,7 +170,7 @@ public class EditProfile extends JFrame implements ActionListener {
 		textField.setColumns(textColumn);
 		textField.setFont(bodyFont);
 		newPanel.add(textField);
-		
+		newPanel.setBackground(Color.white);
 		return newPanel;
 	}
 	
