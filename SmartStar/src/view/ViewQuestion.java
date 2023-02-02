@@ -2,6 +2,8 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +16,7 @@ import javax.swing.JTextField;
 
 import controller.Controller;
 
-public class ViewQuestion extends JFrame {
+public class ViewQuestion extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
@@ -29,7 +31,7 @@ public class ViewQuestion extends JFrame {
 	private Font bodyFont = new Font(font, Font.PLAIN, 12);
 
 	private JPanel pnl_title = new JPanel();
-	private JLabel lbl_title = new JLabel(title);
+	private JLabel lbl_title = new JLabel();
 	private JButton btn_back = new JButton();
 	
 	
@@ -79,5 +81,51 @@ public class ViewQuestion extends JFrame {
 		setLayout(new BorderLayout());
 		setVisible(true);
 
+		// title panel
+		add(pnl_title, BorderLayout.NORTH);
+
+		pnl_title.setLayout(new BorderLayout(10, 0));
+		
+		pnl_title.add(createButton(btn_back, "Back"), BorderLayout.WEST);
+		
+		lbl_title.setText(titleText());
+		lbl_title.setFont(titleFont);
+		pnl_title.add(lbl_title);
+		
+		// list panel
+		pnl_list.setLayout(new BorderLayout());
+		pnl_list.add(btn_back);
+
 	}
+	
+	public String titleText() {
+		return "Course: ";
+	}
+	
+	private JButton createButton(JButton button, String buttonText) {
+
+		button.setText(buttonText);
+		button.setFont(bodyFont);
+		button.addActionListener(this);
+		return button;
+	}
+	
+	private JPanel createLabel(JLabel label, String labelText) {
+		JPanel newPanel = new JPanel();
+
+		label.setText(labelText);
+		label.setFont(headingFont);
+		newPanel.add(label);
+		
+		return newPanel;
+	}
+	
+	 
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}	
+
 }
