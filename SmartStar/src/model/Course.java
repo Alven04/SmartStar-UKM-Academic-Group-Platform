@@ -7,6 +7,7 @@ public class Course {
 	private String courseID;
 	private User courseOwner;
 	private ArrayList<User> courseMembers=new ArrayList<User>();
+	private ArrayList<Question> questions = new ArrayList<>();
 	
 	public Course(String courseID,String courseName,String courseDescription) { 
 		this.courseID=courseID;
@@ -42,5 +43,28 @@ public class Course {
 		courseMembers.add(currentUser);
 	}
 	
+	public String getCourseDescription() {
+		return courseDescription;
+	}
+	
+	public ArrayList<Question> getQuestions() {
+		return questions;
+	}
+	
+	public boolean addQuestion(Question question) {
+		if (questions.contains(question)) {
+			throw new RuntimeException("Duplicated question");
+//			return false;
+		}
+		return questions.add(question);	
+	}
+
+	public Question getQuestionByTitle(String title) {
+		for (Question question : questions) {
+			if (question.getTitle().equals(title))
+				return question;
+		}
+		return null;
+	}
 	
 }
