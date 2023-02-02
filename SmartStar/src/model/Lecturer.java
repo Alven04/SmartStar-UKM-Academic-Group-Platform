@@ -21,9 +21,4 @@ public class Lecturer extends User {
 		this.qualification = qualification;
 	}
 
-	public void updateDetails(String name, String institution, String qualification) {
-		setName(name);
-		setInstitution(institution);
-		setQualification(qualification);
-	}
 }

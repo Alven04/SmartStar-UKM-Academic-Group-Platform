@@ -32,10 +32,4 @@ public class Student extends User {
 		this.major = major;
 	}
 	
-	public void updateDetails(String name, String institution, int year, String major) {
-		setName(name);
-		setInstitution(institution);
-		setYear(year);
-		setMajor(major);
-	}
 }

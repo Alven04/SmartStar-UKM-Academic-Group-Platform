@@ -113,7 +113,8 @@ public abstract class User {
 	 */
 	public boolean createCourse(Course course) {
 		if (coursesCreated.contains(course)) {
-			return false;
+			throw new RuntimeException("Course already exists");
+//			return false;
 		}
 		coursesCreated.add(course);	
 		return joinCourse(course);

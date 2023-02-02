@@ -18,6 +18,10 @@ public class SignInController {
 		this.controller = controller;
 	}
 	
+	public Controller getController() {
+		return controller;
+	}
+
 	public boolean usernameTaken(String username) {
 		return controller.getGlobal().getUserByUsername(username) != null;
 	}
