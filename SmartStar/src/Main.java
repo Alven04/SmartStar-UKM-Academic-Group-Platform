@@ -20,8 +20,15 @@ public class Main {
 		
 		initializeStudent("rebekah", "admin", "Rebekah", "UKM", 1, "Computer Science");
 		initializeStudent("daphne", "daphnee", "Daphne", "USM", 2, "Computer Science");
-		initializeLecturer("hafiz", "password", "Dr Hafiz", "UKM", "Very Good Database Lecturer");
-		initializeCourse("TK1143", "Programming", "Learn Java Programming", "hafiz", new ArrayList<String>(Arrays.asList("daphne", "rebekah")));
+		initializeStudent("alven", "alven", "Alvenlim", "UKM", 2, "Computer Science");
+		
+		initializeLecturer("hafiz", "password", "Dr Hafiz", "UKM", "Professor");
+		initializeLecturer("siti", "password", "Dr Siti", "UKM", "Professor");
+		initializeLecturer("rohizah", "password", "Dr Rohizah", "UKM", "Assosciate Professor");
+
+		initializeCourse("TK2023", "OOSE", "Learn Software Development Life Cycle", "hafiz", new ArrayList<String>(Arrays.asList("daphne", "rebekah","alven")));
+		initializeCourse("TK1143", "Programming", "Learn Java Programming", "rohizah", new ArrayList<String>(Arrays.asList("daphne", "rebekah","alven")));
+		initializeCourse("TK1964", "Database", "Learn Structured Query Language", "siti", new ArrayList<String>(Arrays.asList("daphne", "rebekah")));
 	}
 	
 	private static void initializeStudent(String username, String password, String name,
