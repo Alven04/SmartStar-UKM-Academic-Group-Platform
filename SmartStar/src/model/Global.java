@@ -21,8 +21,8 @@ public class Global {
 		return userList.add(user);
 	}
 	
-	public void deleteUser(User user) {
-		userList.remove(user);
+	public boolean deleteUser(User user) {
+		return userList.remove(user);
 	}
 
 	public boolean addCourse(Course course) {
@@ -32,10 +32,16 @@ public class Global {
 		return courseList.add(course);
 	}
 	
-	public void deleteCourse(Course course) {
-		courseList.remove(course);
+	public boolean deleteCourse(Course course) {
+		return courseList.remove(course);
 	}
 	
+	/**
+	 * 
+	 * @param username
+	 * @return Username exist: return the user object;
+	 * Username not exist: return null.
+	 */
 	public User getUserByUsername(String username) {
 		for (User user : userList) {
 			if (user.getUsername().equals(username)) {
@@ -45,6 +51,12 @@ public class Global {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param courseName
+	 * @return courseName exist: return the user object;
+	 * courseName not exist: return null.
+	 */
 	public Course getCourseByCourseName(String courseName) {
 		for (Course course : courseList) {
 			if (course.getCourseName().equals(courseName)) {
@@ -54,6 +66,12 @@ public class Global {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return course ID exist: return the user object;
+	 * course ID not exist: return null.
+	 */
 	public Course getCourseByCourseID(String id) {
 		for (Course course : courseList) {
 			if (course.getCourseID().equals(id)) {
