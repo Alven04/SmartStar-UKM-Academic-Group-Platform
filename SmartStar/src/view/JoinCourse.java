@@ -2,6 +2,7 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import controller.Controller;
 
@@ -15,10 +16,12 @@ public class JoinCourse extends JFrame implements ActionListener {
 	private JTextField searchCourseText;
 	private JButton searchCourseButton;
 	private JPanel panel1;
-	private JPanel panel2;
+	private JPanel panel2,panel3,panel4;
+	private Border blackline;
 	private JFrame f;
-	
+
 	public JoinCourse(Controller controller) {
+		blackline = BorderFactory.createLineBorder(Color.black);
 		this.controller=controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("SmartStar");
@@ -26,17 +29,22 @@ public class JoinCourse extends JFrame implements ActionListener {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		Container pane = getContentPane();
-		pane.setBackground(new Color(204,204,204));
-		pane.setLayout(new BorderLayout());
+		pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
 		
-		panel1=new JPanel(new BorderLayout());
-		panel1.setBackground(new Color(0,100,255));
-		panel2=new JPanel(new FlowLayout());
-		panel2.setBackground(new Color(0,100,255));
+		panel1=new JPanel();
+		panel1.setLayout(new BorderLayout());
+		panel1.setAlignmentX(CENTER_ALIGNMENT);
+		//panel2.setBorder(blackline);
+		panel2=new JPanel();
+		panel2.setBorder(blackline);
+		panel2.setAlignmentX(CENTER_ALIGNMENT);
+		panel3=new JPanel();
+		panel3.setLayout(new BorderLayout());
+		panel4=new JPanel();
 		
 		title=new JLabel("Join Course");
-		title.setForeground(Color.WHITE);
-		title.setFont(new Font("Times New Roman", Font.PLAIN,16));
+		title.setForeground(Color.black);
+		title.setFont(new Font("SegoeUI", Font.BOLD, 36));
 		title.setHorizontalAlignment(JLabel.CENTER);
 		
 		searchCourseLabel=new JLabel("Join a course by entering the course ID:");
@@ -51,18 +59,21 @@ public class JoinCourse extends JFrame implements ActionListener {
 		backBtn=new JButton("Back");
 		backBtn.setForeground(new Color(0,0,0));
 		
-		panel1.add(backBtn,BorderLayout.LINE_START);
-		panel1.add(title,BorderLayout.CENTER);
 		panel2.add(searchCourseLabel);
 		panel2.add(searchCourseText);
-		panel2.add(searchCourseButton);
+		panel1.add(panel2,BorderLayout.CENTER);
+		panel4.add(backBtn);
+		panel4.add(searchCourseButton);
+		panel3.add(panel4,BorderLayout.CENTER);
+		panel4.setAlignmentX(CENTER_ALIGNMENT);
 		
-		
-		pane.add(panel1,BorderLayout.PAGE_START);
-		pane.add(panel2,BorderLayout.CENTER);
-		
+		pane.add(title);
+		pane.add(panel1);
+		pane.add(panel3);
+	
 		backBtn.addActionListener(this);
 		searchCourseButton.addActionListener(this);
+
 	}
 
 	@Override

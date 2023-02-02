@@ -29,7 +29,7 @@ public class AddCourse extends JFrame implements ActionListener {
 	int bodyFontSize = 16;
 	private Font bodyFont = new Font(font, Font.PLAIN, bodyFontSize);
 	private Font headingFont = new Font(font, Font.BOLD, bodyFontSize);
-
+	
 	public AddCourse(Controller controller) {
 		blackline = BorderFactory.createLineBorder(Color.black);
 		this.controller= controller;
@@ -75,7 +75,6 @@ public class AddCourse extends JFrame implements ActionListener {
 		subPanel.setBorder(blackline);
 
 		JPanel buttonPanel=new JPanel(); //buttons
-
 		buttonPanel.add(btn_back);
 		buttonPanel.add(btn_confirm);
 
@@ -98,6 +97,7 @@ public class AddCourse extends JFrame implements ActionListener {
 		
 		btn_back.addActionListener(this);
 		btn_confirm.addActionListener(this);
+		
 	}
 
 	private JPanel createLabelTestFieldPair(JLabel label, String labelText, JTextField textField, int textColumn) {
