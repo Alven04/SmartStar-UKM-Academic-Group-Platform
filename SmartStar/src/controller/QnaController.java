@@ -1,5 +1,6 @@
 package controller;
 
+import model.Course;
 import view.AddAnswer;
 import view.AddQuestion;
 import view.ViewQuestion;
@@ -19,24 +20,24 @@ public class QnaController {
 	public Controller getController() {
 		return controller;
 	}
-
-	public void displayViewQuestion() {
+	
+	public void displayViewQuestion(Course course) {
 		if (viewQuestion == null)
-			viewQuestion = new ViewQuestion(this);
+			viewQuestion = new ViewQuestion(this, course);
 		else
 			viewQuestion.setVisible(true);
 	}
 	
-	public void displayAddQuestion() {
+	public void displayAddQuestion(Course course) {
 		if (addQuestion == null)
-			addQuestion = new AddQuestion(this);
+			addQuestion = new AddQuestion(this, course);
 		else
 			addQuestion.setVisible(true);	
 	}
 
-	public void displayAddAnswer() {
+	public void displayAddAnswer(Course course) {
 		if (addAnswer == null)
-			addAnswer = new AddAnswer(this);
+			addAnswer = new AddAnswer(this, course);
 		else
 			addAnswer.setVisible(true);
 	}
