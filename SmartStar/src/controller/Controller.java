@@ -73,13 +73,11 @@ public class Controller {
 	}
 
 	public String[] getCourseJoinedByUser(){
-		ArrayList<Course> list=new ArrayList<Course>();
-		list.addAll(currentUser.getCoursesJoined());
+		ArrayList<Course> list=currentUser.getCoursesJoined();
 		String[] arrayList=new String[list.size()];
 		int i=0;
 		for(Course c: list){
-			String courseName=c.getCourseName();
-			arrayList[i]=courseName;
+			arrayList[i]=c.getCourseName();
 			i++;
 		}
 		return arrayList;
