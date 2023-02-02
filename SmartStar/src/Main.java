@@ -26,7 +26,7 @@ public class Main {
 		initializeStudent("stuart", "handsome", "Stuart", "UKM", 2, "Computer Science");
 		initializeStudent("alven", "alven", "Alvenlim", "UKM", 2, "Computer Science");
 		
-		//test only: allows sign in without entering username/password
+		//PLEASE DELETE BEFORE SUBMIT: allows sign in without entering username/password (for debug only)
 		initializeStudent("", "", "Speedrunner", "Speedrun school", 9, "Speedrun");
 		
 		initializeLecturer("hafiz", "password", "Dr Hafiz", "UKM", "Professor");
