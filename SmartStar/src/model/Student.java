@@ -8,6 +8,13 @@ public class Student extends User {
 	private String major;
 	private ArrayList<Star> stars;
 	
+	private static final String[] RANKS = {
+			"No rank", "BRONZE Rank", "SILVER Rank", "GOLD Rank", "PLATINUM Rank"
+	};
+	private static final int[] RANK_REQUIREMENTS = {
+			0, 5, 10, 15, 20
+	};
+	
 	public Student (String username, String password) {
 		super(username, password);
 		this.year = 0;
@@ -48,4 +55,13 @@ public class Student extends User {
 		return stars.add(star);	
 	}
 
+	public String getRank() {
+		int starCount = stars.size();
+		for (int i = RANKS.length - 1; i >= 0; i--) {
+			if (starCount > RANK_REQUIREMENTS[i]) {
+				return RANKS[i];
+			}
+		}
+		return "Unranked";
+	}
 }
