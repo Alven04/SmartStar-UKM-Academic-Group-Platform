@@ -15,12 +15,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import controller.Controller;
+import controller.QnaController;
 
 public class AddQuestion extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private Controller controller;
+	private QnaController controller;
 
 	private int screenWidth = 500;
 	private int screenHeight = 375;
@@ -53,7 +53,7 @@ public class AddQuestion extends JFrame implements ActionListener {
 	private JButton btn_post = new JButton();
 	private JButton btn_cancel = new JButton();
 	
-	public AddQuestion(Controller controller) {
+	public AddQuestion(QnaController controller) {
 		
 		this.controller = controller;
 		

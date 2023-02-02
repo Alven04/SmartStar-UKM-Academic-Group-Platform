@@ -18,12 +18,12 @@ import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import controller.Controller;
+import controller.QnaController;
 
 public class ViewQuestion extends JFrame implements ActionListener, ListSelectionListener {
 
 	private static final long serialVersionUID = 1L;
-	private Controller controller;
+	private QnaController controller;
 	
 	private int screenWidth = 800;
 	private int screenHeight = 600;
@@ -79,7 +79,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	private JButton btn_postAnswer = new JButton();
 	
 
-	public ViewQuestion(Controller controller) {
+	public ViewQuestion(QnaController controller) {
 		
 		this.controller = controller;
 		

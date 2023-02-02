@@ -2,18 +2,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import controller.Controller;
+import controller.QnaController;
 import controller.SignInController;
 
 public class Main {
 
 	private static Controller controller = new Controller();
 	private static SignInController signIn = new SignInController(controller);
+	private static QnaController qna = new QnaController(controller);
 
 	public static void main(String[] args) {
 		
+		controller.setSignInController(signIn);
+		controller.setQnaController(qna);
 		initialize();
 		signIn.displaySplashScreen();
-//		new ViewQuestion(null);
+
 	}
 	
 	private static void initialize() {
