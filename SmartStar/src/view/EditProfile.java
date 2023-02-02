@@ -48,7 +48,7 @@ public class EditProfile extends JFrame implements ActionListener {
 	private CardLayout crd_detail;
 	private String com_student = "STUDENT";
 	private String com_lecturer = "LECTURER";
-	private String[] userInformation;
+	private JFrame f;
 	String font = "Segoe UI";
 	int bodyFontSize = 16;
 	private Font bodyFont = new Font(font, Font.PLAIN, bodyFontSize);
@@ -206,7 +206,6 @@ public class EditProfile extends JFrame implements ActionListener {
             txt_major.setText(controller.getStudentMajor());
 
 			crd_detail.show(pnl_detail, com_student);
-
             
 		} else if (controller.determineRole().equals("Lecturer")) {
             txt_username.setText(controller.getUserUsername());
@@ -228,27 +227,30 @@ public class EditProfile extends JFrame implements ActionListener {
 			this.setVisible(false);
 			controller.displayScreen(1);
 		}else if(obj.equals(btn_makechanges)){
-            if(controller.determineRole().equals("Student")){
-                controller.setUserUsername(txt_username.getText());
-                controller.setUserPassword(txt_password.getText());
-                controller.setUserName(txt_name.getText());
-                controller.setUserInstitution(txt_institution.getText());
-                int year=(int)spn_year.getValue();
-                controller.setStudentYear(year);
-                controller.setStudentMajor(txt_major.getText());
-                
-                this.setVisible(false);
-                controller.displayScreen(1);
+            int a=JOptionPane.showConfirmDialog(f, "Do you wish to modify the user's information?");
+            if(a==JOptionPane.YES_OPTION){
+                if(controller.determineRole().equals("Student")){
+                    controller.setUserUsername(txt_username.getText());
+                    controller.setUserPassword(txt_password.getText());
+                    controller.setUserName(txt_name.getText());
+                    controller.setUserInstitution(txt_institution.getText());
+                    int year=(int)spn_year.getValue();
+                    controller.setStudentYear(year);
+                    controller.setStudentMajor(txt_major.getText());
+
+                    this.setVisible(false);
+                    controller.displayScreen(1);
 
             }else if(controller.determineRole().equals("Lecturer")){
-                controller.setUserUsername(txt_username.getText());
-                controller.setUserPassword(txt_password.getText());
-                controller.setUserName(txt_name.getText());
-                controller.setUserInstitution(txt_institution.getText());
-                controller.setLecturerQualification(txt_qualification.getText());
+                    controller.setUserUsername(txt_username.getText());
+                    controller.setUserPassword(txt_password.getText());
+                    controller.setUserName(txt_name.getText());
+                    controller.setUserInstitution(txt_institution.getText());
+                    controller.setLecturerQualification(txt_qualification.getText());
 
-                this.setVisible(false);
-                controller.displayScreen(1);
+                    this.setVisible(false);
+                    controller.displayScreen(1);
+                }
             }
         }
     }
