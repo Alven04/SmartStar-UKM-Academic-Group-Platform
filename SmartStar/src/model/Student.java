@@ -1,8 +1,12 @@
 package model;
+
+import java.util.ArrayList;
+
 public class Student extends User {
 
 	private int year;
 	private String major;
+	private ArrayList<Star> stars;
 	
 	public Student (String username, String password) {
 		super(username, password);
@@ -31,5 +35,17 @@ public class Student extends User {
 	public void setMajor(String major) {
 		this.major = major;
 	}
+
+	public ArrayList<Star> getStars() {
+		return stars;
+	}
 	
+	public boolean addStar(Star star) {
+		if (stars.contains(star)) {
+			throw new RuntimeException("Duplicated star");
+//			return false;
+		}
+		return stars.add(star);	
+	}
+
 }
