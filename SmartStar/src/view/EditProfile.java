@@ -229,6 +229,7 @@ public class EditProfile extends JFrame implements ActionListener {
 		}else if(obj.equals(btn_makechanges)){
             int a=JOptionPane.showConfirmDialog(f, "Do you wish to modify the user's information?");
             if(a==JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(null, "Your profile's information have been modified","Edit Profile",JOptionPane.PLAIN_MESSAGE);
                 if(controller.determineRole().equals("Student")){
                     controller.setUserUsername(txt_username.getText());
                     controller.setUserPassword(txt_password.getText());
