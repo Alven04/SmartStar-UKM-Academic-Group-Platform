@@ -118,16 +118,16 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		
 		pnl_content.add(pnl_asker, BorderLayout.NORTH);
 		pnl_asker.setLayout(new BorderLayout());
-		pnl_asker.add(createLabel(lbl_asker, askerName()), BorderLayout.NORTH);
-		pnl_asker.add(createLabel(lbl_askerDetail, askerDetail()));
+		pnl_asker.add(createLabel(lbl_asker, controller.askerName()), BorderLayout.NORTH);
+		pnl_asker.add(createLabel(lbl_askerDetail, controller.askerDetail()));
 		
 		pnl_content.add(pnl_qna, BorderLayout.CENTER);
 		pnl_qna.setLayout(new GridLayout(2, 1));
 		
 		pnl_qna.add(pnl_question);
 		pnl_question.setLayout(new BorderLayout());
-		pnl_question.add(createLabel(lbl_question, questionTitle()), BorderLayout.NORTH);
-		pnl_question.add(createNoEditTextArea(txt_question, questionContent(), scr_question));
+		pnl_question.add(createLabel(lbl_question, controller.questionTitle()), BorderLayout.NORTH);
+		pnl_question.add(createNoEditTextArea(txt_question, controller.questionContent(), scr_question));
 		
 		pnl_qna.add(pnl_answer);
 		
@@ -136,71 +136,27 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		pnl_answerBody.setLayout(new BorderLayout());
 		pnl_answerBody.add(pnl_answerer, BorderLayout.NORTH);
 		pnl_answerer.setLayout(new BorderLayout());
-		pnl_answerer.add(createLabel(lbl_answerer, answererName()), BorderLayout.NORTH);
-		pnl_answerer.add(createLabel(lbl_answererDetail, answererDetail()));
-		pnl_answerBody.add(createNoEditTextArea(txt_answer, answerContent(), scr_answer), BorderLayout.CENTER);
+		pnl_answerer.add(createLabel(lbl_answerer, controller.answererName()), BorderLayout.NORTH);
+		pnl_answerer.add(createLabel(lbl_answererDetail, controller.answererDetail()));
+		pnl_answerBody.add(createNoEditTextArea(txt_answer, controller.answerContent(), scr_answer), BorderLayout.CENTER);
 		
 		pnl_answer.add(pnl_vote, BorderLayout.EAST);
 		pnl_vote.setLayout(new BoxLayout(pnl_vote, BoxLayout.Y_AXIS));
 		pnl_vote.add(createButton(btn_upvote, "Upvote"));
-		pnl_vote.add(createLabel(lbl_upvote, upvoteCount()));
+		pnl_vote.add(createLabel(lbl_upvote, controller.upvoteCount()));
 		pnl_vote.add(createButton(btn_downvote, "Downvote"));
-		pnl_vote.add(createLabel(lbl_downvote, downvoteCount()));
+		pnl_vote.add(createLabel(lbl_downvote, controller.downvoteCount()));
 		pnl_vote.add(createButton(btn_star, "Star"));
-		pnl_vote.add(createLabel(lbl_star, starCount()));
+		pnl_vote.add(createLabel(lbl_star, controller.starCount()));
 		pnl_vote.add(createList(lst_star));
 		
 		pnl_content.add(pnl_index, BorderLayout.SOUTH);
 		pnl_index.add(createButton(btn_previous, "Previous"));
-		pnl_index.add(createLabel(lbl_index, index()));
+		pnl_index.add(createLabel(lbl_index, controller.index()));
 		pnl_index.add(createButton(btn_next, "Next"));
 		pnl_index.add(createButton(btn_postAnswer, "Add Answer"));
 	}
-	
-	private String starCount() {
-		return controller.starCount();
-	}
-
-	private String downvoteCount() {
-		return controller.downvoteCount();
-	}
-
-	private String upvoteCount() {
-		return controller.upvoteCount();
-	}
-
-	private String index() {
-		return controller.index();
-	}
-
-	private String answerContent() {
-		return controller.answerContent();
-	}
-
-	private String answererDetail() {
-		return controller.answererDetail();
-	}
-
-	private String answererName() {
-		return controller.answererName();
-	}
-
-	private String questionContent() {
-		return controller.questionContent();
-	}
-
-	private String questionTitle() {
-		return controller.questionTitle();
-	}
-
-	private String askerDetail() {
-		return controller.askerDetail();
-	}
-
-	private String askerName() {
-		return controller.askerName();
-	}
-	
+		
 	public String titleText() {
 		return "Course: " + controller.getCourse().getCourseID() + " - " + controller.getCourse().getCourseName();
 	}
@@ -214,18 +170,18 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	}
 	
 	private void refreshContent() {
-		lbl_asker.setText(askerName());
-		lbl_askerDetail.setText(askerDetail());
-		lbl_question.setText(getTitle());
-		txt_question.setText(questionContent());
-		lbl_answerer.setText(answererName());
-		lbl_answererDetail.setText(answererDetail());
-		txt_answer.setText(answerContent());
-		lbl_upvote.setText(upvoteCount());
-		lbl_downvote.setText(downvoteCount());
-		lbl_star.setText(starCount());
+		lbl_asker.setText(controller.askerName());
+		lbl_askerDetail.setText(controller.askerDetail());
+		lbl_question.setText(controller.questionTitle());
+		txt_question.setText(controller.questionContent());
+		lbl_answerer.setText(controller.answererName());
+		lbl_answererDetail.setText(controller.answererDetail());
+		txt_answer.setText(controller.answerContent());
+		lbl_upvote.setText(controller.upvoteCount());
+		lbl_downvote.setText(controller.downvoteCount());
+		lbl_star.setText(controller.starCount());
 		refreshStarList();
-		lbl_index.setText(index());
+		lbl_index.setText(controller.index());
 	}
 	
 	private JButton createButton(JButton button, String buttonText) {
