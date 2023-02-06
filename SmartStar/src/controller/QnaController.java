@@ -60,6 +60,9 @@ public class QnaController {
 	}
 
 	public String[] getQuestionTitles() {
+		if (course == null) {
+			return new String[0];
+		}
 		int size = course.getQuestions().size();
 		String[] titles = new String[size];
 		for (int i = 0; i < size; i++) {
@@ -69,6 +72,9 @@ public class QnaController {
 	}
 	
 	public String[] getStarLecturerNames() {
+		if (currentAnswer == null) {
+			return new String[0];
+		}
 		int size = currentAnswer.getStars().size();
 		String[] names = new String[size];
 		for (int i = 0; i < size; i++) {
@@ -101,10 +107,16 @@ public class QnaController {
 	}
 	
 	public String starCount() {
+		if (currentAnswer == null) {
+			return "";
+		}
 		return currentAnswer.getStars().size() + " Stars";
 	}
 	
 	public String downvoteCount() {
+		if (currentAnswer == null) {
+			return "";
+		}
 		ArrayList<Vote> votes = currentAnswer.getVotes();
 		int count = 0;
 		for (Vote vote : votes) {
@@ -120,6 +132,9 @@ public class QnaController {
 	}
 
 	public String upvoteCount() {
+		if (currentAnswer == null) {
+			return "";
+		}
 		ArrayList<Vote> votes = currentAnswer.getVotes();
 		int count = 0;
 		for (Vote vote : votes) {
@@ -135,35 +150,60 @@ public class QnaController {
 	}
 	
 	public String index() {
+		if (currentQuestion == null) {
+			return "";
+		}
 		int currentIndex = 0;
 		int total = currentQuestion.getAnswers().size();
 		return "Answer " + currentIndex + " of " + total;
 	}
 	
 	public String answerContent() {
+		if (currentAnswer == null) {
+			return "No answer";
+		}
 		return currentAnswer.getContent();
 	}
 	
 	public String answererDetail() {
+		if (currentAnswer == null) {
+			return "";
+		}
 		return displayDetail(currentAnswer.getOwner());
 	}
 	
 	public String answererName() {
+		if (currentAnswer == null) {
+			return "";
+		}
 		return "Answer by " + displayName(currentAnswer.getOwner());
 	}
+	
 	public String questionContent() {
+		if (currentQuestion == null) {
+			return "No question";
+		}
 		return currentQuestion.getContent();
 	}
 	
 	public String questionTitle() {
+		if (currentQuestion == null) {
+			return "";
+		}
 		return "Question: " + currentQuestion.getTitle();
 	}
 	
 	public String askerDetail() {
+		if (currentQuestion == null) {
+			return "";
+		}
 		return displayDetail(currentQuestion.getOwner());
 	}
 	
 	public String askerName() {
+		if (currentQuestion == null) {
+			return "";
+		}
 		return displayName(currentQuestion.getOwner());
 	}
 

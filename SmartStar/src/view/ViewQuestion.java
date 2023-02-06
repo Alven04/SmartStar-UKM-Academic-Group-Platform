@@ -170,6 +170,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	}
 	
 	private void refreshContent() {
+		controller.setCurrentQuestion(controller.getCourse().getQuestionByTitle(lst_list.getSelectedValue()));
 		lbl_asker.setText(controller.askerName());
 		lbl_askerDetail.setText(controller.askerDetail());
 		lbl_question.setText(controller.questionTitle());
@@ -252,7 +253,6 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		controller.setCurrentQuestion(controller.getCourse().getQuestionByTitle(lst_list.getSelectedValue()));
 		refreshContent();
 	}	
 
