@@ -2,21 +2,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import controller.Controller;
-import controller.QnaController;
-import controller.SignInController;
 
 public class Main {
 
 	private static Controller controller = new Controller();
-	private static SignInController signIn = new SignInController(controller);
-	private static QnaController qna = new QnaController(controller);
 
 	public static void main(String[] args) {
 		
-		controller.setSignInController(signIn);
-		controller.setQnaController(qna);
 		initialize();
-		signIn.displaySplashScreen();
+		controller.getSignInController().displaySplashScreen();
 
 	}
 	
@@ -40,21 +34,21 @@ public class Main {
 	
 	private static void initializeStudent(String username, String password, String name,
 			String institution, int year, String major) {
-		signIn.signUpStudent(username, password, name, institution, year, major);
+		controller.getSignInController().signUpStudent(username, password, name, institution, year, major);
 	}
 
 	private static void initializeLecturer(String username, String password, String name,
 			String institution, String qualification) {
-		signIn.signUpLecturer(username, password, name, institution, qualification);
+		controller.getSignInController().signUpLecturer(username, password, name, institution, qualification);
 	}
 
 	private static void initializeCourse(String id, String name, String description, 
 			String ownerUsername, ArrayList<String> membersUsername) {
-		signIn.signIn(ownerUsername, signIn.getController().getGlobal().getUserByUsername(ownerUsername).getPassword());
-		signIn.getController().addCourse(id, name, description);
+		controller.getSignInController().signIn(ownerUsername, controller.getGlobal().getUserByUsername(ownerUsername).getPassword());
+		controller.addCourse(id, name, description);
 		for (String member : membersUsername) {
-			signIn.signIn(member, signIn.getController().getGlobal().getUserByUsername(member).getPassword());
-			signIn.getController().joinCourse(id);
+			controller.getSignInController().signIn(member, controller.getGlobal().getUserByUsername(member).getPassword());
+			controller.joinCourse(id);
 		}
 	}
 }

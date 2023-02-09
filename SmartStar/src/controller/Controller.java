@@ -17,8 +17,8 @@ public class Controller {
 	private User currentUser;
 	private Global global = new Global();
 	
-	private SignInController signInController;
-	private QnaController qnaController;
+	private SignInController signInController = new SignInController(this);
+	private QnaController qnaController = new QnaController(this);
 	
 	public Controller() {
 //		this.displayScreen(1);
