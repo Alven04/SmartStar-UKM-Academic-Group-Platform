@@ -59,6 +59,10 @@ public class QnaController {
 		this.currentAnswer = currentAnswer;
 	}
 
+	public void setCurrentAnswer(int answerIndex) {
+		this.currentAnswer = currentQuestion.getAnswers().get(answerIndex);
+	}
+	
 	public String[] getQuestionTitles() {
 		if (course == null) {
 			return new String[0];
@@ -83,6 +87,18 @@ public class QnaController {
 		return names;
 	}
 	
+	public boolean addQuestion(String title, String content) {
+		return course.addQuestion(new Question(title, content, course, controller.getCurrentUser()));
+	}
+	
+	public boolean addAnswer(String content) {
+		return currentQuestion.addAnswer(new Answer(content, currentQuestion, controller.getCurrentUser()));
+	}
+	
+//	public boolean nextAnswer(int ) {
+//		
+//	}
+
 	public String displayName(User owner) {
 		String displayName = "";
 		if (owner instanceof Student) {
@@ -149,13 +165,12 @@ public class QnaController {
 		return count + " Upvotes";
 	}
 	
-	public String index() {
+	public String index(int index) {
 		if (currentQuestion == null) {
 			return "";
 		}
-		int currentIndex = 0;
 		int total = currentQuestion.getAnswers().size();
-		return "Answer " + currentIndex + " of " + total;
+		return "Answer " + index + " of " + total;
 	}
 	
 	public String answerContent() {
@@ -209,22 +224,27 @@ public class QnaController {
 
 	public void displayViewQuestion(Course course) {
 		this.course = course;
+		displayViewQuestion();
+	}
+	
+	public void displayViewQuestion() {
 		if (viewQuestion == null)
 			viewQuestion = new ViewQuestion(this);
 		else
 			viewQuestion.setVisible(true);
+		viewQuestion.refreshList();
+		viewQuestion.refreshContent();
+		viewQuestion.refreshStarList();
 	}
 	
-	public void displayAddQuestion(Course course) {
-		this.course = course;
+	public void displayAddQuestion() {
 		if (addQuestion == null)
 			addQuestion = new AddQuestion(this);
 		else
 			addQuestion.setVisible(true);	
 	}
 
-	public void displayAddAnswer(Course course) {
-		this.course = course;
+	public void displayAddAnswer() {
 		if (addAnswer == null)
 			addAnswer = new AddAnswer(this);
 		else

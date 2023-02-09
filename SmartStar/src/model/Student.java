@@ -6,7 +6,7 @@ public class Student extends User {
 
 	private int year;
 	private String major;
-	private ArrayList<Star> stars;
+	private ArrayList<Star> stars = new ArrayList<>();
 	
 	private static final String[] RANKS = {
 			"No rank", "BRONZE Rank", "SILVER Rank", "GOLD Rank", "PLATINUM Rank"
@@ -58,7 +58,7 @@ public class Student extends User {
 	public String getRank() {
 		int starCount = stars.size();
 		for (int i = RANKS.length - 1; i >= 0; i--) {
-			if (starCount > RANK_REQUIREMENTS[i]) {
+			if (starCount >= RANK_REQUIREMENTS[i]) {
 				return RANKS[i];
 			}
 		}

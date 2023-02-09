@@ -10,19 +10,18 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.QnaController;
-import model.Course;
 
 public class AddQuestion extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private QnaController controller;
-	private Course course;
 
 	private int screenWidth = 500;
 	private int screenHeight = 375;
@@ -83,8 +82,8 @@ public class AddQuestion extends JFrame implements ActionListener {
 		// asker panel
 		pnl_body.add(pnl_asker, BorderLayout.NORTH);		
 		pnl_asker.setLayout(new BorderLayout());
-		pnl_asker.add(createLabel(lbl_asker, askerName()), BorderLayout.NORTH);
-		pnl_asker.add(createLabel(lbl_askerDetail, askerDetail()));
+		pnl_asker.add(createLabel(lbl_asker, controller.askerName()), BorderLayout.NORTH);
+		pnl_asker.add(createLabel(lbl_askerDetail, controller.askerDetail()));
 
 		// question panel
 		pnl_body.add(pnl_question);
@@ -107,19 +106,8 @@ public class AddQuestion extends JFrame implements ActionListener {
 		
 	}
 	
-	private String askerDetail() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private String askerName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	private String titleText() {
-		// TODO Auto-generated method stub
-		return "New Question - Course: ";
+		return "New Question - " + controller.getCourse().getCourseID() + " | " + controller.getCourse().getCourseName();
 	}
 	
 	private void clearField() {
@@ -171,15 +159,23 @@ public class AddQuestion extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btn_back)) {
-			controller.displayViewQuestion(course);
+			controller.displayViewQuestion();
 			setVisible(false);
 		}
 		else if (e.getSource().equals(btn_post)) {
-			
+			boolean success = controller.addQuestion(txt_questionTitle.getText(), txt_questionContent.getText());
+			if (success) {
+				JOptionPane.showMessageDialog(this, "Your question has been posted in course " + controller.getCourse().getCourseID() + " " + controller.getCourse().getCourseName() + ".");
+				clearField();
+				controller.displayViewQuestion();
+				setVisible(false);
+			} else {
+				JOptionPane.showMessageDialog(this, "A problem occured.");
+			}
 		}
 		else if (e.getSource().equals(btn_cancel)) {
 			clearField();
-			controller.displayViewQuestion(course);
+			controller.displayViewQuestion();
 			setVisible(false);
 		}
 	}

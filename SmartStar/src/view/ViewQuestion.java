@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -19,13 +20,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controller.QnaController;
-import model.Course;
 
 public class ViewQuestion extends JFrame implements ActionListener, ListSelectionListener {
 
 	private static final long serialVersionUID = 1L;
 	private QnaController controller;
-	private Course course;
+	private int answerIndex = 0;
 	
 	private int screenWidth = 800;
 	private int screenHeight = 600;
@@ -152,25 +152,31 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		
 		pnl_content.add(pnl_index, BorderLayout.SOUTH);
 		pnl_index.add(createButton(btn_previous, "Previous"));
-		pnl_index.add(createLabel(lbl_index, controller.index()));
+		pnl_index.add(createLabel(lbl_index, controller.index(answerIndex)));
 		pnl_index.add(createButton(btn_next, "Next"));
 		pnl_index.add(createButton(btn_postAnswer, "Add Answer"));
 	}
 		
-	public String titleText() {
-		return "Course: " + controller.getCourse().getCourseID() + " - " + controller.getCourse().getCourseName();
+	private String titleText() {
+		return "Course: " + controller.getCourse().getCourseID() + " | " + controller.getCourse().getCourseName();
 	}
 
-	private void refreshList() {
+	public void refreshList() {
 		lst_list.setListData(controller.getQuestionTitles());
 	}
 	
-	private void refreshStarList() {
+	public void refreshStarList() {
 		lst_star.setListData(controller.getStarLecturerNames());
 	}
 	
-	private void refreshContent() {
+	public void refreshContent() {
 		controller.setCurrentQuestion(controller.getCourse().getQuestionByTitle(lst_list.getSelectedValue()));
+		if (controller.getCurrentQuestion() != null && controller.getCurrentQuestion().getAnswers().size() > 0) {
+			controller.setCurrentAnswer(0);			
+		} else {
+			controller.setCurrentAnswer(null);
+		}
+		
 		lbl_asker.setText(controller.askerName());
 		lbl_askerDetail.setText(controller.askerDetail());
 		lbl_question.setText(controller.questionTitle());
@@ -182,7 +188,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		lbl_downvote.setText(controller.downvoteCount());
 		lbl_star.setText(controller.starCount());
 		refreshStarList();
-		lbl_index.setText(controller.index());
+		lbl_index.setText(controller.index(answerIndex));
 	}
 	
 	private JButton createButton(JButton button, String buttonText) {
@@ -227,18 +233,30 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			setVisible(false);
 		}
 		else if (e.getSource().equals(btn_post)) {
-			controller.displayAddQuestion(course);
+			controller.displayAddQuestion();
 			setVisible(false);
 		}
 		else if (e.getSource().equals(btn_postAnswer)) {
-			controller.displayAddAnswer(course);
+			controller.displayAddAnswer();
 			setVisible(false);
 		}
 		else if (e.getSource().equals(btn_next)) {
-			
+			if (answerIndex + 1 < controller.getCurrentQuestion().getAnswers().size()) {
+				answerIndex++;
+			} else {
+				JOptionPane.showMessageDialog(this, "This is the last answer.", "SmartStar", JOptionPane.INFORMATION_MESSAGE);
+			}
+			controller.setCurrentAnswer(answerIndex);
+			refreshContent();
 		}
 		else if (e.getSource().equals(btn_previous)) {
-			
+			if (answerIndex - 1 >= 0) {
+				answerIndex--;
+			} else {
+				JOptionPane.showMessageDialog(this, "This is the first answer.", "SmartStar", JOptionPane.INFORMATION_MESSAGE);
+			}
+			controller.setCurrentAnswer(answerIndex);
+			refreshContent();
 		}
 		else if (e.getSource().equals(btn_upvote)) {
 			

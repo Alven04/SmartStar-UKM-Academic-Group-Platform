@@ -11,21 +11,20 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import controller.QnaController;
-import model.Course;
 
 public class AddAnswer extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private QnaController controller;
-	private Course course;
 
-	private int screenWidth = 600;
-	private int screenHeight = 400;
+	private int screenWidth = 800;
+	private int screenHeight = 600;
 	private String frameTitle = "Post Answer - SmartStar";
 	private String font = "SegoeUI";
 	private Font titleFont = new Font(font, Font.BOLD, 24);
@@ -90,16 +89,16 @@ public class AddAnswer extends JFrame implements ActionListener {
 		
 		pnl_body.add(pnl_asker, BorderLayout.NORTH);
 		pnl_asker.setLayout(new BorderLayout());
-		pnl_asker.add(createLabel(lbl_asker, askerName()), BorderLayout.NORTH);
-		pnl_asker.add(createLabel(lbl_askerDetail, askerDetail()));
+		pnl_asker.add(createLabel(lbl_asker, controller.askerName()), BorderLayout.NORTH);
+		pnl_asker.add(createLabel(lbl_askerDetail, controller.askerDetail()));
 		
 		pnl_body.add(pnl_qna, BorderLayout.CENTER);
 		pnl_qna.setLayout(new GridLayout(2, 1));
 		
 		pnl_qna.add(pnl_question);
 		pnl_question.setLayout(new BorderLayout());
-		pnl_question.add(createLabel(lbl_question, questionTitle()), BorderLayout.NORTH);
-		pnl_question.add(createNoEditTextArea(txt_question, questionContent(), scr_question));
+		pnl_question.add(createLabel(lbl_question, controller.questionTitle()), BorderLayout.NORTH);
+		pnl_question.add(createNoEditTextArea(txt_question, controller.questionContent(), scr_question));
 
 		pnl_qna.add(pnl_answer);
 		
@@ -108,10 +107,10 @@ public class AddAnswer extends JFrame implements ActionListener {
 		pnl_answerBody.setLayout(new BorderLayout());
 		pnl_answerBody.add(pnl_answerer, BorderLayout.NORTH);
 		pnl_answerer.setLayout(new BorderLayout());
-		pnl_answerer.add(createLabel(lbl_answerer, answererName()), BorderLayout.NORTH);
-		pnl_answerer.add(createLabel(lbl_answererDetail, answererDetail()));
+		pnl_answerer.add(createLabel(lbl_answerer, controller.answererName()), BorderLayout.NORTH);
+		pnl_answerer.add(createLabel(lbl_answererDetail, controller.answererDetail()));
 		pnl_answerBody.add(createLabel(lbl_answer, "Type your answer here:"));
-		pnl_answerBody.add(createTextArea(txt_answer, answerContent(), scr_answer), BorderLayout.CENTER);
+		pnl_answerBody.add(createTextArea(txt_answer, controller.answerContent(), scr_answer), BorderLayout.CENTER);
 
 		// button panel
 		add(pnl_button, BorderLayout.SOUTH);
@@ -119,45 +118,9 @@ public class AddAnswer extends JFrame implements ActionListener {
 		pnl_button.add(createButton(btn_post, "Post Answer"));
 
 	}
-	
-	private String answerContent() {
-		// TODO Auto-generated method stub
-		return "Answer content";
-	}
-
-	private String answererDetail() {
-		// TODO Auto-generated method stub
-		return "Answerer detail";
-	}
-
-	private String answererName() {
-		// TODO Auto-generated method stub
-		return "Answerer name";
-	}
-
-	private String questionContent() {
-		// TODO Auto-generated method stub
-		return "Question content";
-	}
-
-	private String questionTitle() {
-		// TODO Auto-generated method stub
-		return "Question title";
-	}
-
-	private String askerDetail() {
-		// TODO Auto-generated method stub
-		return "Asker detail";
-	}
-
-	private String askerName() {
-		// TODO Auto-generated method stub
-		return "Asker name";
-	}
 
 	private String titleText() {
-		// TODO Auto-generated method stub
-		return "Add Answer - Course: ";
+		return "Add Answer - " + controller.getCourse().getCourseID() + " | " + controller.getCourse().getCourseName();
 	}
 	
 	private void clearField() {
@@ -203,15 +166,24 @@ public class AddAnswer extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btn_back)) {
-			controller.displayViewQuestion(course);
+			controller.displayViewQuestion();
 			setVisible(false);
 		}
 		else if (e.getSource().equals(btn_post)) {
-			
+			boolean success = controller.addAnswer(txt_answer.getText());
+			if (success) {
+				JOptionPane.showMessageDialog(this, "Your answer has been added.");
+				clearField();
+				controller.displayViewQuestion();
+				setVisible(false);
+			} else {
+				JOptionPane.showMessageDialog(this, "A problem occured.");
+			}
+
 		}
 		else if (e.getSource().equals(btn_cancel)) {
 			clearField();
-			controller.displayViewQuestion(course);
+			controller.displayViewQuestion();
 			setVisible(false);
 		}
 	}
