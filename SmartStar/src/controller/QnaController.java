@@ -177,7 +177,7 @@ public class QnaController {
 	
 	public String answerContent() {
 		if (currentAnswer == null) {
-			return "No answer";
+			return "No answer available at this time.";
 		}
 		return currentAnswer.getContent();
 	}
@@ -212,7 +212,7 @@ public class QnaController {
 
 	public String questionContent() {
 		if (currentQuestion == null) {
-			return "No question";
+			return "Select a question from the list on the left.\nYou may post your question by clicking the New Question button.";
 		}
 		return currentQuestion.getContent();
 	}

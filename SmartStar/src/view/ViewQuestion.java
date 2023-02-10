@@ -163,6 +163,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 
 	public void refreshList() {
 		lst_list.setListData(controller.getQuestionTitles());
+		
 	}
 	
 	public void refreshStarList() {
@@ -173,6 +174,8 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		int questionIndex = lst_list.getSelectedIndex();
 		if (questionIndex >= 0) {
 			controller.setCurrentQuestion(controller.getCourse().getQuestions().get(lst_list.getSelectedIndex()));			
+		} else {
+			controller.setCurrentQuestion(null);
 		}
 		if (controller.getCurrentQuestion() != null && controller.getCurrentQuestion().getAnswers().size() > 0) {
 			controller.setCurrentAnswer(answerIndex);		
