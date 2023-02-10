@@ -95,11 +95,26 @@ public class Answer {
 	
 	public boolean addStar(Star star) {
 		if (stars.contains(star)) {
-			throw new RuntimeException("Duplicated vote");
+			throw new RuntimeException("Duplicated star");
 //			return false;
 		}
 		return stars.add(star);	
 
+	}
+	
+	public boolean removeStar(Star star) {
+		
+		return stars.remove(star);
+		
+	}
+	
+	public Star getStarByLecturer(Lecturer lecturer) {
+		for (Star star : stars) {
+			if (star.getLecturer().equals(lecturer)) {
+				return star;
+			}
+		}
+		return null;
 	}
 
 }

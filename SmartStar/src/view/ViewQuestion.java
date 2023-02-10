@@ -213,6 +213,18 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		}
 	}
 	
+	public void refreshStarButtonStatus() {
+		if (!controller.eligibleForStar()) {
+			starButtonDisable();
+			return;
+		}
+		if (controller.castedStar()) {
+			starButtonActive();
+		} else {
+			starButtonNotActive();
+		}
+	}
+	
 	private JButton createButton(JButton button, String buttonText) {
 
 		button.setText(buttonText);
@@ -257,6 +269,18 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	private void voteButtonNotActive(JButton button) {
 		button.setBackground(Color.WHITE);
 	}
+	
+	private void starButtonDisable() {
+		btn_star.setBackground(Color.GRAY);
+	}
+	
+	private void starButtonActive() {
+		btn_star.setBackground(Color.ORANGE);
+	}
+	
+	private void starButtonNotActive() {
+		btn_star.setBackground(Color.WHITE);
+	}
 		
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -281,6 +305,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			controller.setCurrentAnswer(answerIndex);
 			refreshContent();
 			refreshVoteButtonStatus();
+			refreshStarButtonStatus();
 		}
 		else if (e.getSource().equals(btn_previous)) {
 			if (answerIndex - 1 >= 0) {
@@ -291,6 +316,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			controller.setCurrentAnswer(answerIndex);
 			refreshContent();
 			refreshVoteButtonStatus();
+			refreshStarButtonStatus();
 		}
 		else if (e.getSource().equals(btn_upvote)) {
 			if (controller.castedUpvote()) {
@@ -313,7 +339,13 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			refreshVoteButtonStatus();
 		}
 		else if (e.getSource().equals(btn_star)) {
-			
+			if (controller.castedStar()) {
+				controller.removeStar();
+			} else {
+				controller.addStar();
+			}
+			refreshContent();
+			refreshStarButtonStatus();			
 		}
 	}
 
@@ -322,6 +354,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		answerIndex = 0;
 		refreshContent();
 		refreshVoteButtonStatus();
+		refreshStarButtonStatus();
 	}	
 
 }

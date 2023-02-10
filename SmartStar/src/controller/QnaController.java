@@ -4,6 +4,7 @@ import model.Answer;
 import model.Course;
 import model.Lecturer;
 import model.Question;
+import model.Star;
 import model.Student;
 import model.User;
 import view.AddAnswer;
@@ -93,19 +94,58 @@ public class QnaController {
 	}
 	
 	public boolean addUpvote() {
+		if (currentAnswer == null) {
+			return false;
+		}
 		return currentAnswer.addUpvote(controller.getCurrentUser());
 	}
 
 	public boolean addDownvote() {
+		if (currentAnswer == null) {
+			return false;
+		}
 		return currentAnswer.addDownvote(controller.getCurrentUser());
 	}
 	
 	public boolean removeUpvote() {
+		if (currentAnswer == null) {
+			return false;
+		}
 		return currentAnswer.removeUpvote(controller.getCurrentUser());
 	}
 
 	public boolean removeDownvote() {
+		if (currentAnswer == null) {
+			return false;
+		}
 		return currentAnswer.removeDownvote(controller.getCurrentUser());
+	}
+	
+	public boolean addStar() {
+		if (currentAnswer == null) {
+			return false;
+		}
+		if (!Star.eligible(currentAnswer.getOwner(), controller.getCurrentUser())) {
+			return false;
+		}
+		Student owner = (Student) currentAnswer.getOwner();
+		Star star = new Star((Lecturer) controller.getCurrentUser(), currentAnswer);
+		if (owner.getStars().contains(star)) {
+			return false;
+		}
+		return owner.addStar(star) && currentAnswer.addStar(star);
+	}
+	
+	public boolean removeStar() {
+		if (currentAnswer == null) {
+			return false;
+		}
+		if (!Star.eligible(currentAnswer.getOwner(), controller.getCurrentUser())) {
+			return false;
+		}
+		Student owner = (Student) currentAnswer.getOwner();
+		Star star = new Star((Lecturer) controller.getCurrentUser(), currentAnswer);
+		return owner.removeStar(star) && currentAnswer.removeStar(star);
 	}
 	
 	public boolean castedUpvote() {
@@ -120,6 +160,23 @@ public class QnaController {
 			return false;
 		}
 		return currentAnswer.getDownvotes().contains(controller.getCurrentUser());
+	}
+	
+	public boolean castedStar() {
+		if (currentAnswer == null) {
+			return false;
+		}
+		if (!eligibleForStar()) {
+			return false;
+		}
+		return currentAnswer.getStarByLecturer((Lecturer) controller.getCurrentUser()) != null;
+	}
+	
+	public boolean eligibleForStar() {
+		if (currentAnswer == null) {
+			return false;
+		}
+		return Star.eligible(currentAnswer.getOwner(), controller.getCurrentUser());
 	}
 
 	public String displayName(User owner) {
@@ -149,7 +206,10 @@ public class QnaController {
 		if (currentAnswer == null) {
 			return "";
 		}
-		return currentAnswer.getStars().size() + " Stars";
+		if (!Star.eligible(currentAnswer.getOwner(), controller.getCurrentUser())) {
+			return "";
+		}
+		return ((Student) currentAnswer.getOwner()).getStarsInAnswer(currentAnswer).size() + " Stars";
 	}
 	
 	public String downvoteCount() {
@@ -276,6 +336,7 @@ public class QnaController {
 		viewQuestion.refreshContent();
 		viewQuestion.refreshStarList();
 		viewQuestion.refreshVoteButtonStatus();
+		viewQuestion.refreshStarButtonStatus();
 	}
 	
 	public void displayAddQuestion() {

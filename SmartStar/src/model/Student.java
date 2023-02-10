@@ -54,6 +54,22 @@ public class Student extends User {
 		}
 		return stars.add(star);	
 	}
+	
+	public boolean removeStar(Star star) {
+		
+		return stars.remove(star);
+		
+	}
+	
+	public ArrayList<Star> getStarsInAnswer(Answer answer) {
+		ArrayList<Star> answerStars = new ArrayList<>();
+		for (Star star : stars) {
+			if (star.getAnswer().equals(answer)) {
+				answerStars.add(star);
+			}
+		}
+		return answerStars;
+	}
 
 	public String getRank() {
 		int starCount = stars.size();
