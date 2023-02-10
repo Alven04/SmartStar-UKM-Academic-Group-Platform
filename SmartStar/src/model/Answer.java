@@ -8,7 +8,8 @@ public class Answer {
 	private String content;
 	private Question question;
 	private User owner;
-	private ArrayList<Vote> votes = new ArrayList<>();
+	private ArrayList<User> upvotes = new ArrayList<>();
+	private ArrayList<User> downvotes = new ArrayList<>();
 	private ArrayList<Star> stars = new ArrayList<>();
 	
 	public Answer(int index, String content, Question question, User owner) {
@@ -50,21 +51,46 @@ public class Answer {
 		this.owner = owner;
 	}
 	
-	public ArrayList<Vote> getVotes() {
-		return votes;
+	public ArrayList<User> getUpvotes() {
+		return upvotes;
+	}
+
+	public ArrayList<User> getDownvotes() {
+		return downvotes;
+	}
+
+	public ArrayList<Star> getStars() {
+		return stars;
 	}
 	
-	public boolean addVote(Vote vote) {
-		if (votes.contains(vote)) {
-			throw new RuntimeException("Duplicated vote");
+	public boolean addUpvote(User user) {
+		if (upvotes.contains(user)) {
+			throw new RuntimeException("Duplicated upvote");
 //			return false;
 		}
-		return votes.add(vote);	
+		return upvotes.add(user);	
 
 	}
 	
-	public ArrayList<Star> getStars() {
-		return stars;
+	public boolean removeUpvote(User user) {
+
+		return upvotes.remove(user);
+
+	}
+	
+	public boolean addDownvote(User user) {
+		if (downvotes.contains(user)) {
+			throw new RuntimeException("Duplicated downvote");
+//			return false;
+		}
+		return downvotes.add(user);	
+
+	}
+	
+	public boolean removeDownvote(User user) {
+
+		return downvotes.remove(user);
+
 	}
 	
 	public boolean addStar(Star star) {

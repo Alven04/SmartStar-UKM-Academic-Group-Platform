@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -178,7 +179,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			controller.setCurrentQuestion(null);
 		}
 		if (controller.getCurrentQuestion() != null && controller.getCurrentQuestion().getAnswers().size() > 0) {
-			controller.setCurrentAnswer(answerIndex);		
+			controller.setCurrentAnswer(answerIndex);
 		} else {
 			controller.setCurrentAnswer(null);
 		}
@@ -196,6 +197,20 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		lbl_star.setText(controller.starCount());
 		refreshStarList();
 		lbl_index.setText(controller.index(answerIndex));
+	}
+	
+	public void refreshVoteButtonStatus() {
+		if (controller.castedUpvote()) {
+			voteButtonActive(btn_upvote);
+		} else {
+			voteButtonNotActive(btn_upvote);
+		}
+		
+		if (controller.castedDownvote()) {
+			voteButtonActive(btn_downvote);
+		} else {
+			voteButtonNotActive(btn_downvote);
+		}
 	}
 	
 	private JButton createButton(JButton button, String buttonText) {
@@ -234,6 +249,14 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		
 		return list;
 	}
+	
+	private void voteButtonActive(JButton button) {
+		button.setBackground(Color.GREEN);
+	}
+	
+	private void voteButtonNotActive(JButton button) {
+		button.setBackground(Color.WHITE);
+	}
 		
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -257,6 +280,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			}
 			controller.setCurrentAnswer(answerIndex);
 			refreshContent();
+			refreshVoteButtonStatus();
 		}
 		else if (e.getSource().equals(btn_previous)) {
 			if (answerIndex - 1 >= 0) {
@@ -266,12 +290,27 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 			}
 			controller.setCurrentAnswer(answerIndex);
 			refreshContent();
+			refreshVoteButtonStatus();
 		}
 		else if (e.getSource().equals(btn_upvote)) {
-			
+			if (controller.castedUpvote()) {
+				controller.removeUpvote();
+			} else {
+				controller.addUpvote();
+				controller.removeDownvote();
+			}
+			refreshContent();
+			refreshVoteButtonStatus();
 		}
 		else if (e.getSource().equals(btn_downvote)) {
-			
+			if (controller.castedDownvote()) {
+				controller.removeDownvote();
+			} else {
+				controller.addDownvote();
+				controller.removeUpvote();
+			}
+			refreshContent();
+			refreshVoteButtonStatus();
 		}
 		else if (e.getSource().equals(btn_star)) {
 			
@@ -282,6 +321,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	public void valueChanged(ListSelectionEvent e) {
 		answerIndex = 0;
 		refreshContent();
+		refreshVoteButtonStatus();
 	}	
 
 }

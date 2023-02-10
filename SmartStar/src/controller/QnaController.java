@@ -1,16 +1,11 @@
 package controller;
 
-import java.util.ArrayList;
-
 import model.Answer;
 import model.Course;
-import model.Downvote;
 import model.Lecturer;
 import model.Question;
 import model.Student;
-import model.Upvote;
 import model.User;
-import model.Vote;
 import view.AddAnswer;
 import view.AddQuestion;
 import view.ViewQuestion;
@@ -97,9 +92,35 @@ public class QnaController {
 		return currentQuestion.addAnswer(new Answer(index, content, currentQuestion, controller.getCurrentUser()));
 	}
 	
-//	public boolean nextAnswer(int ) {
-//		
-//	}
+	public boolean addUpvote() {
+		return currentAnswer.addUpvote(controller.getCurrentUser());
+	}
+
+	public boolean addDownvote() {
+		return currentAnswer.addDownvote(controller.getCurrentUser());
+	}
+	
+	public boolean removeUpvote() {
+		return currentAnswer.removeUpvote(controller.getCurrentUser());
+	}
+
+	public boolean removeDownvote() {
+		return currentAnswer.removeDownvote(controller.getCurrentUser());
+	}
+	
+	public boolean castedUpvote() {
+		if (currentAnswer == null) {
+			return false;
+		}
+		return currentAnswer.getUpvotes().contains(controller.getCurrentUser());
+	}
+	
+	public boolean castedDownvote() {
+		if (currentAnswer == null) {
+			return false;
+		}
+		return currentAnswer.getDownvotes().contains(controller.getCurrentUser());
+	}
 
 	public String displayName(User owner) {
 		String displayName = "";
@@ -135,13 +156,7 @@ public class QnaController {
 		if (currentAnswer == null) {
 			return "";
 		}
-		ArrayList<Vote> votes = currentAnswer.getVotes();
-		int count = 0;
-		for (Vote vote : votes) {
-			if (vote instanceof Downvote) {
-				count++;
-			}
-		}
+		int count = currentAnswer.getDownvotes().size();
 		
 		if (count == 1) {
 			return count + " Downvote";			
@@ -153,13 +168,7 @@ public class QnaController {
 		if (currentAnswer == null) {
 			return "";
 		}
-		ArrayList<Vote> votes = currentAnswer.getVotes();
-		int count = 0;
-		for (Vote vote : votes) {
-			if (vote instanceof Upvote) {
-				count++;
-			}
-		}
+		int count = currentAnswer.getUpvotes().size();
 		
 		if (count == 1) {
 			return count + " Upvote";			
@@ -262,9 +271,11 @@ public class QnaController {
 			viewQuestion = new ViewQuestion(this);
 		else
 			viewQuestion.setVisible(true);
+		
 		viewQuestion.refreshList();
 		viewQuestion.refreshContent();
 		viewQuestion.refreshStarList();
+		viewQuestion.refreshVoteButtonStatus();
 	}
 	
 	public void displayAddQuestion() {

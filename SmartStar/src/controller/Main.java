@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import model.Course;
 import model.Question;
+import model.User;
 
 public class Main {
 
@@ -35,17 +36,24 @@ public class Main {
 		
 		initializeQuestion("Database Newbie", "What is a database? And what is SQL language used for? Why are some commercial databases(oracle) really expensive and some are free?",
 				"TK1964", "faris");
+		String[] upvote11 = {"siti", "alven", "faris", "stuart"};
+		String[] downvote11 = {};
 		initializeAnswer("A database is a place to store data.\n\nSQL or Structured Query Language is a specific language used to do things (query) with the data. This includes things like selecting records created between given dates or updating a record that matches given criteria.",
-				"TK1964", 0, "hafiz");
+				"TK1964", 0, "hafiz", upvote11, downvote11);
+		String[] upvote12 = {"siti", "alven", "faris", "stuart"};
+		String[] downvote12 = {};	
 		initializeAnswer("Databases are the backbone of most of the world at this point, everything is driven by data, every website, every piece of software. This being the case, the database software itself is incredibly valuable. The commercial ones tend to be the ones that are the most stable/best support/best for LARGE data sets.",
-				"TK1964", 0, "hafiz");
+				"TK1964", 0, "hafiz", upvote12, downvote12);
+		String[] upvote13 = {"siti", "alven", "faris"};
+		String[] downvote13 = {};	
 		initializeAnswer("SQL is different from other programming languages. Object oriented languages attempt to model things with objects, procedural languages are a list of instructions, but in SQL you describe the data you want from the database. It's up to the database to figure out how to get that data for you.",
-				"TK1964", 0, "stuart");
-
+				"TK1964", 0, "stuart", upvote13, downvote13);
 		initializeQuestion("Microsoft Access", "I am new to database. How do I create a table in Microsoft Access?",
 				"TK1964", "stuart");
+		String[] upvote21 = {"stuart"};
+		String[] downvote21 = {};
 		initializeAnswer("Check this out:\nhttps://support.microsoft.com/en-us/office/create-a-database-in-access-f200d95b-e429-4acc-98c1-b883d4e9fc0a",
-				"TK1964", 1, "hafiz");
+				"TK1964", 1, "hafiz", upvote21, downvote21);
 	}
 	
 	private static void initializeStudent(String username, String password, String name, String institution, int year, String major) {
@@ -74,11 +82,22 @@ public class Main {
 		controller.getQnaController().addQuestion(title, content);
 	}
 	
-	private static void initializeAnswer(String content, String courseID, int questionID, String ownerUsername) {
+	private static void initializeAnswer(String content, String courseID, int questionID, String ownerUsername, String[] upvoteUsernames, String[] downvoteUsernames) {
 		controller.getSignInController().signIn(ownerUsername, controller.getGlobal().getUserByUsername(ownerUsername).getPassword());
 		Course course = controller.getGlobal().getCourseByCourseID(courseID);
 		Question question = course.getQuestions().get(questionID);
 		controller.getQnaController().setCurrentQuestion(question);
 		controller.getQnaController().addAnswer(content);
+		controller.getQnaController().setCurrentAnswer(question.getAnswers().size() - 1);
+		
+		for (String username : upvoteUsernames) {
+			controller.getSignInController().signIn(username, controller.getGlobal().getUserByUsername(username).getPassword());
+			controller.getQnaController().addUpvote();
+		}
+		
+		for (String username : downvoteUsernames) {
+			controller.getSignInController().signIn(username, controller.getGlobal().getUserByUsername(username).getPassword());
+			controller.getQnaController().addDownvote();
+		}
 	}
 }

@@ -10,7 +10,6 @@ public class Question {
 	private Course course;
 	private User owner;
 	private ArrayList<Answer> answers = new ArrayList<>();
-	private ArrayList<Vote> votes = new ArrayList<>();
 	
 	public Question(int index, String title, String content, Course course, User owner) {
 		this.index = index;
@@ -72,18 +71,5 @@ public class Question {
 		return answers.add(answer);	
 
 	}
-	
-	public ArrayList<Vote> getVotes() {
-		return votes;
-	}
-	
-	public boolean addVote(Vote vote) {
-		if (votes.contains(vote)) {
-			throw new RuntimeException("Duplicated vote");
-//			return false;
-		}
-		return votes.add(vote);	
-
-	}
-	
+		
 }
