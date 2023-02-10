@@ -88,11 +88,13 @@ public class QnaController {
 	}
 	
 	public boolean addQuestion(String title, String content) {
-		return course.addQuestion(new Question(title, content, course, controller.getCurrentUser()));
+		int index = course.getQuestions().size();
+		return course.addQuestion(new Question(index, title, content, course, controller.getCurrentUser()));
 	}
 	
 	public boolean addAnswer(String content) {
-		return currentQuestion.addAnswer(new Answer(content, currentQuestion, controller.getCurrentUser()));
+		int index = currentQuestion.getAnswers().size();
+		return currentQuestion.addAnswer(new Answer(index, content, currentQuestion, controller.getCurrentUser()));
 	}
 	
 //	public boolean nextAnswer(int ) {
@@ -166,11 +168,11 @@ public class QnaController {
 	}
 	
 	public String index(int index) {
-		if (currentQuestion == null) {
+		if (currentAnswer == null) {
 			return "";
 		}
 		int total = currentQuestion.getAnswers().size();
-		return "Answer " + index + " of " + total;
+		return "Answer " + (index + 1) + " of " + total;
 	}
 	
 	public String answerContent() {
@@ -194,6 +196,20 @@ public class QnaController {
 		return "Answer by " + displayName(currentAnswer.getOwner());
 	}
 	
+	public String answererDetailPreview() {
+		if (currentAnswer == null) {
+			return "";
+		}
+		return displayDetail(controller.getCurrentUser());
+	}
+	
+	public String answererNamePreview() {
+		if (currentAnswer == null) {
+			return "";
+		}
+		return "Answer by " + displayName(controller.getCurrentUser());
+	}
+
 	public String questionContent() {
 		if (currentQuestion == null) {
 			return "No question";
@@ -220,6 +236,20 @@ public class QnaController {
 			return "";
 		}
 		return displayName(currentQuestion.getOwner());
+	}
+
+	public String askerDetailPreview() {
+		if (currentQuestion == null) {
+			return "";
+		}
+		return displayDetail(controller.getCurrentUser());
+	}
+	
+	public String askerNamePreview() {
+		if (currentQuestion == null) {
+			return "";
+		}
+		return displayName(controller.getCurrentUser());
 	}
 
 	public void displayViewQuestion(Course course) {

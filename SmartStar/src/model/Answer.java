@@ -4,17 +4,28 @@ import java.util.ArrayList;
 
 public class Answer {
 
+	private int index;
 	private String content;
 	private Question question;
 	private User owner;
 	private ArrayList<Vote> votes = new ArrayList<>();
 	private ArrayList<Star> stars = new ArrayList<>();
 	
-	public Answer(String content, Question question, User owner) {
+	public Answer(int index, String content, Question question, User owner) {
+		this.index = index;
 		this.content = content;
 		this.question = question;
 		this.owner = owner;
 	}
+	
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
 	public String getContent() {
 		return content;
 	}

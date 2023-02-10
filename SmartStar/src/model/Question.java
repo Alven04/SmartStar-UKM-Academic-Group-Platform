@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Question {
 
+	private int index;
 	private String title;
 	private String content;
 	private Course course;
@@ -11,13 +12,22 @@ public class Question {
 	private ArrayList<Answer> answers = new ArrayList<>();
 	private ArrayList<Vote> votes = new ArrayList<>();
 	
-	public Question(String title, String content, Course course, User owner) {
+	public Question(int index, String title, String content, Course course, User owner) {
+		this.index = index;
 		this.title = title;
 		this.content = content;
 		this.course = course;
 		this.owner = owner;
 	}
 	
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
 	public String getTitle() {
 		return title;
 	}

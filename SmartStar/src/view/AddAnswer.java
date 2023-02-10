@@ -107,10 +107,10 @@ public class AddAnswer extends JFrame implements ActionListener {
 		pnl_answerBody.setLayout(new BorderLayout());
 		pnl_answerBody.add(pnl_answerer, BorderLayout.NORTH);
 		pnl_answerer.setLayout(new BorderLayout());
-		pnl_answerer.add(createLabel(lbl_answerer, controller.answererName()), BorderLayout.NORTH);
-		pnl_answerer.add(createLabel(lbl_answererDetail, controller.answererDetail()));
+		pnl_answerer.add(createLabel(lbl_answerer, controller.answererNamePreview()), BorderLayout.NORTH);
+		pnl_answerer.add(createLabel(lbl_answererDetail, controller.answererDetailPreview()));
 		pnl_answerBody.add(createLabel(lbl_answer, "Type your answer here:"));
-		pnl_answerBody.add(createTextArea(txt_answer, controller.answerContent(), scr_answer), BorderLayout.CENTER);
+		pnl_answerBody.add(createTextArea(txt_answer, "", scr_answer), BorderLayout.CENTER);
 
 		// button panel
 		add(pnl_button, BorderLayout.SOUTH);
@@ -149,6 +149,8 @@ public class AddAnswer extends JFrame implements ActionListener {
 		textArea.setText(text);
 		textArea.setFont(bodyFont);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.black));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 		scrollPane.add(textArea);
 		
 		return textArea;
@@ -158,6 +160,8 @@ public class AddAnswer extends JFrame implements ActionListener {
 		textArea.setText(text);
 		textArea.setFont(bodyFont);
 		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 		scrollPane.add(textArea);
 		
 		return textArea;

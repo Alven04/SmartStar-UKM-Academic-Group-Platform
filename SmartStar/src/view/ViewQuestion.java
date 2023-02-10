@@ -170,13 +170,17 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 	}
 	
 	public void refreshContent() {
-		controller.setCurrentQuestion(controller.getCourse().getQuestionByTitle(lst_list.getSelectedValue()));
+		int questionIndex = lst_list.getSelectedIndex();
+		if (questionIndex >= 0) {
+			controller.setCurrentQuestion(controller.getCourse().getQuestions().get(lst_list.getSelectedIndex()));			
+		}
 		if (controller.getCurrentQuestion() != null && controller.getCurrentQuestion().getAnswers().size() > 0) {
-			controller.setCurrentAnswer(0);			
+			controller.setCurrentAnswer(answerIndex);		
 		} else {
 			controller.setCurrentAnswer(null);
 		}
 		
+		lbl_title.setText(titleText());
 		lbl_asker.setText(controller.askerName());
 		lbl_askerDetail.setText(controller.askerDetail());
 		lbl_question.setText(controller.questionTitle());
@@ -213,6 +217,8 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		textArea.setText(text);
 		textArea.setFont(bodyFont);
 		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 		scrollPane.add(textArea);
 		
 		return textArea;
@@ -271,6 +277,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
+		answerIndex = 0;
 		refreshContent();
 	}	
 

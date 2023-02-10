@@ -58,13 +58,5 @@ public class Course {
 		}
 		return questions.add(question);	
 	}
-
-	public Question getQuestionByTitle(String title) {
-		for (Question question : questions) {
-			if (question.getTitle().equals(title))
-				return question;
-		}
-		return null;
-	}
 	
 }

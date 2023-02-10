@@ -82,8 +82,8 @@ public class AddQuestion extends JFrame implements ActionListener {
 		// asker panel
 		pnl_body.add(pnl_asker, BorderLayout.NORTH);		
 		pnl_asker.setLayout(new BorderLayout());
-		pnl_asker.add(createLabel(lbl_asker, controller.askerName()), BorderLayout.NORTH);
-		pnl_asker.add(createLabel(lbl_askerDetail, controller.askerDetail()));
+		pnl_asker.add(createLabel(lbl_asker, controller.askerNamePreview()), BorderLayout.NORTH);
+		pnl_asker.add(createLabel(lbl_askerDetail, controller.askerDetailPreview()));
 
 		// question panel
 		pnl_body.add(pnl_question);
@@ -137,6 +137,8 @@ public class AddQuestion extends JFrame implements ActionListener {
 		textArea.setText(text);
 		textArea.setFont(bodyFont);
 		textArea.setBorder(BorderFactory.createLineBorder(Color.black));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 		scrollPane.add(textArea);
 		
 		return textArea;
