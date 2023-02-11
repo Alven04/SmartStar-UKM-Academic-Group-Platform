@@ -116,6 +116,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 				public void actionPerformed(ActionEvent e){
 					if(controller.detetermineCourseExistsByName(courseTitle.getText())){
 						controller.getQnaController().displayViewQuestion(controller.getGlobal().getCourseByCourseName(courseTitle.getText()));
+						setVisible(false);
 					}else{
 						JOptionPane.showMessageDialog(null, "Course no longer exists","View Course",JOptionPane.PLAIN_MESSAGE);
 					}
