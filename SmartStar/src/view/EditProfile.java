@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import controller.Controller;
+import javafx.scene.effect.ColorAdjust;
+
 import java.awt.Color;
 
 public class EditProfile extends JFrame implements ActionListener {
@@ -157,6 +159,7 @@ public class EditProfile extends JFrame implements ActionListener {
 		pnl_lecturer_detail.setBackground(Color.white);
 		pnl_detail.setBackground(Color.white);
 		
+		
 	}
 
 
@@ -185,7 +188,7 @@ public class EditProfile extends JFrame implements ActionListener {
 		spinner.setModel((new SpinnerNumberModel(value, minimum, maximum, stepSize)));
 		spinner.setFont(bodyFont);
 		newPanel.add(spinner);
-		
+		newPanel.setBackground(Color.white);
 		return newPanel;
 	}
 
