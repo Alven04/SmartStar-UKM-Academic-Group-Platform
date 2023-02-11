@@ -23,6 +23,10 @@ public class Course {
 		return courseName;
 	}
 
+	public User getCourseOwner() {
+		return courseOwner;
+	}
+	
 	public void setCourseID(String id) {
 		courseID=id;
 	}
