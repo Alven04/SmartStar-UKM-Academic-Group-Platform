@@ -190,9 +190,9 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		pnl_detail.setBackground(Color.white);
 		pnl_roleTitle.setBackground(Color.white);
 		pnl_body.setBackground(Color.white);
-		//pnl_role.setBackground(Color.white);
 		pnl_subtitle.setBackground(Color.white);
-		
+		rad_lecturerRole.setBackground(Color.white);
+		rad_studentRole.setBackground(Color.white);
 	}
 
 
