@@ -1,6 +1,7 @@
 package view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.RootPaneContainer;
 import javax.swing.SpinnerNumberModel;
 
 import controller.SignInController;
@@ -179,7 +181,18 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		pnl_button.add(btn_cancel);
 		btn_cancel.addActionListener(this);
 
-
+		//Color
+		pnl_empty_detail.setBackground(new Color(220, 174, 150));
+		pnl_login.setBackground(new Color(220, 174, 150));
+		pnl_button.setBackground(new Color(220, 174, 150));
+		pnl_title.setBackground(new Color(220, 174, 150));
+		pnl_lecturer_detail.setBackground(Color.white);
+		pnl_detail.setBackground(Color.white);
+		pnl_roleTitle.setBackground(Color.white);
+		pnl_body.setBackground(Color.white);
+		//pnl_role.setBackground(Color.white);
+		pnl_subtitle.setBackground(Color.white);
+		
 	}
 
 
@@ -193,7 +206,7 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		textField.setColumns(textColumn);
 		textField.setFont(bodyFont);
 		newPanel.add(textField);
-		
+		newPanel.setBackground(Color.WHITE);
 		return newPanel;
 	}
 	
@@ -208,7 +221,7 @@ public class SignUpScreen extends JFrame implements ActionListener {
 		spinner.setModel((new SpinnerNumberModel(value, minimum, maximum, stepSize)));
 		spinner.setFont(bodyFont);
 		newPanel.add(spinner);
-		
+		newPanel.setBackground(Color.white);
 		return newPanel;
 	}
 

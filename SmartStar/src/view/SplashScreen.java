@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.awt.Color;
 import controller.SignInController;
 
 public class SplashScreen extends JFrame implements ActionListener {
@@ -80,6 +80,12 @@ public class SplashScreen extends JFrame implements ActionListener {
 		btn_signIn.setSize(buttonWidth, buttonHeight);
 		pnl_button.add(btn_signIn);
 		btn_signIn.addActionListener(this);
+		
+		//Color
+		pnl_button.setBackground(new Color(255, 253, 208));
+		pnl_buttonArea.setBackground(new Color(255, 253, 208));
+		pnl_subtitle.setBackground(new Color(255, 253, 208));
+		pnl_title.setBackground(new Color(255, 253, 208));
 	}
 
 	@Override

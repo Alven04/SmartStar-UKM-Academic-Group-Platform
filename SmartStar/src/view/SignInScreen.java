@@ -1,5 +1,6 @@
 package view;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,6 +74,10 @@ public class SignInScreen extends JFrame implements ActionListener {
 		add(pnl_button, BorderLayout.SOUTH);
 		pnl_button.add(createButton(btn_cancel, "Cancel"));
 		pnl_button.add(createButton(btn_signIn, "Sign In"));
+
+		//Color
+		pnl_title.setBackground(new Color(255, 253, 208));
+		pnl_button.setBackground(new Color(255, 253, 208));
 	}
 
 	private JPanel createLabelTestFieldPair(JLabel label, String labelText, JTextField textField, int textColumn) {
@@ -85,7 +90,7 @@ public class SignInScreen extends JFrame implements ActionListener {
 		textField.setColumns(textColumn);
 		textField.setFont(bodyFont);
 		newPanel.add(textField);
-		
+		newPanel.setBackground(Color.WHITE);
 		return newPanel;
 	}
 	
@@ -100,7 +105,7 @@ public class SignInScreen extends JFrame implements ActionListener {
 		label.setText(labelText);
 		label.setFont(headingFont);
 		newPanel.add(label);
-		
+		newPanel.setBackground(Color.white);
 		return newPanel;
 	}
 	
