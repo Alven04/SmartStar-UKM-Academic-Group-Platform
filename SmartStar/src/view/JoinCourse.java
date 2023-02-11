@@ -89,11 +89,17 @@ public class JoinCourse extends JFrame implements ActionListener {
 			controller.displayScreen(1);
 		}else if(obj.equals(searchCourseButton)){
 			if(controller.detetermineCourseExists(searchCourseText.getText())){
-				int a=JOptionPane.showConfirmDialog(f, "Do you wish to join the course?");
-				if(a==JOptionPane.YES_OPTION) {
-					controller.joinCourse(searchCourseText.getText());
-					JOptionPane.showMessageDialog(null, "You have joined the course","Join Course",JOptionPane.PLAIN_MESSAGE);
-					controller.displayScreen(1);
+				if(controller.determineIfUserAlreadyJoinedCourse(searchCourseText.getText())){
+					JOptionPane.showMessageDialog(null, "You have already joined the course","Join Course",JOptionPane.PLAIN_MESSAGE);
+					
+				}else{
+					int a=JOptionPane.showConfirmDialog(f, "Do you wish to join the course?");
+					if(a==JOptionPane.YES_OPTION) {
+						controller.joinCourse(searchCourseText.getText());
+						JOptionPane.showMessageDialog(null, "You have joined the course","Join Course",JOptionPane.PLAIN_MESSAGE);
+						setVisible(false);
+						controller.displayScreen(1);
+					}
 				}
 			}else{
 				JOptionPane.showMessageDialog(null, "Course does not exists","Join Course",JOptionPane.PLAIN_MESSAGE);

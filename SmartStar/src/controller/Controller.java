@@ -88,6 +88,20 @@ public class Controller {
 		return arrayList;
 	}
 
+	public boolean determineIfUserAlreadyJoinedCourse(String courseID){
+		ArrayList<Course> list=currentUser.getCoursesJoined();
+		boolean opt=false;
+		for(Course c: list){
+			if(c.getCourseID().equals(courseID)){
+				opt= true;
+				break;
+			}else{
+				opt= false;
+			}
+		}
+		return opt;
+	}
+
 	public void removeCourses(String courseName){
 		global.deleteCourse(global.getCourseByCourseName(courseName));
 	}
