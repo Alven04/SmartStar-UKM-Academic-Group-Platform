@@ -125,7 +125,6 @@ public class SignInScreen extends JFrame implements ActionListener {
 		}
 		else if (e.getSource().equals(btn_signIn)) {
 			if (controller.signIn(txt_username.getText(), txt_password.getText())) {
-				JOptionPane.showMessageDialog(this, "Debug - Sign In successful");
 				clearField();
 				controller.displayMainMenu();
 				setVisible(false);

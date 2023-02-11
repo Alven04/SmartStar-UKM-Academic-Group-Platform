@@ -4,16 +4,17 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
+
 import javax.swing.*;
 
 import controller.Controller;
 
 public class CourseMain extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	private JButton btn1=new JButton("Add New Course");
 	private JButton btn2=new JButton("Join Course");
 	private JButton btn3=new JButton("View Course");
@@ -87,6 +88,7 @@ public class CourseMain extends JFrame implements ActionListener {
 		btn2.addActionListener(this);
 		btn3.addActionListener(this);
 		editProfile.addActionListener(this);
+		logout.addActionListener(this);
 
 		//Colors
 		centerPanel.setBackground(new Color(255, 253, 208));
@@ -110,6 +112,10 @@ public class CourseMain extends JFrame implements ActionListener {
 			controller.displayScreen(4);
 		}else if(obj.equals(editProfile)){
 			controller.displayScreen(6);
+		}else if(obj.equals(logout)){
+			JOptionPane.showMessageDialog(this, "Thanks for using SmartStar!", "SmartStar", JOptionPane.INFORMATION_MESSAGE);
+			controller.getSignInController().displaySplashScreen();
+			setVisible(false);
 		}
 		
 	}
