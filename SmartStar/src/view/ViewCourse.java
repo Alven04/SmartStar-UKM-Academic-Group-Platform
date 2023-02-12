@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.*;
 
 public class ViewCourse extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	private JButton backBtn;
 	private Controller controller;
 	private JLabel title;

@@ -9,6 +9,8 @@ import controller.Controller;
 import java.awt.*;
 
 public class JoinCourse extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	private JButton backBtn;
 	private Controller controller;
 	private JLabel title;

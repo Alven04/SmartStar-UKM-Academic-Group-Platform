@@ -19,13 +19,14 @@ import javax.swing.SpinnerNumberModel;
 import controller.Controller;
 
 public class EditProfile extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	private Controller controller;
 	private JPanel pnl_title;
 	private JPanel pnl_body;
 	private JPanel pnl_detail;
 	private JPanel pnl_button;
 	private JLabel lbl_title;
-	private JLabel lbl_subtitle;
 	private JLabel lbl_roleTitle;
 	private JLabel lbl_username;
 	private JLabel lbl_password;
@@ -65,10 +66,8 @@ public class EditProfile extends JFrame implements ActionListener {
 		int buttonHeight = 50;
 		
 		int titleFontSize = 48;
-		int subtitleFontSize = 16;
 
 		Font titleFont = new Font(font, Font.BOLD, titleFontSize);
-		Font subtitleFont = new Font(font, Font.BOLD, subtitleFontSize);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(screenWidth, screenHeight);
@@ -185,24 +184,6 @@ public class EditProfile extends JFrame implements ActionListener {
 		newPanel.add(spinner);
 		newPanel.setBackground(Color.white);
 		return newPanel;
-	}
-
-	private void showUserCreatedMessage(String newUser) {
-		if (newUser != null) {
-			JOptionPane.showMessageDialog(this, "Your user account \"" + newUser  + "\" has been created. Welcome to SmartStar!");					
-		} else {
-			JOptionPane.showMessageDialog(this, "An error occured.");
-		}
-	}
-	
-	private void clearField() {
-		txt_username.setText("");
-		txt_password.setText("");
-		txt_name.setText("");
-		txt_institution.setText("");
-		txt_qualification.setText("");
-		txt_major.setText("");
-		spn_year.setValue(1);
 	}
 
     public void getUserInformation(){

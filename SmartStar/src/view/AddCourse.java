@@ -7,10 +7,9 @@ import javax.swing.border.Border;
 import java.awt.Color;
 import controller.Controller;
 
-import java.awt.Color;
-
-
 public class AddCourse extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
 	private JButton btn_back,btn_confirm;
 	private Controller controller;
 	private JTextField txt_courseName,txt_courseID;
