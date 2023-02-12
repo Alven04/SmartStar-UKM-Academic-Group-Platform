@@ -12,7 +12,7 @@ public class Student extends User {
 			"No rank", "BRONZE Rank", "SILVER Rank", "GOLD Rank", "PLATINUM Rank"
 	};
 	private static final int[] RANK_REQUIREMENTS = {
-			0, 5, 10, 15, 20
+			0, 2, 4, 6, 8
 	};
 	
 	public Student (String username, String password) {

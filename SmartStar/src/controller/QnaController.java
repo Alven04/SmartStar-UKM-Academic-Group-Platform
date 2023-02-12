@@ -194,7 +194,7 @@ public class QnaController {
 		String displayDetail = "";
 		if (owner instanceof Student) {
 			Student student = (Student) owner;
-			displayDetail += "Year " + student.getYear() + ", " + student.getMajor() + ", " + student.getInstitution() + ", " + student.getRank();
+			displayDetail += "Year " + student.getYear() + ", " + student.getMajor() + ", " + student.getInstitution() + ", " + student.getRank() + " (" + student.getStars().size() + " stars collected)";
 		} else if (owner instanceof Lecturer) {
 			Lecturer lecturer = (Lecturer) owner;
 			displayDetail += lecturer.getQualification() + ", " + lecturer.getInstitution();
