@@ -19,6 +19,7 @@ public class ViewCourse extends JFrame implements ActionListener {
 	private int width=800;
 	private int height=600;
 	
+	
 	public ViewCourse(Controller controller) {
 		this.controller=controller;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,6 +93,18 @@ public class ViewCourse extends JFrame implements ActionListener {
             courseTitle.setFont(new Font("SegoeUI", Font.BOLD, 25));
             courseTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+			String owner=controller.getCourseOwner(courseName);
+			JLabel courseOwner=new JLabel(owner);
+            courseOwner.setForeground(Color.BLACK);
+            courseOwner.setFont(new Font("SegoeUI", Font.BOLD, 15));
+            courseOwner.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+			String desc=controller.getCourseDesc(courseName);
+			JLabel courseDescription=new JLabel(desc);
+            courseDescription.setForeground(Color.BLACK);
+            courseDescription.setFont(new Font("SegoeUI", Font.BOLD, 10));
+            courseDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 			JButton enter=new JButton("Enter Course");
 			enter.setForeground(new Color(0,0,0));
 			enter.setBackground(new Color(0,255,51));
@@ -110,6 +123,10 @@ public class ViewCourse extends JFrame implements ActionListener {
 
             panel.add(courseTitle);
             panel.add(Box.createVerticalStrut(10));
+			panel.add(courseOwner);
+			panel.add(Box.createVerticalStrut(10));
+			panel.add(courseDescription);
+			panel.add(Box.createVerticalStrut(10));
             panel.add(enter);
 			panel.add(Box.createVerticalStrut(10));
 			panel.add(delete);

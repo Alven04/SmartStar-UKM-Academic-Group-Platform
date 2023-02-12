@@ -77,6 +77,14 @@ public class Controller {
 		return "The course name is " + global.getCourseByCourseName(course).getCourseName();
 	}
 
+	public String getCourseOwner(String courseName){
+		return global.getCourseByCourseName(courseName).getCourseOwner().getName();
+	}
+
+	public String getCourseDesc(String courseName){
+		return global.getCourseByCourseName(courseName).getCourseDescription();
+	}
+
 	public String[] getCourseJoinedByUser(){
 		ArrayList<Course> list=currentUser.getCoursesJoined();
 		String[] arrayList=new String[list.size()];
