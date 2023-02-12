@@ -103,7 +103,13 @@ public class Controller {
 	}
 
 	public void removeCourses(String courseName){
+		global.getCourseByCourseName(courseName).removeAllCourseMembers();
+		currentUser.leaveCourse(global.getCourseByCourseName(courseName));
 		global.deleteCourse(global.getCourseByCourseName(courseName));
+	}
+
+	public void leaveCourse(String courseName){
+		currentUser.leaveCourse(global.getCourseByCourseName(courseName));
 	}
 
 	public void setUserUsername(String username){
@@ -258,6 +264,10 @@ public class Controller {
 
 	public void setQnaController(QnaController qnaController) {
 		this.qnaController = qnaController;
+	}
+
+	public boolean isOwner(String courseName){
+		return currentUser.equals(global.getCourseByCourseName(courseName).getCourseOwner());
 	}
 
 }

@@ -97,7 +97,13 @@ public class ViewCourse extends JFrame implements ActionListener {
 			enter.setBackground(new Color(0,255,51));
 			enter.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-			JButton delete=new JButton("Delete Course");
+			String btn_deleteOrLeave="";
+			if(controller.isOwner(courseName)==true){
+				btn_deleteOrLeave="Delete Course";
+			}else{
+				btn_deleteOrLeave="Leave Course";
+			}
+			JButton delete=new JButton(btn_deleteOrLeave);
 			delete.setForeground(new Color(0,0,0));
 			delete.setBackground(new Color(255,51,51));
             delete.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -127,15 +133,28 @@ public class ViewCourse extends JFrame implements ActionListener {
 			delete.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					if(controller.detetermineCourseExistsByName(courseTitle.getText())){
-						int a=JOptionPane.showConfirmDialog(f, "Do you wish to delete the course?");
-						if(a==JOptionPane.YES_OPTION){
-							JOptionPane.showMessageDialog(null, "You have left the course","Leave Course",JOptionPane.PLAIN_MESSAGE);
-							String text= courseTitle.getText();
-							controller.removeCourses(text);
-							panel.removeAll();
-							panel3.remove(panel);
-							panel3.validate();
-							panel3.repaint();
+						if(controller.isOwner(courseTitle.getText())==true){
+							int a=JOptionPane.showConfirmDialog(f, "Do you wish to delete the course?");
+							if(a==JOptionPane.YES_OPTION){
+								JOptionPane.showMessageDialog(null, "You have deleted the course","Leave Course",JOptionPane.PLAIN_MESSAGE);
+								String text= courseTitle.getText();
+								controller.removeCourses(text);
+								panel.removeAll();
+								panel3.remove(panel);
+								panel3.validate();
+								panel3.repaint();
+							}
+						}else{
+							int a=JOptionPane.showConfirmDialog(f, "Do you wish to leave the course?");
+							if(a==JOptionPane.YES_OPTION){
+								JOptionPane.showMessageDialog(null, "You have left the course","Leave Course",JOptionPane.PLAIN_MESSAGE);
+								String text= courseTitle.getText();
+								controller.leaveCourse(text);
+								panel.removeAll();
+								panel3.remove(panel);
+								panel3.validate();
+								panel3.repaint();
+							}
 						}
 					}else{
 						JOptionPane.showMessageDialog(null, "Course no longer exists","View Course",JOptionPane.PLAIN_MESSAGE);

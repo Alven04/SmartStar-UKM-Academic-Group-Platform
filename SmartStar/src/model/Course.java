@@ -46,6 +46,14 @@ public class Course {
 	public void setCourseMembers(User currentUser) {
 		courseMembers.add(currentUser);
 	}
+
+	public void removeCourseMembers(User currentUser) {
+		courseMembers.remove(currentUser);
+	}
+
+	public void removeAllCourseMembers() {
+		courseMembers.removeAll(courseMembers);
+	}
 	
 	public String getCourseDescription() {
 		return courseDescription;
