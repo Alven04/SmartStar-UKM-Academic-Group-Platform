@@ -150,6 +150,12 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		pnl_vote.add(createButton(btn_star, "Star"));
 		pnl_vote.add(createLabel(lbl_star, controller.starCount()));
 		pnl_vote.add(createList(lst_star));
+		btn_upvote.setAlignmentX(CENTER_ALIGNMENT);
+		btn_downvote.setAlignmentX(CENTER_ALIGNMENT);
+		btn_star.setAlignmentX(CENTER_ALIGNMENT);
+		lbl_upvote.setAlignmentX(LEFT_ALIGNMENT);
+		lbl_downvote.setAlignmentX(LEFT_ALIGNMENT);
+		lbl_star.setAlignmentX(LEFT_ALIGNMENT);
 		
 		pnl_content.add(pnl_index, BorderLayout.SOUTH);
 		pnl_index.add(createButton(btn_previous, "Previous"));
