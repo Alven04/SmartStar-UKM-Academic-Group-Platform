@@ -99,6 +99,7 @@ public class ViewQuestion extends JFrame implements ActionListener, ListSelectio
 		pnl_title.setLayout(new BorderLayout(10, 0));
 		
 		pnl_title.add(createButton(btn_back, "Back"), BorderLayout.WEST);
+		pnl_title.setBackground(new Color(255, 253, 208));
 		
 		lbl_title.setText(titleText());
 		lbl_title.setFont(titleFont);
